@@ -1,0 +1,30 @@
+
+git config --global user.name "adharam"
+git config --global user.email "ito.yuto@gmail.com"
+git init
+git remote add origin "https://github.com/adharam/adharam.github.io"
+git push origin master
+
+
+■消す時
+1. ローカルファイルを削除
+
+1
+$ git rm ファイル名
+※ただしこれだと、ワーキングエリアからも削除されてしまう。
+ワーキングエリアには残しておき、Git管理対象外としたい場合は、.gitignoreに追記し
+
+1
+$ git rm --cached ファイル名
+2. ステージング
+
+1
+$ git add .
+3. コミット
+
+1
+$ git commit -m "メッセージ"
+4. プッシュ
+
+1
+$ git push
