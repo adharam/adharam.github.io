@@ -28,3 +28,6 @@ $ git commit -m "メッセージ"
 
 1
 $ git push
+
+#################################################
+git add . && git commit -m "修正" && git push
