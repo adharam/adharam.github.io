@@ -1,0 +1,4 @@
+_config.yml に
+plugins:
+ - jekyll-sitemap
+と書く。
