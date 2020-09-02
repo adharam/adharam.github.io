@@ -1,2 +1,5 @@
+theme: jekyll-theme-cayman
+title: adhara_mathphysのページ
+lang: ja
 plugins:
  - jekyll-sitemap
