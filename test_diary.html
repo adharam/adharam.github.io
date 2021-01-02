@@ -42,6 +42,27 @@
 # Markdownのテスト
 ## Markdownのテスト
 ### Markdownのテスト
+
+<p>
+iframe を利用した表示
+</p>
+<p>
+<iframe src="https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf" width="600" height="800"></iframe>
+</p>
+<p>
+object を利用した表示
+</p>
+<p>
+<object data="https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf" type="application/pdf" width="600" height="800" typemustmatch>
+<p>PDF プラグインはありませんが、<a href="https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf">PDF ファイルをダウンロードできます。</a></p>
+</object>
+</p>
+<p>
+iframe +pdfjs を利用した表示
+</p>
+<p>
+<iframe src="https://adharam.github.io/pdfjs-2/web/viewer.html?file=https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf" width="600" height="800"></iframe>
+</p>
 </script>
 
 <script>
@@ -49,27 +70,6 @@ var md = marked(document.getElementById('here').textContent);
 console.log(md); // Debug
 document.body.innerHTML = md;
 </script>
-
-    <p>
-      iframe を利用した表示
-    </p>
-    <p>
-      <iframe src="https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf" width="600" height="800"></iframe>
-    </p>
-    <p>
-      object を利用した表示
-    </p>
-    <p>
-      <object data="https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf" type="application/pdf" width="600" height="800" typemustmatch>
-        <p>PDF プラグインはありませんが、<a href="https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf">PDF ファイルをダウンロードできます。</a></p>
-      </object>
-    </p>
-    <p>
-      iframe +pdfjs を利用した表示
-    </p>
-    <p>
-      <iframe src="https://adharam.github.io/pdfjs-2/web/viewer.html?file=https://adharam.github.io/pdf/相対論的水素原子に潜む超対称性.pdf" width="600" height="800"></iframe>
-    </p>
 
 
 </body>
