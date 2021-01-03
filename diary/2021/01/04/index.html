@@ -58,6 +58,7 @@
 1. [概要](#anchor1)
 1. [方法](#anchor2)
 1. [具体例](#anchor3)
+1. [具体例2](#anchor4)
 
 <a id="anchor1"></a>
 
@@ -89,6 +90,36 @@ $$
 
 は非相対論的水素原子のハミルトニアンである．
 
+<a id="anchor4"></a>
+
+## 具体例2
+Thomas Holst, Boris Shapiro: "On higher Heine-Stieltjes polynomials" [arXiv:0904.0218](https://arxiv.org/abs/0904.0218v1)より数式の入ったabstractとそこに出てくる参考文献リストを引用する．<br>
+これは純粋に貼り付けられるかどうかのテストのためである．<br>
+以下に貼り付ける．<br>
+$$
+\newcommand \dq {\mathfrak d(z)}
+$$
+>Take a linear ordinary differential operator $\dq=\sum_{i=1}^k
+Q_i(z)\frac{d^i}{dz^i}$ with polynomial coefficients  and set
+$r=max_{i=1,\ldots,k} (\deg Q_{i}(z)-i)$.  If $\dq$ satisfies the
+conditions:\; i) $r\ge 0$\; and\; ii) $\deg Q_{k}(z)=k+r$\; we call
+it a _non-degenerate higher Lam\'e operator_. Following the
+classical examples of E. Heine and T. Stieltjes we initiated in
+[[6]](#BShN) the study of  the following multiparameter spectral
+problem: for each positive integer $n$ find polynomials $V(z)$ of
+degree at most $r$ such that  the equation:
+$$
+\dq S(z)+V(z)S(z)=0
+$$
+has a  polynomial solution $S(z)$ of degree $n$.  We have shown that
+under some mild non-degeneracy assumptions on $T$
+ there exist  exactly ${n+r \choose n}$ spectral polynomials $V_{n,i}(z)$ of degree $r$ and   their  corresponding   eigenpolynomials  $S_{n,i}(z)$ of degree $n$.   Localization results of [[6]](#BShN)  provide the existence of abundance of converging as $n\to \infty$  sequences  of normalized spectral polynomials $\{\widetilde V_{n,i_n}(z)\}$  where $\widetilde V_{n,i_n}(z)$ is the monic polynomial proportional  to $V_{n,i_n}(z)$.  Below we calculate   for any  such converging sequence $\{\widetilde V_{n,i_{n}}(z)\}$    the   asymptotic root-counting measure of the corresponding  family $\{S_{n,i_{n}}(z)\}$ of eigenpolynomials. We also conjecture  that the sequence of sets of all normalized spectral polynomials $\{\widetilde V_{n,i}(z)\}$  having   eigenpolynomials  $S(z)$ of degree $n$  converges  as $n\to \infty$ to the standard measure in the space of monic polynomials of degree $r$ which depends only on the leading coefficient $Q_k(z)$.
+<a id="BShN"></a>
+
+>[6] B. Shapiro, "Algebro-geometric aspects of Heine-Stieltjes theory", arXiv:0812.4193.
+
+実は上を書くにあたって，プリアンブルに書く命令コマンドについても実は使うことが出来る．<br>
+ここでは論文のtexソース中に出てきたプリアンブル命令をそのまま使っている．
 
 <p class="p11"><span class="s2">
 <a href="../03/index.html">
