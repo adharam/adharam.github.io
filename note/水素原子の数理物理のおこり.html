@@ -40,6 +40,13 @@
  }
  });
 </script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  CommonHTML: {
+    scale: 130
+  }
+});
+</script>
 <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
 </script>
@@ -73,7 +80,6 @@ Rydbergの公式の妥当性は20世紀中のBalmer系列以外のスペクト�
 Rydbergの公式の意味は，20世紀の初頭に現れたBohr–Sommerfeldの量子化[[Bohr1913a,b,c,Sommerfeld1916]](#Bohr1913a)に代表される前期量子論によって説明されるようになった．
 すなわち，水素原子において取り得るエネルギーが離散化され，
 $$
-\Large
 E_n = - \frac{1}{2n^2}\frac{m_e}{\hbar^2}\left(\frac{Ze^2}{4\pi\epsilon_0} \right)^2
 $$
 となることが理解されたのである．
@@ -95,14 +101,12 @@ $$
 非相対論的水素原子のSchrödinger方程式は
 
 $$
-\Large
 \mathcal{H} \Psi =E \Psi
 $$
 
 で与えられる．ただし，
 
 $$
-\Large
 \mathcal{H} = -\frac{\hbar^2 \nabla^2}{2m_e} +\frac{Ze^2}{4\pi \epsilon_0 r} 
 $$
 
@@ -113,12 +117,8 @@ Schrödinger方程式はハミルトニアンのもつ対称性に伴ってエ�
 例えば，球対称性を持つポテンシャル下ではSchrödinger方程式を球極座標（spherical polar coordinates）によって変数分離を行い，固有波動関数を球面調和関数(立体角 $\Omega=(\theta,\phi)$ を変数とする)と動径方向関数(動径変数 $r$ を変数とする)の積の形で表示できる．球面調和関数は角運動量量子数 $l$，磁気量子数 $m$，でラベリングすることが可能である；<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20l%7D" alt=" {\textstyle l}" /> は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>の二乗<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B1%E9%BB%BB%BB%D2">演算子</a>（ <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20so%283%29%7D" alt=" {\textstyle so(3)}" /> の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AB%A5%B7%A5%DF%A1%BC%A5%EB">カシミール</a>元)の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>で定まり，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20m%7D" alt=" {\textstyle m}" /> は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%CE%CC%BB%D2%B2%BD">量子化</a>軸方向成分(適当に定めて良いが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20z%7D" alt=" {\textstyle z}" /> 方向に定めることが多い．）の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>で定まる．
 
 \begin{align}
-\Large L^2 Y_{l,m} 
-&
-\Large = \hbar^2 l(l+1) Y_{l,m} \\\\[10pt]
-\Large l_z Y_{l,m} 
-& 
-\Large = \hbar m Y_{l,m} 
+ L^2 Y_{l,m} & = \hbar^2 l(l+1) Y_{l,m} \\\\[10pt]
+ l_z Y_{l,m} &  = \hbar m Y_{l,m} 
 \end{align}
 
 
@@ -127,26 +127,22 @@ Schrödinger方程式はハミルトニアンのもつ対称性に伴ってエ�
 
 合わせるとSchrödinger方程式は
 $$
-\Large
 \mathcal{H}R_{n,l}Y_{l,m}=E_{n,l}R_{n,l}Y_{l,m} 
 $$
 のように解かれる．
 各量子数には取り得る値に制限があり(いずれも整数値)，
 
 $$
-\Large
 l\ge 0, \ -l \le m \le l, \ n \ge l+1
 $$
 のようになっている．<br /> 従ってエネルギーが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7BE_%7Bn%2Cl%7D%7D" alt="{E_{n,l}}" /> となる状態の数(縮重度)は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7B2l%2B1%7D" alt="{2l+1}" /> である．（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bl%7D" alt="{l}" /> が同じならば<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7BE_%7Bn%2Cl%7D%7D" alt="{E_{n,l}}" /> は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bn%7D" alt="{n}" /> が大きいほど大きい）</p>
 
 水素原子は球対称性を持つので，上で述べた縮退が存在する．<br /> しかしながら水素原子では，エネルギーが主量子数 $n$ だけで定まってしまうという現象が生じている．このときSchrödinger方程式は，
 $$
-\Large
 \mathcal{H}R_{n,l}Y_{l,m}=E_{n}R_{n,l}Y_{l,m} 
 $$ 
 のように解かれ，縮重度 $D_n$ は
 $$
-\Large 
 D_n =n^2
 $$
 となっている．<br /> これは球対称性に伴うエネルギー縮退を超えた縮退が起きていることを表す．<br /> <a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%CF%A5%DF%A5%EB%A5%C8%A5%CB%A5%A2%A5%F3">ハミルトニアン</a>の持つ空間対称性からは予測できない縮退が生じているので，このような縮退は「偶然縮退」と呼ばれる．
