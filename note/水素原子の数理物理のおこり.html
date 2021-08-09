@@ -32,8 +32,6 @@
     ol.ol1 {list-style-type: decimal}
     ul.ul1 {list-style-type: disc}
   </style>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 <script type="text/x-mathjax-config">
  MathJax.Hub.Config({
  tex2jax: {
@@ -41,6 +39,9 @@
  displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
  }
  });
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
 </script>
 <script src="../marked.js"></script>
 </head>
@@ -53,10 +54,18 @@
 
 ## 目次
 1. [水素原子のエネルギー準位の発見と量子力学の創設](#anchor1)
+2. [エネルギーの偶然縮退と力学的対称性の発見](#anchor2)
+3. [Laplace-Runge-Lenzベクトルと力学的対称性の発見](#anchor3)
+4. 力学的対称性に伴う縮退
+5. 因数分解解法の発見
+6. スペクトル生成代数と力学的群の発見
+7.Kustaanheimo-Stiefel変換による正則化
+8.経路積分を用いた解法
+9. [参考文献](#anchor4)
 
 <a id="anchor1"></a>
 
-## 水素原子のエネルギー準位の発見と量子力学の創設
+## 1. 水素原子のエネルギー準位の発見と量子力学の創設
 水素原子と量子論の関わりはBalmer[[Balmer1885]](#Balmer1885)の発見した水素原子の発光スペクトル線の間隔に関する法則に端を発する．
 その数年後にはBalmerの発見を受けてRydbergの公式が提唱され[[Rydberg1889]](#Rydberg1889)，新たな発光スペクトルの存在が予想された．
 Rydbergの公式の妥当性は20世紀中のBalmer系列以外のスペクトル系列の発見[[Lyman,Paschen,Brackett,Pfund,Humphreys]](#Lyman1906)により確かめられた．
@@ -78,9 +87,12 @@ $$
 前期量子論を発展させ，エネルギーを求める問題を固有値問題として定式化したのがSchrödinger[[Schrödinger1926a,b,d,e,f]](#Schrödinger1926a)及びHeisenbergら[[Heisenberg1925,Dirac1925,BJ1925,BHJ1926]](#Heisenberg1925)である．
 彼らの基礎方程式に従って量子論的粒子の振る舞いを記述する枠組みが量子力学であり，Schrödingerについては波動力学形式の量子力学，Heisenbergについては行列力学形式の量子力学，と呼ばれることがある．（Schrödingerによって両形式の量子力学が等価であることが示され[[Schrödinger1926c]](#Schrödinger1926c)[[Casado2008,Gosson2014]](#Casado2008)，現在では敢えて区別することは少ない．）
 1926年のSchrödingerによる波動力学形式の量子力学の創設と同時にSchrödinger方程式の解としての水素原子の波動関数が初めて求められた[[Schrödinger1926a]](#Schrödinger1926a)．
-行列力学形式の量子力学を用いた水素原子のスペクトルの解法についてはPauliが行っている[[Pauli1926]](#Pauli1926)．（これについては後述）
+行列力学形式の量子力学を用いた水素原子のスペクトルの解法についてはPauliが行っている[[Pauli1926]](#Pauli1926)．
 
-非相対論的水素原子のシュレディンガー方程式は
+<a id="anchor2"></a>
+
+## 2. エネルギーの偶然縮退と力学的対称性の発見
+非相対論的水素原子のSchrödinger方程式は
 
 $$
 \Large
@@ -96,7 +108,58 @@ $$
 
 は非相対論的水素原子のハミルトニアンである．
 
-参考文献
+Schrödinger方程式はハミルトニアンのもつ対称性に伴ってエネルギーの縮退が起きる場合がある．
+縮退は対称性を表す群（ハミルトニアンと可換な対称操作がなす群）の表現論によって理解可能である．
+例えば，球対称性を持つポテンシャル下ではSchrödinger方程式を球極座標（spherical polar coordinates）によって変数分離を行い，固有波動関数を球面調和関数(立体角 $\Omega=(\theta,\phi)$ を変数とする)と動径方向関数(動径変数 $r$ を変数とする)の積の形で表示できる．球面調和関数は角運動量量子数 $l$，磁気量子数 $m$，でラベリングすることが可能である；<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20l%7D" alt=" {\textstyle l}" /> は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>の二乗<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B1%E9%BB%BB%BB%D2">演算子</a>（ <img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20so%283%29%7D" alt=" {\textstyle so(3)}" /> の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%AB%A5%B7%A5%DF%A1%BC%A5%EB">カシミール</a>元)の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>で定まり，<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20m%7D" alt=" {\textstyle m}" /> は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%CE%CC%BB%D2%B2%BD">量子化</a>軸方向成分(適当に定めて良いが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%20%7B%5Ctextstyle%20z%7D" alt=" {\textstyle z}" /> 方向に定めることが多い．）の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C7%CD%AD%C3%CD">固有値</a>で定まる．
+
+\begin{align}
+\Large L^2 Y_{l,m} 
+&
+\Large = \hbar^2 l(l+1) Y_{l,m} \\\\[10pt]
+\Large l_z Y_{l,m} 
+& 
+\Large = \hbar m Y_{l,m} 
+\end{align}
+
+
+ 一方，動径方向関数については $l$ ともう一つ必要な量子数（主量子数 $n$ と書かれる）でラベリング可能である．固有値であるエネルギーは動径方向波動関数で定まる，
+ すなわち量子数の組 $(n,l)$ で定まる．
+
+合わせるとSchrödinger方程式は
+$$
+\Large
+\mathcal{H}R_{n,l}Y_{l,m}=E_{n,l}R_{n,l}Y_{l,m} 
+$$
+のように解かれる．
+各量子数には取り得る値に制限があり(いずれも整数値)，
+
+$$
+\Large
+l\ge 0, \ -l \le m \le l, \ n \ge l+1
+$$
+のようになっている．<br /> 従ってエネルギーが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7BE_%7Bn%2Cl%7D%7D" alt="{E_{n,l}}" /> となる状態の数(縮重度)は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7B2l%2B1%7D" alt="{2l+1}" /> である．（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bl%7D" alt="{l}" /> が同じならば<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7BE_%7Bn%2Cl%7D%7D" alt="{E_{n,l}}" /> は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bn%7D" alt="{n}" /> が大きいほど大きい）</p>
+
+水素原子は球対称性を持つので，上で述べた縮退が存在する．<br /> しかしながら水素原子では，エネルギーが主量子数 $n$ だけで定まってしまうという現象が生じている．このときSchrödinger方程式は，
+$$
+\Large
+\mathcal{H}R_{n,l}Y_{l,m}=E_{n}R_{n,l}Y_{l,m} 
+$$ 
+のように解かれ，縮重度 $D_n$ は
+$$
+\Large 
+D_n =n^2
+$$
+となっている．<br /> これは球対称性に伴うエネルギー縮退を超えた縮退が起きていることを表す．<br /> <a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%CF%A5%DF%A5%EB%A5%C8%A5%CB%A5%A2%A5%F3">ハミルトニアン</a>の持つ空間対称性からは予測できない縮退が生じているので，このような縮退は「偶然縮退」と呼ばれる．
+
+<p><span style="color: #ff5252;">しかしながら，数理構造を偶然で片付けることは(数理)物理学者のプライドが許さない．</span><br /> この「偶然縮退」を特徴づける対称性を明らかにする研究が行われることになる．</p>
+
+<a id="anchor3"></a>
+## 3. Laplace-Runge-Lenzベクトルと力学的対称性の発見
+
+
+
+<a id="anchor4"></a>
+## 4. 参考文献
 
 ■Balmer系列，Rydbergの公式，Balmer系列以外の水素原子スペクトル系列の発見
 <ul>
