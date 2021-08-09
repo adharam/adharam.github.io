@@ -32,11 +32,51 @@
     ol.ol1 {list-style-type: decimal}
     ul.ul1 {list-style-type: disc}
   </style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+ tex2jax: {
+ inlineMath: [['$', '$'] ],
+ displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+ }
+ });
+</script>
+<script src="./marked.js"></script>
 </head>
 <body>
 <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 36.0px 'Hiragino Mincho ProN'; color: #0000e9; -webkit-text-stroke: #000000"><span class="s1"><a href="./index.html"><b>adhara_mathphysのページ</b></a></span></h1>
 <p class="p2"><span class="s2"><b>研究</b></span></p>
 <p class="p3"><span class="s2"><br>
+
+## 目次
+1. [方法](#anchor1)
+1. [具体例](#anchor2)
+
+<a id="anchor1"></a>
+
+## 方法
+この記事はhtmlで書かれているのだが，中でmarkdownやMathJaxが使用できるようにjavascriptのスクリプトが呼び出されている．<br>
+markdownについては，<a href="https://beta-notes.way-nifty.com/blog/2019/08/post-2d8bae.html" target="_blank">xshigeさんの『MDをHTMLに埋め込む』という記事</a>を参照した．<br>
+MathJaxについては，<a href="https://qiita.com/tomtsutom0122/items/e0ab6b6ccbd369db1aa2" target="_blank">@tomtsutom0122さんの『Markdownで数式を表示する一番速い方法』という記事</a>を参照した．<br>
+具体的にはこのhtmlファイルをダウンロードして読めばわかると思う．<br>
+
+<a id="anchor2"></a>
+
+## 具体例
+非相対論的水素原子のシュレディンガー方程式は
+
+$$
+\mathcal{H} \Psi =E \Psi
+$$
+
+で与えられる．ただし，
+
+$$
+\mathcal{H} = -\frac{\hbar^2 \nabla^2}{2m_e} +\frac{Ze^2}{4\pi \epsilon_0 r} 
+$$
+
+は非相対論的水素原子のハミルトニアンである．
 <b>概要</b></span></p>
 <ul class="ul1">
   <li class="li4"><span class="s3"><b></b></span><span class="s2"><b>準備中
