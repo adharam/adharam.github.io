@@ -45,25 +45,19 @@
 <script src="./marked.js"></script>
 </head>
 <body>
+
+<script type="text/plain" id="here">
 <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 36.0px 'Hiragino Mincho ProN'; color: #0000e9; -webkit-text-stroke: #000000"><span class="s1"><a href="./index.html"><b>adhara_mathphysのページ</b></a></span></h1>
 <p class="p2"><span class="s2"><b>研究</b></span></p>
 <p class="p3"><span class="s2"><br>
 
 ## 目次
 1. [方法](#anchor1)
-1. [具体例](#anchor2)
+2. [その他](#anchor2)
 
 <a id="anchor1"></a>
 
 ## 方法
-この記事はhtmlで書かれているのだが，中でmarkdownやMathJaxが使用できるようにjavascriptのスクリプトが呼び出されている．<br>
-markdownについては，<a href="https://beta-notes.way-nifty.com/blog/2019/08/post-2d8bae.html" target="_blank">xshigeさんの『MDをHTMLに埋め込む』という記事</a>を参照した．<br>
-MathJaxについては，<a href="https://qiita.com/tomtsutom0122/items/e0ab6b6ccbd369db1aa2" target="_blank">@tomtsutom0122さんの『Markdownで数式を表示する一番速い方法』という記事</a>を参照した．<br>
-具体的にはこのhtmlファイルをダウンロードして読めばわかると思う．<br>
-
-<a id="anchor2"></a>
-
-## 具体例
 非相対論的水素原子のシュレディンガー方程式は
 
 $$
@@ -77,25 +71,9 @@ $$
 $$
 
 は非相対論的水素原子のハミルトニアンである．
-<b>概要</b></span></p>
-<ul class="ul1">
-  <li class="li4"><span class="s3"><b></b></span><span class="s2"><b>準備中
-</b></span></li>
-  <li class="li4"><span class="s3"><b></b></span><span class="s2"><b>準備中
-</b></span></li>
-  <li class="li4"><span class="s3"><b></b></span><span class="s2"><b>準備中
-</b></span></li>
-</ul>
-<p class="p5"><span class="s2"><br>
-</span></p>
-<p class="p6"><span class="s2"><b>詳細</b></span></p>
-<ul class="ul1">
-  <li class="li4"><span class="s3"><b></b></span><span class="s2"><b>準備中</b></span></li>
-  <li class="li4"><span class="s3"><b></b></span><span class="s2"><b>準備中</b></span></li>
-  <li class="li4"><span class="s3"><b></b></span><span class="s2"><b>準備中</b></span></li>
-</ul> 
-<p class="p4"><span class="s2"><br>
-</span></p>
+
+<a id="anchor2"></a>
+## その他
 <p class="p7"><span class="s1"><a href="./lecture.html"><b>講演・セミナー</b><span class="s4"><b></b></span></a></span></p>
 <ol class="ol1">
   <li class="li8"><span class="s3"><b></b></span><span class="s5"><b>『</b></span><span class="s2"><b>非相対論的水素原子に潜む数理』，</b><a href="https://connpass.com/event/167250/"><span class="s6"><b>量子と古典の物理と幾何＠九大</b></span></a><b>，2017年11月，</b><a href="https://adharam.github.io/pdf/%E9%9D%9E%E7%9B%B8%E5%AF%BE%E8%AB%96%E7%9A%84%E6%B0%B4%E7%B4%A0%E5%8E%9F%E5%AD%90%E3%81%AB%E6%BD%9C%E3%82%80%E6%95%B0%E7%90%86.pdf"><span class="s6"><b>スライド（pdf）</b></span></a></span></li>
@@ -106,5 +84,14 @@ $$
 </span></p>
 <p class="p10"><span class="s1"><a href="./index.html"><b>HOME</b><span class="s11"><b></b></span></a></span></p>
 <p class="p11"><span class="s2"><b>Copyright © 2020 adhara_mathphys All Rights Reserved.</b><span class="Apple-converted-space"> </span></span></p>
+
+</script>
+
+<script>
+var md = marked(document.getElementById('here').textContent);  
+console.log(md); // Debug
+document.body.innerHTML = md;
+</script>
+
 </body>
 </html>
