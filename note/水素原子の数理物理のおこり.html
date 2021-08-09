@@ -62,13 +62,10 @@ MathJax.Hub.Config({
 ## 目次
 1. [水素原子のエネルギー準位の発見と量子力学の創設](#anchor1)
 2. [エネルギーの偶然縮退と力学的対称性の発見](#anchor2)
-3. [Laplace-Runge-Lenzベクトルと力学的対称性の発見](#anchor3)
-4. 力学的対称性に伴う縮退
-5. 因数分解解法の発見
-6. スペクトル生成代数と力学的群の発見
-7.Kustaanheimo-Stiefel変換による正則化
-8.経路積分を用いた解法
-9. [参考文献](#anchor4)
+3. [因数分解解法と超対称性代数構造の発見](#anchor3)
+4. [スペクトル生成代数と力学的群の発見](#anchor4)
+5. [Kustaanheimo-Stiefel変換による正則化とHopf fibration](#anchor5)
+6. [参考文献](#anchor6)
 
 <a id="anchor1"></a>
 
@@ -135,9 +132,10 @@ $$
 $$
 l\ge 0, \ -l \le m \le l, \ n \ge l+1
 $$
-のようになっている．<br /> 従ってエネルギーが<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7BE_%7Bn%2Cl%7D%7D" alt="{E_{n,l}}" /> となる状態の数(縮重度)は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7B2l%2B1%7D" alt="{2l+1}" /> である．（<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bl%7D" alt="{l}" /> が同じならば<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7BE_%7Bn%2Cl%7D%7D" alt="{E_{n,l}}" /> は<img src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%7Bn%7D" alt="{n}" /> が大きいほど大きい）</p>
+のようになっている．
+従ってエネルギーが $E_{n,l}$ となる状態の数(縮重度)は $2l+1$ である．（ $l$ が同じならば $E_{n,l}$ は $n$ が大きいほど大きい）
 
-水素原子は球対称性を持つので，上で述べた縮退が存在する．<br /> しかしながら水素原子では，エネルギーが主量子数 $n$ だけで定まってしまうという現象が生じている．このときSchrödinger方程式は，
+水素原子は球対称性を持つので，上で述べた縮退が存在する．しかしながら水素原子では，エネルギーが主量子数 $n$ だけで定まってしまうという現象が生じている．このときSchrödinger方程式は，
 $$
 \mathcal{H}R_{n,l}Y_{l,m}=E_{n}R_{n,l}Y_{l,m} 
 $$ 
@@ -145,17 +143,22 @@ $$
 $$
 D_n =n^2
 $$
-となっている．<br /> これは球対称性に伴うエネルギー縮退を超えた縮退が起きていることを表す．<br /> <a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%CF%A5%DF%A5%EB%A5%C8%A5%CB%A5%A2%A5%F3">ハミルトニアン</a>の持つ空間対称性からは予測できない縮退が生じているので，このような縮退は「偶然縮退」と呼ばれる．
+となっている．これは球対称性に伴うエネルギー縮退を超えた縮退が起きていることを表す．
+ハミルトニアンの持つ空間対称性からは予測できない縮退が生じているので，このような縮退は「偶然縮退」と呼ばれる．
 
 <p><span style="color: #ff5252;">しかしながら，数理構造を偶然で片付けることは(数理)物理学者のプライドが許さない．</span><br /> この「偶然縮退」を特徴づける対称性を明らかにする研究が行われることになる．</p>
 
 <a id="anchor3"></a>
-## 3. Laplace-Runge-Lenzベクトルと力学的対称性の発見
-
-
+## 3. 因数分解解法と超対称性代数構造の発見
 
 <a id="anchor4"></a>
-## 4. 参考文献
+4. スペクトル生成代数と力学的群の発見
+
+<a id="anchor5"></a>
+5. Kustaanheimo-Stiefel変換による正則化とHopf fibration
+
+<a id="anchor6"></a>
+## 6. 参考文献
 
 ■Balmer系列，Rydbergの公式，Balmer系列以外の水素原子スペクトル系列の発見
 <ul>
