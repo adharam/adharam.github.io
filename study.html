@@ -33,6 +33,86 @@
     span.s11 {font: 18.0px 'Hiragino Mincho ProN'; text-decoration: underline ; font-kerning: none}
     ol.ol1 {list-style-type: decimal}
     ul.ul1 {list-style-type: disc}
+.blogCard {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 12px;
+  margin-bottom: 1.6rem;
+}
+.blogCardCont {
+  position: relative;
+  margin-bottom: 5px;
+  min-height: 80px;
+}
+.blogCardCont p {
+  font-size: 15px;
+  overflow: hidden;
+  margin: 0;
+}
+.blogCardTxt {
+  margin-right: 110px;
+}
+.blogCardTxt p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.blogCardTitle {
+  margin-bottom: 5px;
+  overflow: hidden;
+  -webkit-line-clamp: 2 !important;
+}
+.blogCardTitle a {
+  font-size: 17px;
+  line-height: 1.4;
+  color: #3d3f44;
+  font-weight: bold;
+  text-decoration: none;
+}
+.blogCardTitle a:hover {
+  text-decoration: underline;
+}
+.blogCardImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.blogCardImg__wrap {
+  float: right;
+  width: 15%;
+  min-width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+.blogCardImg__wrap img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  max-height: 100%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}
+.blogCardFooter {
+  font-size: 12px;
+}
+.blogCardFooter a {
+  color: #9aa5ab;
+}
+.blogCardFooter a img {
+  margin-right: 5px;
+}
+.blogCardTitle a i,
+.blog article .blogCardFooter a i {
+  display: none;
+}
+.blogCard.blogCard--noimg .blogCardCont {
+  min-height: auto;
+}
+blogCard.blogCard--noimg .blogCardTxt {
+  margin-right: 0;
+}
   </style>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -52,6 +132,22 @@
 <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 36.0px 'Hiragino Mincho ProN'; color: #0000e9; -webkit-text-stroke: #000000"><span class="s1"><a href="./index.html"><b>adhara_mathphysのページ</b></a></span></h1>
 <p class="p2"><span class="s2"><b>研究</b></span></p>
 <p class="p7"><span class="s1"><a href="./note/水素原子の数理物理のおこり.html"><b>水素原子の数理物理のおこり</b><span class="s4"><b></b></span></a></span></p>
+<div class="blogCard">
+  <div class="blogCardCont">
+    <div class="blogCardTxt">
+      <p class="blogCardTitle"><a href="./note/水素原子の数理物理のおこり.html" target="_blank">水素原子の数理物理のおこり</a></p>
+      <p>本記事では，水素原子の数理物理のおこりについて解説する．</p>
+    </div>
+    <div class="blogCardImg">
+      <div class="blogCardImg__wrap">
+        <a href="./note/水素原子の数理物理のおこり.html" target="_blank"><img src="./image/icon_from_miposan.jpeg" alt=""></a>
+      </div>
+    </div>
+  </div>
+  <div class="blogCardFooter">
+    <a href="./index.html"><img src="./image/icon.png" alt="">https://adharam.github.io</a>
+  </div>
+</div>
 <!-- 空行 --> <p class="p3"><span class="s2"><br></span></p>
 <p class="p7"><span class="s1"><a href="./note.html"><b>解説ノート・技術文書等</b><span class="s4"><b></b></span></a></span></p>
 <!-- 空行 --> <p class="p3"><span class="s2"><br></span></p>
