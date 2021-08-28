@@ -31,6 +31,86 @@
     span.s11 {font: 18.0px 'Hiragino Mincho ProN'; text-decoration: underline ; font-kerning: none}
     ol.ol1 {list-style-type: decimal}
     ul.ul1 {list-style-type: disc}
+    .blogCard {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 12px;
+  margin-bottom: 1.6rem;
+}
+.blogCardCont {
+  position: relative;
+  margin-bottom: 5px;
+  min-height: 100px;
+}
+.blogCardCont p {
+  font-size: 12px;
+  overflow: hidden;
+  margin: 0;
+}
+.blogCardTxt {
+  margin-right: 110px;
+}
+.blogCardTxt p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.blogCardTitle {
+  margin-bottom: 5px;
+  overflow: hidden;
+  -webkit-line-clamp: 2 !important;
+}
+.blogCardTitle a {
+  font-size: 17px;
+  line-height: 1.4;
+  color: #3d3f44;
+  font-weight: bold;
+  text-decoration: none;
+}
+.blogCardTitle a:hover {
+  text-decoration: underline;
+}
+.blogCardImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.blogCardImg__wrap {
+  float: right;
+  width: 15%;
+  min-width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+.blogCardImg__wrap img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  max-height: 100%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}
+.blogCardFooter {
+  font-size: 12px;
+}
+.blogCardFooter a {
+  color: #9aa5ab;
+}
+.blogCardFooter a img {
+  margin-right: 5px;
+}
+.blogCardTitle a i,
+.blog article .blogCardFooter a i {
+  display: none;
+}
+.blogCard.blogCard--noimg .blogCardCont {
+  min-height: auto;
+}
+blogCard.blogCard--noimg .blogCardTxt {
+  margin-right: 0;
+}
   </style>
 <script type="text/x-mathjax-config">
  MathJax.Hub.Config({
@@ -52,6 +132,7 @@ MathJax.Hub.Config({
 </script>
 <script src="../marked.js"></script>
 </head>
+
 <body>
 
 <script type="text/plain" id="here">
@@ -148,6 +229,25 @@ $$
 
 <p><span style="color: #ff5252;">しかしながら，数理構造を偶然で片付けることは(数理)物理学者のプライドが許さない．</span><br /> この「偶然縮退」を特徴づける対称性を明らかにする研究が行われることになる．</p>
 
+
+<div class="blogCard">
+  <div class="blogCardCont">
+    <div class="blogCardTxt">
+      <p class="blogCardTitle"><a href="https://adharam.github.io" target="_blank">adhara_mathphysのページ</a></p>
+      <p></p>
+    </div>
+    <div class="blogCardImg">
+      <div class="blogCardImg__wrap">
+        <a href="https://adharam.github.io" target="_blank"><img src="../icon_from_miposan.jpeg" alt=""></a>
+      </div>
+    </div>
+  </div>
+  <div class="blogCardFooter">
+    <a href="https://adharam.github.io"><img src="https://www.google.com/s2/favicons?domain=../icon_from_miposan.jpeg" alt="">https://adharam.github.io</a>
+  </div>
+</div>
+
+<iframe class="embed-card embed-blogcard" style="display: block; width: 100%; height: 190px; max-width: 500px; margin: 10px 0px;" title="ケプラー問題と力学的対称性（その１）～運動の第一積分～ - adhara’s blog" src="http://adhara.hatenadiary.jp/embed/2016/06/25/120000" frameborder="0" scrolling="no"></iframe><cite class="hatena-citation"><a href="http://adhara.hatenadiary.jp/entry/2016/06/25/120000">adhara.hatenadiary.jp</a></cite>
 
 <iframe class="embed-card embed-blogcard" style="display: block; width: 100%; height: 190px; max-width: 500px; margin: 10px 0px;" title="ケプラー問題と力学的対称性（その１）～運動の第一積分～ - adhara’s blog" src="https://adharam.github.io/index.html" frameborder="0" scrolling="no"></iframe><cite class="hatena-citation"><a href="https://adharam.github.io/index.html">adhara.hatenadiary.jp</a></cite><br />
 
