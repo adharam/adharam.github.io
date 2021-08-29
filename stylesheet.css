@@ -34,7 +34,7 @@
     content: counter(num); /* numの値を表示 */
     font-family: 'Hiragino Mincho ProN';
     font-weight:bold;
-    font-size: 18px;
+    font-size: 18.0px;
     }
     ol.ol1 {list-style-type: decimal}
     ul.ul1 {list-style-type: disc}
