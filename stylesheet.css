@@ -25,6 +25,15 @@
     span.s14 {text-decoration: underline ; font-kerning: none; color: #0000d3}
     span.s15 {font: 24.0px 'Hiragino Mincho ProN'; font-kerning: none; color: #000000}
     span.s16 {font: 18.0px 'Hiragino Mincho ProN'; text-decoration: underline ; font-kerning: none; color: #0000d3}
+    ol {
+    counter-reset:num; /* num変数を0で初期化 */
+    list-style-type: none!important; /* デフォルトの数字を非表示 */
+    }
+    ol li:before {
+    counter-increment: num; /* numに1を加算 */
+    content: counter(num); /* numの値を表示 */
+    font-weight:bold;
+    }
     ol.ol1 {list-style-type: decimal}
     ul.ul1 {list-style-type: disc}
 .blogCard {
