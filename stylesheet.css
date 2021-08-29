@@ -35,6 +35,7 @@
     font-family: 'Hiragino Mincho ProN';
     font-weight:bold;
     font-size: 18.0px;
+    font-kerning: none;
     }
     ol.ol1 {list-style-type: decimal}
     ul.ul1 {list-style-type: disc}
