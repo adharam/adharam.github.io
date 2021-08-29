@@ -45,6 +45,7 @@ MathJax.Hub.Config({
 
 <a id="anchor1"></a>
 ## 1. 水素原子のエネルギー準位の発見と量子力学の創設
+
 **水素原子と量子論の関わりはBalmer[[Balmer1885]](#Balmer1885)の発見した水素原子の発光スペクトル線の間隔に関する法則に端を発する．その数年後にはBalmerの発見を受けてRydbergの公式が提唱され[[Rydberg1889]](#Rydberg1889)，新たな発光スペクトルの存在が予想された．Rydbergの公式の妥当性は20世紀中のBalmer系列以外のスペクトル系列の発見[[Lyman,Paschen,Brackett,Pfund,Humphreys]](#Lyman1906)により確かめられた．**
 
 **Rydbergの公式の意味は，20世紀の初頭に現れたBohr–Sommerfeldの量子化[[Bohr1913a,b,c,Sommerfeld1916]](#Bohr1913a)に代表される前期量子論によって説明されるようになった．すなわち，水素原子において取り得るエネルギーが離散化され，
@@ -61,6 +62,7 @@ $$
 
 <a id="anchor2"></a>
 ## 2. エネルギーの偶然縮退と力学的対称性の発見
+
 **非相対論的水素原子のSchrödinger方程式は
 $$
 \mathcal{H} \Psi =E \Psi
@@ -71,9 +73,7 @@ $$
 $$
 は非相対論的水素原子のハミルトニアンである．**
 
-Schrödinger方程式はハミルトニアンのもつ対称性に伴ってエネルギーの縮退が起きる場合がある．
-縮退は対称性を表す群（ハミルトニアンと可換な対称操作がなす群）の表現論によって理解可能である．
-例えば，球対称性を持つポテンシャル下ではSchrödinger方程式を球極座標（spherical polar coordinates）によって変数分離を行い，固有波動関数を球面調和関数(立体角 $\Omega=(\theta,\phi)$ を変数とする)と動径方向関数(動径変数 $r$ を変数とする)の積の形で表示できる．球面調和関数は角運動量量子数 $l$，磁気量子数 $m$，でラベリングすることが可能である，すなわち，$l$ は角運動量の二乗演算子（ $\mathfrak{so}(3)$ のカシミール</a>元）の固有値で定まり，$m$ は角運動量の<量子化軸方向成分（適当に定めて良いが $z$ 方向に定めることが多い．）の固有値で定まる．
+**Schrödinger方程式はハミルトニアンのもつ対称性に伴ってエネルギーの縮退が起きる場合がある．縮退は対称性を表す群（ハミルトニアンと可換な対称操作がなす群）の表現論によって理解可能である．例えば，球対称性を持つポテンシャル下ではSchrödinger方程式を球極座標（spherical polar coordinates）によって変数分離を行い，固有波動関数を球面調和関数(立体角 $\Omega=(\theta,\phi)$ を変数とする)と動径方向関数(動径変数 $r$ を変数とする)の積の形で表示できる．球面調和関数は角運動量量子数 $l$，磁気量子数 $m$，でラベリングすることが可能である，すなわち，$l$ は角運動量の二乗演算子（ $\mathfrak{so}(3)$ のカシミール</a>元）の固有値で定まり，$m$ は角運動量の量子化軸方向成分（適当に定めて良いが $z$ 方向に定めることが多い．）の固有値で定まる．**
 
 \begin{align}
  L^2 Y_{l,m} & = \hbar^2 l(l+1) Y_{l,m} \\\\[10pt]
@@ -81,23 +81,21 @@ Schrödinger方程式はハミルトニアンのもつ対称性に伴ってエ�
 \end{align}
 
 
- 一方，動径方向関数については $l$ ともう一つ必要な量子数（主量子数 $n$ と書かれる）でラベリング可能である．固有値であるエネルギーは動径方向波動関数で定まる，
- すなわち量子数の組 $(n,l)$ で定まる．
+**一方，動径方向関数については $l$ ともう一つ必要な量子数（主量子数 $n$ と書かれる）でラベリング可能である．固有値であるエネルギーは動径方向波動関数で定まる，すなわち量子数の組 $(n,l)$ で定まる．**
 
-合わせるとSchrödinger方程式は
+**合わせるとSchrödinger方程式は
 $$
 \mathcal{H}R_{n,l}Y_{l,m}=E_{n,l}R_{n,l}Y_{l,m} 
 $$
 のように解かれる．
 各量子数には取り得る値に制限があり(いずれも整数値)，
-
 $$
 l\ge 0, \ -l \le m \le l, \ n \ge l+1
 $$
 のようになっている．
-従ってエネルギーが $E_{n,l}$ となる状態の数(縮重度)は $2l+1$ である．（ $l$ が同じならば $E_{n,l}$ は $n$ が大きいほど大きい）
+従ってエネルギーが $E_{n,l}$ となる状態の数(縮重度)は $2l+1$ である．（ $l$ が同じならば $E_{n,l}$ は $n$ が大きいほど大きい）**
 
-水素原子は球対称性を持つので，上で述べた縮退が存在する．しかしながら水素原子では，エネルギーが主量子数 $n$ だけで定まってしまうという現象が生じている．このときSchrödinger方程式は，
+**水素原子は球対称性を持つので，上で述べた縮退が存在する．しかしながら水素原子では，エネルギーが主量子数 $n$ だけで定まってしまうという現象が生じている．このときSchrödinger方程式は，
 $$
 \mathcal{H}R_{n,l}Y_{l,m}=E_{n}R_{n,l}Y_{l,m} 
 $$ 
@@ -105,36 +103,13 @@ $$
 $$
 D_n =n^2
 $$
-となっている．これは球対称性に伴うエネルギー縮退を超えた縮退が起きていることを表す．
-ハミルトニアンの持つ空間対称性からは予測できない縮退が生じているので，このような縮退は「偶然縮退」と呼ばれる．
+となっている．これは球対称性に伴うエネルギー縮退を超えた縮退が起きていることを表す．ハミルトニアンの持つ空間対称性からは予測できない縮退が生じているので，このような縮退は「偶然縮退」と呼ばれる．この「偶然縮退」を特徴づける対称性を明らかにする研究が行われることになる．**
 
-<p><span style="color: #ff5252;">しかしながら，数理構造を偶然で片付けることは(数理)物理学者のプライドが許さない．</span><br /> この「偶然縮退」を特徴づける対称性を明らかにする研究が行われることになる．</p>
+**実のところ，「偶然縮退」を特徴付ける対称性を明らかにするための数理物理的道具立ては，量子力学の創設以前より存在していた．すなわち，水素原子の問題の古典力学バージョンであるケプラー問題における保存量(運動の第一積分)を求める問題に遡る．球対称ポテンシャル下では角運動量保存則に伴って軌道が平面内に束縛されることが知られているが，ケプラー問題では引力ポテンシャルがクーロン型となることにより，特別な状況が生じることがわかっている．すなわちケプラー問題ではエネルギーが負となる束縛状態においては軌道が保存される．(Bertrandの定理)このような軌道が保存される系においては独立な運動の第一積分が運動の自由度-1(この場合は運動の自由度が6なので5)となっている．(1960年代になって(極大)超可積分系という概念でまとめられることになる)ケプラー問題はエネルギーと角運動量三成分の他に独立な運動の第一積分（保存量）が一つあるということである．ケプラー問題におけるこの独立した第一積分を含んでいるものがLaplace-Runge-Lenz(LRL)ベクトルである．LRLベクトルは角運動量ベクトルと直交し，近日点とポテンシャル中心を結ぶ方向を指している．**
 
-<!--
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><a href="https://adharam.github.io" target="_blank">adhara_mathphysのページ</a></p>
-      <p></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="https://adharam.github.io" target="_blank"><img src="../image/icon_from_miposan.jpeg" alt=""></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="https://adharam.github.io"><img src="../image/icon.png" alt="">https://adharam.github.io</a>
-  </div>
-</div>
--->
+**LRLベクトルの発見史を簡単に記述する．LRLベクトルの最初の発見者はHermannであり，次にJohann Bernoulliによって良い形にまとめられたとされている．本ベクトルの筆頭に名前を残しているLaplaceは解析力学的な定式化を行ったとのことで，最初の発見者ではないとされる．その後HamiltonやGibbsやRungeが別の導出を行ったとのことである．Rungeの名前が残っているのは教科書として広く出版下からの陽である．Lenzについては量子論的取り扱いを行った（エルミート性を持つように再定義した）という貢献がある．これを後に述べるようにPauliが有効活用したので，量子力学版LRLベクトルをLenz-Pauliベクトルと呼ぶことがある．LRLベクトルのようなハミルトニアンの空間的対称性から予測できない保存量に関連した対称性は力学的対称性と呼ばれる．LRLベクトルの存在，すなわち力学的対称性の存在が「偶然縮退」を説明することになる．**
 
-<p>実のところ，「偶然縮退」を特徴付ける対称性を明らかにするための数理物理的道具立ては，<a class="keyword" href="http://d.hatena.ne.jp/keyword/%CE%CC%BB%D2%CE%CF%B3%D8">量子力学</a>の創設以前より存在していた．<br /> すなわち，水素原子の問題の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B8%C5%C5%B5%CE%CF%B3%D8">古典力学</a>バージョンである<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B1%A5%D7%A5%E9%A1%BC">ケプラー</a>問題における保存量(運動の第一<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C0%D1%CA%AC">積分</a>)を求める問題に遡る．</p>
-<p>球対称ポテンシャル下では<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>保存則に伴って軌道が平面内に束縛されることが知られているが，<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B1%A5%D7%A5%E9%A1%BC">ケプラー</a>問題では引力ポテンシャルがクーロン型となることにより，特別な状況が生じることがわかっている．<br /> すなわち<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B1%A5%D7%A5%E9%A1%BC">ケプラー</a>問題ではエネルギーが負となる束縛状態においては軌道が保存される．(Bertrandの定理)<br /> このような軌道が保存される系においては独立な運動の第一<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C0%D1%CA%AC">積分</a>が運動の自由度-1(この場合は運動の自由度が6なので5)となっている．(1960年代になって(極大)超<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B2%C4%C0%D1%CA%AC%B7%CF">可積分系</a>という概念でまとめられることになる)<br /> <a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B1%A5%D7%A5%E9%A1%BC">ケプラー</a>問題はエネルギーと<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>三成分の他に独立な運動の第一<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C0%D1%CA%AC">積分</a>（保存量）が一つあるということである．<br /> <a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%B1%A5%D7%A5%E9%A1%BC">ケプラー</a>問題におけるこの独立した第一<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C0%D1%CA%AC">積分</a>を含んでいるものが<a class="keyword" href="http://d.hatena.ne.jp/keyword/Laplace">Laplace</a>-Runge-Lenz(LRL)ベクトルである．<br /> LRLベクトルは<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>ベクトルと直交し，近日点とポテンシャル中心を結ぶ方向を指している．</p>
-<p>LRLベクトルの発見史を簡単に記述する．<br /> LRLベクトルの最初の発見者はHermannであり，次にJohann Bernoulliによって良い形にまとめられたとされている．<br /> 本ベクトルの筆頭に名前を残している<a class="keyword" href="http://d.hatena.ne.jp/keyword/Laplace">Laplace</a>は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B2%F2%C0%CF%CE%CF%B3%D8">解析力学</a>的な定式化を行ったとのことで，最初の発見者ではないとされる．<br /> その後HamiltonやGibbsやRungeが別の導出を行ったとのことである．<br /> Rungeの名前が残っているのは教科書として広く出版下からの陽である．<br /> Lenzについては<a class="keyword" href="http://d.hatena.ne.jp/keyword/%CE%CC%BB%D2%CF%C0">量子論</a>的取り扱いを行った（エルミート性を持つように再定義した）という貢献がある．<br /> これを後に述べるようにPauliが有効活用したので，<a class="keyword" href="http://d.hatena.ne.jp/keyword/%CE%CC%BB%D2%CE%CF%B3%D8">量子力学</a>版LRLベクトルをLenz-Pauliベクトルと呼ぶことがある．</p>
-<p>LRLベクトルのような<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%CF%A5%DF%A5%EB%A5%C8%A5%CB%A5%A2%A5%F3">ハミルトニアン</a>の空間的対称性から予測できない保存量に関連した対称性は<strong>力学的対称性</strong>と呼ばれる．<br /> LRLベクトルの存在，すなわち力学的対称性の存在が「偶然縮退」を説明することになる．</p>
-<p>LRLベクトルの役割については
-<br /> 
+**LRLベクトルの役割については，下の記事を参照のこと．**
 <div class="blogCard">
   <div class="blogCardCont">
     <div class="blogCardTxt">
@@ -151,19 +126,10 @@ $$
     <a href="../index.html"><img src="../image/icon.png" alt="">https://adharam.github.io</a>
   </div>
 </div>
-<br /> 
-を参照のこと．</p>
-</div>
-<div class="section">
-<h4 id="力学的対称性に伴う縮退">力学的対称性に伴う縮退</h4>
-<p>
-まず，Pauliが角運動量ベクトルとLRLベクトル各成分，計六つのエルミート演算子が成すリー代数を用いてHeisenberg形式で定式化された水素原子の量子力学の問題を解いた．
-適当な線形結合をすることにより上記リー代数が独立な $\mathfrak{su} (2)$ 代数の和で表される(直和)ことを利用している．
-束縛状態全体からなるヒルベルト空間を考えた時に，上記リー代数のユニタリ既約部分空間が，縮退した束縛状態からなる空間であることがわかったのである．
- 因みにこの研究の発表は1926年でありSchrödingerによる水素原子の波動関数の発表と同年である．
-<br />
-詳しくは
-<br /> 
+
+**まず，Pauliが角運動量ベクトルとLRLベクトル各成分，計六つのエルミート演算子が成すリー代数を用いてHeisenberg形式で定式化された水素原子の量子力学の問題を解いた．適当な線形結合をすることにより上記リー代数が独立な $\mathfrak{su} (2)$ 代数の和で表される(直和)ことを利用している．束縛状態全体からなるヒルベルト空間を考えた時に，上記リー代数のユニタリ既約部分空間が，縮退した束縛状態からなる空間であることがわかったのである．因みにこの研究の発表は1926年でありSchrödingerによる水素原子の波動関数の発表と同年である．**
+
+**詳しくは下の記事を参照のこと．**
 <div class="blogCard">
   <div class="blogCardCont">
     <div class="blogCardTxt">
@@ -180,11 +146,10 @@ $$
     <a href="../index.html"><img src="../image/icon.png" alt="">https://adharam.github.io</a>
   </div>
 </div>
-<br /> 
-を参照のこと．</p>
-<p>水素原子のSchrödingerを<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B4%F6%B2%BF%B3%D8">幾何学</a>的に考察し，四次元空間の回転対称性SO(4)の存在を明らかにしたのが，Fockである．<br /> Fockは適当な変数変換により水素原子の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C7%C8%C6%B0%B4%D8%BF%F4">波動関数</a>を四次元空間中の超球面調和関数として表示できることが明らかにした．<br /> 適当な変換とは，空間<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%D5%A1%BC%A5%EA%A5%A8%CA%D1%B4%B9">フーリエ変換</a>による運動量表示の導入と立体射影(一点コンパクト化)による運動量空間中の変数変換である．
-<br />
-詳しくは
+
+**Pauliとは異なり，水素原子のSchrödingerを幾何学的に考察し，四次元空間の回転対称性 $SO(4)$ の存在を明らかにしたのがFockである．Fockは適当な変数変換により水素原子の波動関数を四次元空間中の超球面調和関数として表示できることが明らかにした．適当な変換とは，フーリエ変換による運動量表示の導入と立体射影(一点コンパクト化)による運動量空間中の変数変換である．**
+
+**詳しくは下の記事を参照のこと．**
 <br /> 
 <div class="blogCard">
   <div class="blogCardCont">
@@ -203,11 +168,10 @@ $$
   </div>
 </div>
 <br /> 
-を参照のこと．</p>
-<p>PauliとFockの解法の関係を明らかにしたのが，Bargmannである；Pauliの発見した<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%EA%A1%BC%C2%E5%BF%F4">リー代数</a>がso(4)<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%EA%A1%BC%C2%E5%BF%F4">リー代数</a>であり，四次元回転対称性の生成するを明らかにしたのである．<br /> Bargmannにより，LRLベクトルの<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B4%F6%B2%BF%B3%D8">幾何学</a>的役割が明らかになったのである．<br /> Bargmannは放物座標による変数分離についても考察し，四次元の回転対称性が見えやすくなっていることを指摘した．
-<br /> 
-詳しくは
-<br /> 
+
+**PauliとFockに続き，両者の解法の関係を明らかにしたのが，Bargmannである．Pauliの発見したリー代数が$\mathfrak{so}(4)$ リー代数であり，四次元回転対称性の生成するを明らかにしたのである．Bargmannにより，LRLベクトルの幾何学的役割が明らかになったのである．Bargmannは放物座標による変数分離についても考察し，四次元の回転対称性が見えやすくなっていることを指摘した．**
+
+**詳しくは二つの記事を参照のこと．**
 <div class="blogCard">
   <div class="blogCardCont">
     <div class="blogCardTxt">
@@ -246,17 +210,13 @@ $$
   </div>
 </div>
 <br /> 
-を参照のこと．
-</p>
-<p>(非相対論な)水素原子の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%CF%A5%DF%A5%EB%A5%C8%A5%CB%A5%A2%A5%F3">ハミルトニアン</a>における対称性はこれにて完全に説明できたと思われた．</p>
-<br />
 
 <a id="anchor3"></a>
 ## 3. 因数分解解法と超対称性代数構造の発見
-<p><a class="keyword" href="http://d.hatena.ne.jp/keyword/%C4%B4%CF%C2%BF%B6%C6%B0%BB%D2">調和振動子</a>のSchrödinger方程式は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B0%F8%BF%F4%CA%AC%B2%F2">因数分解</a>(factorization)で解くことができることが知られている．(<a class="keyword" href="http://d.hatena.ne.jp/keyword/Dirac">Dirac</a>，Schrödinger)<br /> これにより，<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C8%F9%CA%AC%CA%FD%C4%F8%BC%B0">微分方程式</a>をまともに取り扱う(特殊関数を導入するという意味)ことなく，代数的にエネルギーを求めることが可能になる．</p>
-<p>1951年にInfeld&amp;Hullによって二階の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%BE%EF%C8%F9%CA%AC%CA%FD%C4%F8%BC%B0">常微分方程式</a>の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B0%F8%BF%F4%CA%AC%B2%F2">因数分解</a>解法が整理された．<br /> 水素原子についても球<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B6%CB%BA%C2%C9%B8">極座標</a>による変数分離の後に出てくる動径方向の二階<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C8%F9%CA%AC%CA%FD%C4%F8%BC%B0">微分方程式</a>について<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B0%F8%BF%F4%CA%AC%B2%F2">因数分解</a>解法が適用できる．<br /> この方法により異なる<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B3%D1%B1%BF%C6%B0%CE%CC">角運動量</a>をもつ状態が縮退する理由が垣間みられる．
-<br />
-詳しくは
+
+**調和振動子のSchrödinger方程式は因数分解(factorization)で解くことができることが知られている．(Dirac，Schrödinger)これにより，微分方程式をまともに取り扱う(特殊関数を導入するという意味)ことなく，代数的にエネルギーを求めることが可能になる．1951年にInfeld&amp;Hullによって二階の常微分方程式の因数分解解法が整理された．水素原子についても球極座標による変数分離の後に出てくる動径方向の二階微分方程式について因数分解解法が適用できる．この方法により異なる角運動量をもつ状態が縮退する理由が垣間みられる．**
+
+**詳しくは下の記事を参照のこと．**
 <br /> 
 <div class="blogCard">
   <div class="blogCardCont">
@@ -275,11 +235,8 @@ $$
   </div>
 </div>
 <br /> 
-を参照のこと．
-</p>
-<p><span style="color: rgba(255, 82, 82, 1);"><a class="keyword" href="http://d.hatena.ne.jp/keyword/%B0%F8%BF%F4%CA%AC%B2%F2">因数分解</a>解法で出てくる代数構造は水素原子における何らかの数理構造を予感させることになる．</span></p>
 
-<br /> 
+**因数分解</a>解法で出てくる代数構造は水素原子における何らかの数理構造を予感させることになる．**
 <div class="blogCard">
   <div class="blogCardCont">
     <div class="blogCardTxt">
@@ -300,18 +257,13 @@ $$
 
 <a id="anchor4"></a>
 ## 4. スペクトル生成代数と力学的群の発見
-<p>1940年代後半から1950年代前半にかけてノンコンパクトリー群の表現論の研究が進められていた．<br /> (Gelfand&amp;Naimark(1946)，Bargmann(1947)，Harish-Chandra(1952))<br /> 特に数理物理学者であるBargmannが名前を連ねているが，主に相対論で出てくる<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%ED%A1%BC%A5%EC%A5%F3%A5%C4">ローレンツ</a>群を理解しようとする試みであったと考えられる．<br /> ノンコンパクトリー群の著しい特徴はそのユニタリ既約表現が無限次元となることである．<br /> ノンコンパクトリー群の表現論が水素原子に潜む数理構造を解析する上で役立つことになる．</p>
-</div>
-<div class="section">
-<h4 id="スペクトル生成代数">スペクトル生成代数</h4>
-<p>球<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B6%CB%BA%C2%C9%B8">極座標</a>で変数分離したときに動径方向の二階の<a class="keyword" href="http://d.hatena.ne.jp/keyword/%C8%F9%CA%AC%CA%FD%C4%F8%BC%B0">微分方程式</a>が<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B0%F8%BF%F4%CA%AC%B2%F2">因数分解</a>により解けることについては前節で触れたが，変数変換を行った後で別の代数を用いた解法があることが発見された．<br /> このとき表れる代数は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%EA%A1%BC%C2%E5%BF%F4">リー代数</a>であり，
-$\mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,R)\simeq \mathfrak{so}(2,1)\simeq \mathfrak{sp}(2,R)$ 代数であることが知られている．（同型関係が多数あり，いろいろなリー群の生成元となり得ることが知られている．
-ここでは $\mathfrak{su}(1,1)$ 代数と呼ぶことにする．）<br /> この解法によれば動径方向の解（束縛状態）は $\mathfrak{su}(1,1)$ 代数既約部分空間を成すことが分かる．<br /> 
-因みに $\mathfrak{su}(1,1)$ 代数のユニタリ既約表現を特徴付ける指標は，BargmannにあやかりBargmann indexと呼ばれている．<br /> 
-Bargmannは水素原子の対称性代数である $\mathfrak{so}(4)$ 代数とスペクトル生成代数である $\mathfrak{su}(1,1)$ 代数の両方について貢献がある，と言っても良いと思われる．
-<p>
-スペクトル生成代数 $\mathfrak{su}(1,1)$ と力学的対称性 $\mathfrak{so}(4)$  代数は水素原子に備わっている全く別の代数構造である．<br /> 例えば，力学的対称性を構成する<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B1%E9%BB%BB%BB%D2">演算子</a>は<a class="keyword" href="http://d.hatena.ne.jp/keyword/%A5%CF%A5%DF%A5%EB%A5%C8%A5%CB%A5%A2%A5%F3">ハミルトニアン</a>と可換であるが，スペクトル生成代数を構成する<a class="keyword" href="http://d.hatena.ne.jp/keyword/%B1%E9%BB%BB%BB%D2">演算子</a>はそのような性質を持たない．<br /> それらが非可換であることは動径方向の解が同じエネルギーを持たないことから容易に分かる．
-<br /> 
+
+**1940年代後半から1950年代前半にかけてノンコンパクトリー群の表現論の研究が進められていた．(Gelfand&amp;Naimark(1946)，Bargmann(1947)，Harish-Chandra(1952))特に数理物理学者であるBargmannが名前を連ねているが，主に相対論で出てくるローレンツ群を理解しようとする試みであったと考えられる．ノンコンパクトリー群の著しい特徴はそのユニタリ既約表現が無限次元となることである．ノンコンパクトリー群の表現論が水素原子に潜む数理構造を解析する上で役立つことになる．**
+
+**球極座標で変数分離したときに動径方向の二階の微分方程式が因数分解により解けることについては前節で触れたが，変数変換を行った後で別の代数を用いた解法があることが発見された．このとき表れる代数はリー代数であり，$\mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,R)\simeq \mathfrak{so}(2,1)\simeq \mathfrak{sp}(2,R)$ 代数であることが知られている．（同型関係が多数あり，いろいろなリー群の生成元となり得ることが知られている．ここでは $\mathfrak{su}(1,1)$ 代数と呼ぶことにする．）この解法によれば動径方向の解（束縛状態）は $\mathfrak{su}(1,1)$ 代数既約部分空間を成すことが分かる．因みに $\mathfrak{su}(1,1)$ 代数のユニタリ既約表現を特徴付ける指標は，BargmannにあやかりBargmann indexと呼ばれている．Bargmannは水素原子の対称性代数である $\mathfrak{so}(4)$ 代数とスペクトル生成代数である $\mathfrak{su}(1,1)$ 代数の両方について貢献がある，と言っても良いと思われる．**
+
+**スペクトル生成代数 $\mathfrak{su}(1,1)$ と力学的対称性 $\mathfrak{so}(4)$  代数は水素原子に備わっている全く別の代数構造である．例えば，力学的対称性を構成する演算子はハミルトニアンと可換であるが，スペクトル生成代数を構成する演算子はそのような性質を持たない．それらが非可換であることは動径方向の解が同じエネルギーを持たないことから容易に分かる．**
+
 <div class="blogCard">
   <div class="blogCardCont">
     <div class="blogCardTxt">
