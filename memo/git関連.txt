@@ -16,3 +16,4 @@ host=github.com
 protocol=https
 > [Press Return]
 
+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
