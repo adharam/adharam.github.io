@@ -22,3 +22,6 @@ https://docs.github.com/ja/github/authenticating-to-github/keeping-your-account-
 Username:adharam
 Password:NEW TOKEN
 を入力する
+
+
+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
