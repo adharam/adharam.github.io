@@ -16,6 +16,10 @@ git add . && git commit -m "修正" && git push
 git push --force origin master
 git push --force 
 
+◾️履歴中のファイルを消す
+brew install git-filter-repo
+git filter-repo --path pdf/zip/new.zip --invert-paths --force
+
 
 ■消す時
 1. ローカルファイルを削除
