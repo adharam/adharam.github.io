@@ -22,7 +22,6 @@ brew install git-filter-repo
 git filter-repo --path pdf/zip/new.zip --invert-paths --force
 git push --force --all
 
-
 ■消す時
 1. ローカルファイルを削除
 
