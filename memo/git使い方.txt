@@ -7,6 +7,7 @@ git push origin master
 
 ◾️リポジトリをダウンロードしてきてローカルで編集してpushしたい時
 git clone https://github.com/adharam/adharam.github.io
+git remote add origin "https://github.com/adharam/adharam.github.io"
 git branch --set-upstream-to=origin/master master
 次回から git push とだけ入力しても、origin master が自動的に使われるようになります。
 git add . && git commit -m "修正" && git push
@@ -19,7 +20,6 @@ git push --force
 ◾️履歴中のファイルを消す
 brew install git-filter-repo
 git filter-repo --path pdf/zip/new.zip --invert-paths --force
-おk
 
 ■消す時
 1. ローカルファイルを削除
