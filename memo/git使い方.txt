@@ -27,6 +27,12 @@ git branch --set-upstream-to=origin/master master
 ◾️消したいファイルのリストをtxtファイルに記し，それを用いて一気に消す方法
 git filter-repo --paths-from-file ../remove_paths.txt --invert-paths --force
 
+◾️履歴中のファイルのリストを見る
+git rev-list --objects --all | sort -k 2 | uniq
+
+◾️履歴中のファイルのサイズを見る
+git cat-file -s $id
+
 ■消す時
 1. ローカルファイルを削除
 
