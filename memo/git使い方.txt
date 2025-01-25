@@ -24,6 +24,7 @@ git remote add origin "https://github.com/adharam/adharam.github.io"
 git push --force --all
 git branch --set-upstream-to=origin/master master
 
+
 git filter-repo --paths-from-file ../remove_paths.txt --invert-paths --force
 
 ■消す時
