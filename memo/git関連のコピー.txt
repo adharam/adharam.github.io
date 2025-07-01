@@ -1,0 +1,38 @@
+git remote add origin https://github.com/adharam/adharam.github.io
+git config --global user.name "adharam"
+git config --global user.email "ito.yuto@gmail.com"
+git push -u origin adharam.github.io/
+git clone https://github.com/adharam/adharam.github.io
+git pull
+git add . && git commit -m "修正" && git push
+git config --global credential.helper osxkeychain
+
+■個人アクセストークンを生成方法
+https://docs.github.com/ja/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+Settings -> <> Developer setting -> Personal access tokens -> Tokens (classic) -> Generate new token -> copy token
+■macOS キーチェーンからの認証情報を更新する
+https://docs.github.com/ja/github/getting-started-with-github/getting-started-with-git/updating-credentials-from-the-macos-keychain
+$ git credential-osxkeychain erase
+host=github.com
+protocol=https
+> [Press Return]
+■トークン使用方法
+https://docs.github.com/ja/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token
+認証情報更新＆アクセストークン生成後に初めてコミットするときに
+Username:adharam
+Password:NEW TOKEN
+を入力する
+
+ここにトークンを書いてはいけない
+
+◾️2025/7/1 mail
+Hi @adharam,
+
+We noticed your personal access token (classic) "2024_0917_TOKEN_NEW" with admin:enterprise, admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook, admin:ssh_signing_key, audit_log, codespace, copilot, delete:packages, delete_repo, gist, notifications, project, repo, user, workflow, write:discussion, and write:packages scopes will expire in about 18 hours.
+
+If this token is still needed, visit https://github.com/settings/tokens/1760068948/regenerate to generate an equivalent.
+
+If you run into problems, please contact support by visiting https://github.com/contact
+
+Thanks,
+The GitHub Team
