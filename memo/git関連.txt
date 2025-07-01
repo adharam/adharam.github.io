@@ -24,3 +24,15 @@ Password:NEW TOKEN
 を入力する
 
 ここにトークンを書いてはいけない
+
+◾️2025/7/1 mail
+Hi @adharam,
+
+We noticed your personal access token (classic) "2024_0917_TOKEN_NEW" with admin:enterprise, admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook, admin:ssh_signing_key, audit_log, codespace, copilot, delete:packages, delete_repo, gist, notifications, project, repo, user, workflow, write:discussion, and write:packages scopes will expire in about 18 hours.
+
+If this token is still needed, visit https://github.com/settings/tokens/1760068948/regenerate to generate an equivalent.
+
+If you run into problems, please contact support by visiting https://github.com/contact
+
+Thanks,
+The GitHub Team
