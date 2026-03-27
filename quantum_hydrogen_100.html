@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>量子力学100周年 — 水素原子から見る数理物理の誕生と展開</title>
+  <meta name="description" content="量子力学100周年を機に、水素原子を軸として量子力学の誕生・対称性・可解構造・現代的展開を数理物理の視点から読み解く特設ページ。" />
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --sub: #4b5563;
+      --line: #d1d5db;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --max: 980px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header.hero {
+      background: linear-gradient(180deg, #eff6ff 0%, #fafaf8 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 56px 0 40px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.95rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 6px 12px;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.3;
+      margin: 0 0 16px;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--sub);
+      margin: 0 0 24px;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--accent);
+    }
+
+    nav.quicknav {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    nav.quicknav .wrap {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 44px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin: 0 0 18px;
+      line-height: 1.4;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin: 0 0 12px;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .small {
+      color: var(--sub);
+      font-size: 0.95rem;
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .timeline-item {
+      background: white;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+
+    .note {
+      background: #fff;
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--sub);
+      font-size: 0.95rem;
+      margin-top: 16px;
+    }
+
+    footer {
+      padding: 36px 0 60px;
+      color: var(--sub);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">特設企画</div>
+      <h1>量子力学100周年 — 水素原子から見る数理物理の誕生と展開</h1>
+      <p class="lead">
+        水素原子は、量子力学の成立を支えた最も重要な模型の一つです。
+        しかもそれは単なる教科書的例題ではなく、対称性、特殊関数、変数分離、可解構造、
+        さらには共形対称性や高次元幾何にまでつながる豊かな数理を秘めています。
+        本特設ページでは、量子力学100周年を機に、水素原子を通して量子力学の誕生とその現代的広がりを見直します。
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="#series">連載を読む</a>
+        <a class="btn secondary" href="#readers">はじめての方へ</a>
+        <a class="btn secondary" href="#archive">関連ノート一覧へ</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="quicknav">
+    <div class="wrap">
+      <a href="#about">この企画について</a>
+      <a href="#why-hydrogen">なぜ水素原子なのか</a>
+      <a href="#readers">読者別の入口</a>
+      <a href="#series">連載案内</a>
+      <a href="#archive">関連ノート</a>
+      <a href="#references">参考文献案内</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+      <div class="wrap">
+        <h2>この企画について</h2>
+        <div class="grid two">
+          <div class="card">
+            <div class="label">歴史</div>
+            <h3>量子力学成立期における水素原子</h3>
+            <p>
+              Bohr の旧量子論から Schrödinger の波動力学、さらに量子力学の自己理解へ至る過程で、
+              水素原子は常に中心的な役割を果たしてきました。
+            </p>
+          </div>
+          <div class="card">
+            <div class="label">数学</div>
+            <h3>特殊関数・変数分離・対称性</h3>
+            <p>
+              球座標・放物線座標・回転楕円体座標、Laguerre 関数、球面調和関数、
+              Runge–Lenz ベクトル、SO(4)、su(1,1) などの構造を扱います。
+            </p>
+          </div>
+          <div class="card">
+            <div class="label">物理</div>
+            <h3>スペクトル・縮退・束縛と散乱</h3>
+            <p>
+              なぜエネルギー準位がそのようになるのか、なぜ縮退が起きるのか、
+              束縛状態と散乱状態をどう理解すべきかを見ていきます。
+            </p>
+          </div>
+          <div class="card">
+            <div class="label">発展</div>
+            <h3>SO(4,2)・KS変換・共形的見方へ</h3>
+            <p>
+              水素原子は教科書で終わる話題ではありません。
+              現代的には SO(4,2)、共形幾何、Kustaanheimo–Stiefel 変換、SUSY QM などへつながります。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why-hydrogen">
+      <div class="wrap">
+        <h2>なぜ水素原子なのか</h2>
+
+        <div class="grid three">
+          <div class="card">
+            <h3>1. 最小でありながら豊かな模型</h3>
+            <p>
+              一電子系という単純さを持ちながら、量子力学の基本現象が凝縮して現れます。
+              教科書的な入門例であると同時に、深い数理構造を持つ模型です。
+            </p>
+          </div>
+          <div class="card">
+            <h3>2. 教科書を超える数学が見える</h3>
+            <p>
+              変数分離、特殊関数、隠れた対称性、表現論的構造など、
+              多くの数学的主題が自然に交差します。
+            </p>
+          </div>
+          <div class="card">
+            <h3>3. 現代的研究へ伸びている</h3>
+            <p>
+              SO(4) にとどまらず、SO(4,2)、共形対称性、Hopf fibration、可解系・超可積分系へと視野が広がります。
+            </p>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>注：</strong>
+          本企画では、歴史的事実・数学的主張・著者の解釈をなるべく区別して記述します。
+          一次文献確認が必要な箇所や、著者独自の見通しを含む箇所は、その旨を明示する予定です。
+        </div>
+      </div>
+    </section>
+
+    <section id="readers">
+      <div class="wrap">
+        <h2>読者別の入口</h2>
+
+        <div class="grid three">
+          <div class="card">
+            <div class="label">入口A</div>
+            <h3>はじめての方へ</h3>
+            <p class="small">
+              量子力学や水素原子の標準的事項は一応学んだが、
+              数理物理として何が面白いのかを知りたい方向け。
+            </p>
+            <ul>
+              <li><a href="#">水素原子の数理物理のおこり</a></li>
+              <li><a href="#">水素原子の数理概要</a></li>
+              <li><a href="#">水素原子の数理入門</a></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="label">入口B</div>
+            <h3>教科書を一通り学んだ方へ</h3>
+            <p class="small">
+              標準的解法の先にある対称性や変数分離の多様性に進みたい方向け。
+            </p>
+            <ul>
+              <li><a href="#">非相対論的水素原子における力学的対称代数</a></li>
+              <li><a href="#">放物線座標による変数分離</a></li>
+              <li><a href="#">Laguerre関数と su(1,1)</a></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="label">入口C</div>
+            <h3>発展的に学びたい方へ</h3>
+            <p class="small">
+              表現論・共形幾何・高次元的見方に興味のある方向け。
+            </p>
+            <ul>
+              <li><a href="#">水素原子の波動関数と SO(4,2)</a></li>
+              <li><a href="#">Kustaanheimo–Stiefel 変換</a></li>
+              <li><a href="#">水素原子の経路積分</a></li>
+              <li><a href="#">因数分解解法と SUSY QM</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="series">
+      <div class="wrap">
+        <h2>連載案内</h2>
+        <p>
+          以下の連載では、量子力学100周年を「水素原子から見る量子力学の自己理解の歴史」として読み直します。
+          必ずしも年代順だけではなく、現代から見た意味づけもあわせて扱います。
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>第1回：</strong> 量子力学100年を水素原子から見る  
+            <div class="small">企画全体の見取り図。なぜ今、水素原子を読み直すのか。</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>第2回：</strong> Bohr理論から波動力学へ  
+            <div class="small">旧量子論では何が説明でき、何が説明しきれなかったのか。</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>第3回：</strong> Schrödinger方程式と水素原子  
+            <div class="small">球座標による変数分離、Laguerre 関数、球面調和関数。</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>第4回：</strong> 縮退はなぜ起きるのか  
+            <div class="small">角運動量だけでは見えない Runge–Lenz ベクトルと SO(4)。</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>第5回：</strong> 座標系を変えると何が見えるか  
+            <div class="small">放物線座標、回転楕円体座標、より広い変数分離の世界へ。</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>第6回：</strong> 別解法の世界  
+            <div class="small">因数分解、su(1,1)、演算子法、フーリエ変換など。</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>第7回：</strong> 水素原子から高次元・共形へ  
+            <div class="small">SO(4,2)、共形変換、光錐の幾何学、KS変換。</div>
+          </div>
+
+          <div class="timeline-item">
+            <strong>第8回：</strong> 100年後の水素原子  
+            <div class="small">可解系、超可積分系、SUSY QM、現代数理物理への展開。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="archive">
+      <div class="wrap">
+        <h2>関連ノート</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>基礎</h3>
+            <ul>
+              <li><a href="#">水素原子の数理物理のおこり</a></li>
+              <li><a href="#">水素原子の数理概要</a></li>
+              <li><a href="#">水素原子の数理入門</a></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>中級</h3>
+            <ul>
+              <li><a href="#">非相対論的水素原子における力学的対称代数</a></li>
+              <li><a href="#">水素原子における放物線座標</a></li>
+              <li><a href="#">水素原子の波動関数と球面調和関数</a></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>発展</h3>
+            <ul>
+              <li><a href="#">水素原子の波動関数と SO(4,2) 群の代数構造</a></li>
+              <li><a href="#">共形変換と光錐の幾何学</a></li>
+              <li><a href="#">Kustaanheimo–Stiefel 変換</a></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>別解法・周辺主題</h3>
+            <ul>
+              <li><a href="#">因数分解解法と超対称性量子力学</a></li>
+              <li><a href="#">水素原子の経路積分</a></li>
+              <li><a href="#">関連する講演・研究ノート一覧</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          各ノートには今後、<strong>難易度・前提知識・確認状況・最終更新日</strong>を付す予定です。
+          たとえば「一次文献確認済み」「教育用ノート」「発展的メモ」といったラベルを併記することで、
+          読者が位置づけを把握しやすくします。
+        </div>
+      </div>
+    </section>
+
+    <section id="references">
+      <div class="wrap">
+        <h2>参考文献案内</h2>
+        <div class="grid three">
+          <div class="card">
+            <h3>初学者向け</h3>
+            <p>
+              標準的な量子力学教科書のうち、水素原子と角運動量が丁寧に説明されているものを中心に案内します。
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>標準</h3>
+            <p>
+              水素原子の解法、特殊関数、力学的対称性、座標分離に関する古典的文献・標準的参考書を扱います。
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>発展</h3>
+            <p>
+              SO(4,2)、共形幾何、KS変換、可解系・表現論・超可積分系との接点を扱う文献を整理します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>
+        本特設ページは、量子力学100周年を機に、水素原子の数理物理に関する既存ノート・講演資料・研究メモを再編集し、
+        読みやすい入口を与えることを目的としています。
+      </p>
+      <p>
+        <a href="/">HOME</a> /
+        <a href="/note.html">ノート一覧</a> /
+        <a href="/study.html">研究・講演</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
