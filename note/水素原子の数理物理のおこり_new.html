@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>水素原子の数理物理のおこり | adhara_mathphys</title>
+  <meta name="description" content="水素原子を軸に、量子力学の成立、偶然縮退と力学的対称性、因数分解解法、スペクトル生成代数、SO(4,2)、KS変換までを概観する記事。" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #4b5563;
+      --line: #d1d5db;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --accent-deep: #1e3a8a;
+      --max: 980px;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      line-height: 1.9;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, #eff6ff 0%, #f8fafc 28%, #f8fafc 100%);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding: 16px 0 8px;
+    }
+
+    .topbar a { color: var(--muted); }
+
+    header.hero {
+      padding: 18px 0 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+      border: 1px solid rgba(209,213,219,0.9);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.28;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    nav.quicknav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(248,250,252,0.82);
+      border-bottom: 1px solid rgba(209,213,219,0.85);
+    }
+
+    nav.quicknav .inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 12px 0;
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding: 26px 0 64px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid rgba(209,213,219,0.92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px 22px;
+    }
+
+    .section-head {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .section-no {
+      display: inline-block;
+      min-width: 2.2em;
+      margin-right: 10px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.55rem;
+      line-height: 1.45;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .summary-grid,
+    .link-grid,
+    .ref-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      margin-top: 18px;
+    }
+
+    .summary-card,
+    .link-card,
+    .ref-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      background: #fff;
+      padding: 18px 16px;
+    }
+
+    .summary-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .summary-card p,
+    .link-card p,
+    .ref-card p,
+    .small {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .toc-list {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .toc-list li + li { margin-top: 8px; }
+
+    .link-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 18px;
+    }
+
+    .link-card .kind {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .link-card a.title {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.55;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .link-card a.title:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .note-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px dashed #cbd5e1;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .ref-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 14px;
+    }
+
+    .ref-card ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .ref-card li + li { margin-top: 8px; }
+
+    footer {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 0 0 60px;
+    }
+
+    .footer-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(209,213,219,0.85);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 0.12em 0.36em;
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .panel {
+        padding: 22px 18px;
+      }
+
+      nav.quicknav .inner {
+        gap: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap topbar">
+    <a href="/">HOME</a> / <a href="/note.html">ノート一覧</a> / 水素原子の数理物理のおこり
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="eyebrow">Hydrogen Atom / Mathematical Physics</div>
+        <h1>水素原子の数理物理のおこり</h1>
+        <p class="lead">
+          水素原子は、量子力学の成立を支えた最も重要な模型の一つであると同時に、
+          偶然縮退、力学的対称性、因数分解解法、スペクトル生成代数、SO(4,2)、KS変換など、
+          現代数理物理へつながる多くの視点を引き出す出発点でもあります。
+          本記事では、その大きな流れを歴史と数理の両面から見通します。
+        </p>
+
+        <div class="hero-meta">
+          <span class="chip">概観記事</span>
+          <span class="chip">歴史 + 数理構造</span>
+          <span class="chip">関連ノートへの入口</span>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary-card">
+            <h3>量子力学の成立</h3>
+            <p>Balmer・Rydberg・Bohr–Sommerfeld から Schrödinger と Heisenberg の量子力学へ。</p>
+          </div>
+          <div class="summary-card">
+            <h3>偶然縮退と SO(4)</h3>
+            <p>Runge–Lenz ベクトル、Pauli の代数解法、Fock の幾何学的解法、Bargmann の統合。</p>
+          </div>
+          <div class="summary-card">
+            <h3>因数分解と su(1,1)</h3>
+            <p>動径方程式の代数的解法から SUSY QM やスペクトル生成代数へ。</p>
+          </div>
+          <div class="summary-card">
+            <h3>SO(4,2) と KS変換</h3>
+            <p>束縛状態全体を一つの表現として捉える視点と、高次元幾何への接続。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="quicknav">
+    <div class="inner">
+      <a href="#toc">目次</a>
+      <a href="#sec1">量子力学の創設</a>
+      <a href="#sec2">偶然縮退と力学的対称性</a>
+      <a href="#sec3">因数分解とSUSY QM</a>
+      <a href="#sec4">スペクトル生成代数</a>
+      <a href="#sec5">KS変換とHopf</a>
+      <a href="#sec6">経路積分</a>
+      <a href="#sec7">参考文献</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="toc">
+      <div class="panel">
+        <div class="section-head">
+          <h2>目次</h2>
+        </div>
+        <ol class="toc-list">
+          <li><a href="#sec1">水素原子のエネルギー準位の発見と量子力学の創設</a></li>
+          <li><a href="#sec2">エネルギーの偶然縮退と力学的対称性の発見</a></li>
+          <li><a href="#sec3">因数分解解法と超対称性代数構造の発見</a></li>
+          <li><a href="#sec4">スペクトル生成代数と力学的群の発見</a></li>
+          <li><a href="#sec5">Kustaanheimo–Stiefel 変換による正則化と Hopf fibration</a></li>
+          <li><a href="#sec6">経路積分</a></li>
+          <li><a href="#sec7">参考文献</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="sec1">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">1</span>水素原子のエネルギー準位の発見と量子力学の創設</h2>
+        </div>
+
+        <p>
+          水素原子と量子論の関わりは、Balmer による水素発光スペクトルの法則の発見に始まり、
+          その後の Rydberg の公式、さらに Lyman・Paschen・Brackett・Pfund・Humphreys 系列の発見によって
+          一層明確になっていきました。スペクトル線の規則性は見えていたものの、
+          その背後にある力学はまだ十分には理解されていませんでした。
+        </p>
+
+        <p>
+          Bohr–Sommerfeld の前期量子論は、水素原子で取り得るエネルギーが離散化されることを説明し、
+          スペクトル線が準位差として理解できることを示しました。しかし He 原子や Stark 効果、Zeeman 効果などでは
+          前期量子論の限界も明らかになっていきます。
+        </p>
+
+        <p>
+          この局面を突破したのが、Schrödinger の波動力学と Heisenberg を中心とする行列力学でした。
+          水素原子はここでも中心的な役割を果たし、Schrödinger 方程式の最初期の成功例として、
+          また Pauli による新量子力学の代数的応用の舞台として現れます。
+        </p>
+
+        <div class="note-box">
+          この記事では、量子力学史そのものを網羅するのではなく、
+          <strong>「水素原子がどのように量子力学成立の試金石であり続けたか」</strong>
+          に焦点を絞っています。
+        </div>
+      </div>
+    </section>
+
+    <section id="sec2">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">2</span>エネルギーの偶然縮退と力学的対称性の発見</h2>
+        </div>
+
+        <p>
+          球対称ポテンシャルでは、角運動量に由来する縮退が生じ、
+          波動関数は球面調和関数と動径関数に分離されます。
+          ところが水素原子では、それを超えてエネルギーが主量子数 <code>n</code> のみで決まり、
+          同じ <code>n</code> であれば異なる角運動量状態も同じエネルギーを持ちます。
+          これは空間対称性だけからは予測しにくい「偶然縮退」です。
+        </p>
+
+        <p>
+          この縮退の背後にあるのが、Kepler 問題にすでに現れていた Laplace–Runge–Lenz ベクトルです。
+          角運動量と LRL ベクトルは、水素原子の力学的対称性を記述する基本的な保存量となり、
+          Pauli はこれを新量子力学の言葉で用いてスペクトルを代数的に導きました。
+        </p>
+
+        <p>
+          一方で Fock は、運動量表示と立体射影を用いて水素原子を四次元超球面上の問題として捉え、
+          幾何学的に <code>SO(4)</code> の対称性を見抜きました。
+          さらに Bargmann は、Pauli の代数的解法と Fock の幾何学的解法の関係を明らかにし、
+          LRL ベクトルの幾何学的役割を鮮明にしました。
+        </p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/ケプラー問題と力学的対称性（その１）.pdf">ケプラー問題と力学的対称性（その１）</a>
+            <p>Kepler 問題における保存量、とくに LRL ベクトルの意味を古典力学から整理します。</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/〖図解〗so(4)代数解法.pdf">〖図解〗so(4)代数解法</a>
+            <p>Pauli の方法による水素様原子スペクトルの代数的解法を図解します。</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/〖考察／解釈〗Fockの解法.pdf">〖考察／解釈〗Fockの解法</a>
+            <p>Fock の運動量空間での解法と四次元回転対称性の見え方を解説します。</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素様原子スペクトルに関するBargmannの議論.pdf">水素様原子スペクトルに関する Bargmann の議論</a>
+            <p>Fock の解法から LRL ベクトルが導かれることを中心に、両者の関係を説明します。</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素様原子スペクトルに関するBargmannの議論2.pdf">水素様原子スペクトルに関する Bargmann の議論2</a>
+            <p>Pauli の解法と Fock の解法で現れる解の対応関係を詳しく見ます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec3">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">3</span>因数分解解法と超対称性代数構造の発見</h2>
+        </div>
+
+        <p>
+          調和振動子の Schrödinger 方程式が因数分解によって代数的に解けることはよく知られていますが、
+          水素原子でも、球座標分離後に現れる動径方程式に対して同様の発想が有効です。
+          1951年の Infeld–Hull による整理は、この二階常微分方程式の因数分解解法を見通しよくしました。
+        </p>
+
+        <p>
+          水素原子の場合、この方法は単なる計算技巧にとどまらず、
+          異なる角運動量状態の間にある構造や、後に SUSY QM と呼ばれる見方を予感させます。
+          すなわち、水素原子の動径問題の中に、超対称性量子力学的な側面を見出すことができます。
+        </p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/〖図解〗因数分解解法.pdf">〖図解〗因数分解解法</a>
+            <p>因数分解を用いた水素様原子のエネルギースペクトル解法を図解します。</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素原子における因数分解解法と超対称性量子力学.pdf">水素原子における因数分解解法と超対称性量子力学</a>
+            <p>因数分解解法と SUSY QM を結び付けて、水素原子に潜む超対称的側面を論じます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec4">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">4</span>スペクトル生成代数と力学的群の発見</h2>
+        </div>
+
+        <p>
+          因数分解解法とは別に、変数変換のあとで
+          <code>\(\mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,\mathbf{R})\simeq \mathfrak{so}(2,1)\)</code>
+          という Lie 代数を用いる解法が現れます。
+          この観点では、動径方向の束縛状態が <code>\(\mathfrak{su}(1,1)\)</code> の既約表現として整理されます。
+        </p>
+
+        <p>
+          ここで重要なのは、<code>\(\mathfrak{su}(1,1)\)</code> は
+          <code>\(\mathfrak{so}(4)\)</code> とは別種の構造であり、
+          力学的対称性そのものではなく、異なるエネルギー準位を結び付ける
+          「スペクトル生成代数」として働くことです。
+        </p>
+
+        <p>
+          さらにこれらを一つのより大きな枠組みへ収める試みとして、
+          <code>\(\mathfrak{so}(4,2)\)</code> あるいは <code>SO(4,2)</code> が現れます。
+          ボソン演算子を用いる Jordan–Schwinger 型の構成を通して、
+          水素原子の束縛状態全体を一つの既約表現として捉える視点が得られます。
+        </p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/〖考察／解釈〗su(1,1)代数解法.pdf">〖考察／解釈〗su(1,1)代数解法</a>
+            <p>\(\mathfrak{su}(1,1)\) を用いた水素様原子の解法とその意味を整理します。</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素原子の波動関数とSO(4,2)群の代数構造.pdf">水素原子の波動関数と SO(4,2) 群の代数構造</a>
+            <p>ボソン演算子を用いて \(\mathfrak{so}(4,2)\) を構成し、束縛状態全体を統一的に捉えます。</p>
+          </div>
+        </div>
+
+        <div class="note-box">
+          力学的対称性 <code>SO(4)</code> は「同じエネルギー準位の中の構造」を説明し、
+          スペクトル生成代数や力学的群 <code>SO(4,2)</code> は「異なる準位どうしの関係」まで視野に入れます。
+        </div>
+      </div>
+    </section>
+
+    <section id="sec5">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">5</span>Kustaanheimo–Stiefel変換による正則化と Hopf fibration</h2>
+        </div>
+
+        <p>
+          四組のボソン生成消滅演算子による表示は、水素原子と四次元調和振動子のあいだに
+          深い類似構造があることを示唆します。古典力学では、Kepler 問題を
+          四次元調和振動子へと写す不可逆変換として Kustaanheimo–Stiefel 変換が導入されました。
+        </p>
+
+        <p>
+          この KS 変換は量子力学にも持ち込まれ、水素原子の解析を別の座標系・別の自由度のもとで
+          見通しよくする道具となります。さらに、その背後には
+          <code>\(\mathfrak{so}(4,2)\)</code> の構造や Hopf fibration 的な幾何学が潜んでいます。
+        </p>
+
+        <div class="note-box">
+          この節は、今後 <strong>KS変換・Hopf fibration・共形的見方</strong> の入口としてさらに拡充できます。
+          特設企画や別ページとつなぐ節としても機能しやすい箇所です。
+        </div>
+      </div>
+    </section>
+
+    <section id="sec6">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">6</span>経路積分</h2>
+        </div>
+
+        <p>
+          経路積分は、水素原子と KS 変換の関係をより深く掘り下げるうえで重要な視点です。
+          とくに、正則化変換や高次元調和振動子との対応を通じて、
+          水素原子の解析を別形式で見直すことができます。
+        </p>
+
+        <div class="note-box">
+          この節は準備中です。現段階では見出しを残し、
+          将来的に <strong>KS変換 → 経路積分 → コヒーレント状態</strong> という流れで補強する想定です。
+        </div>
+      </div>
+    </section>
+
+    <section id="sec7">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">7</span>参考文献</h2>
+        </div>
+
+        <p class="small">
+          元ページの参考文献群を、読みやすさのために主要なまとまりごとに再配置した版です。
+          厳密な完全版は必要に応じてさらに拡張してください。
+        </p>
+
+        <div class="ref-grid">
+          <div class="ref-card">
+            <h3>Balmer系列・Rydberg公式・系列の発見</h3>
+            <ul>
+              <li>Balmer (1885)</li>
+              <li>Rydberg (1889)</li>
+              <li>Lyman (1906, 1914)</li>
+              <li>Paschen (1908)</li>
+              <li>Brackett (1922)</li>
+              <li>Pfund (1924)</li>
+              <li>Humphreys (1953)</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>前期量子論</h3>
+            <ul>
+              <li>Bohr (1913a, 1913b, 1913c)</li>
+              <li>Sommerfeld (1916)</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>量子力学の創設</h3>
+            <ul>
+              <li>Schrödinger (1926a–f)</li>
+              <li>Heisenberg (1925)</li>
+              <li>Born–Jordan (1925)</li>
+              <li>Born–Heisenberg–Jordan (1926)</li>
+              <li>Dirac (1925)</li>
+              <li>Pauli (1926)</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>歴史・解説</h3>
+            <ul>
+              <li>Bucher (2008)</li>
+              <li>Casado (2008)</li>
+              <li>de Gosson (2014)</li>
+              <li>Aspect &amp; Villain (2017)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-card">
+      <p>
+        本ページは、水素原子をめぐる数理物理の流れを見通すための案内記事です。
+        詳細な計算や個別テーマについては、各関連ノートを参照してください。
+      </p>
+      <p>
+        <a href="/">HOME</a> /
+        <a href="/note.html">ノート一覧</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
