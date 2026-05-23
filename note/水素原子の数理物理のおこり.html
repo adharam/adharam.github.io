@@ -266,8 +266,20 @@
     }
 
     .ref-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: block;
       margin-top: 14px;
+    }
+
+    .ref-card {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .ref-card h3 {
+      margin-bottom: 8px;
     }
 
     .ref-card ul {
@@ -529,31 +541,109 @@
         </div>
 
         <p>
-          因数分解解法とは別に，変数変換のあとで
-          $\mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,\mathbf{R})\simeq \mathfrak{so}(2,1)$
-          という Lie 代数を用いる解法が現れます．
-          この観点では，動径方向の束縛状態が $\mathfrak{su}(1,1)$ の既約表現として整理されます．
+          水素原子に現れる Lie 代数的構造は，一つだけではありません．
+          まず，固定したエネルギー準位の中の縮退を説明する力学的対称性として，
+          束縛状態では $\mathfrak{so}(4)$ が現れます．一方，異なる主量子数をもつ束縛状態を結び付けるには，
+          ハミルトニアンと可換な保存量だけでは足りず，エネルギーを変える演算子を含む
+          <strong>スペクトル生成代数</strong> が必要になります．
+        </p>
+
+        <h3>動径問題と $\mathfrak{sl}(2,\mathbf{R})$</h3>
+        <p>
+          因数分解解法の背後には，より構造的には
+          $$
+            \mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,\mathbf{R})\simeq \mathfrak{so}(2,1)
+          $$
+          が現れます．標準的な生成子を $K_0,K_\pm$ と書けば，
+          $$
+            [K_0,K_\pm]=\pm K_\pm,\qquad [K_+,K_-]=-2K_0
+          $$
+          を満たします．この代数は，水素原子の動径方程式，あるいは Coulomb–Sturmian 型の基底を整理する自然な代数として働きます．
+          $\mathfrak{so}(4)$ が同一エネルギー準位内の角運動量縮退を説明するのに対し，
+          $\mathfrak{sl}(2,\mathbf{R})$ は動径方向の量子数を上下させる代数として現れます．
         </p>
 
         <p>
-          ここで重要なのは，$\mathfrak{su}(1,1)$ は
-          $\mathfrak{so}(4)$ とは別種の構造であり，
-          力学的対称性そのものではなく，異なるエネルギー準位を結び付ける
-          「スペクトル生成代数」として働くことです．
+          したがって，ここでの $\mathfrak{sl}(2,\mathbf{R})$ は，
+          「水素原子の空間回転対称性」ではなく，
+          動径方程式を可解にするスペクトル生成的な代数です．
+          この見方は，Bergmann–Frishman による水素原子と多次元調和振動子の関係，
+          さらに現代的な $\mathfrak{su}(1,1)$ 代数解法へとつながります．
+        </p>
+
+        <h3>エネルギー符号ごとの力学的対称性</h3>
+        <p>
+          Pauli–Fock–Bargmann の流れで現れる $\mathfrak{so}(4)$ は，主として束縛状態 $E&lt;0$ の対称性です．
+          しかし Coulomb 問題全体には，エネルギーの符号に応じて三つの標準的な力学的対称性が現れます：
+          $$
+            E&lt;0:\ SO(4),\qquad
+            E=0:\ ISO(3),\qquad
+            E&gt;0:\ SO(3,1).
+          $$
+          ここで $ISO(3)$ は三次元 Euclid 群です．
+          これは，束縛楕円軌道，放物線軌道，双曲線散乱軌道に対応する Kepler 問題の幾何学的三分法ともよく対応します．
         </p>
 
         <p>
-          さらにこれらを一つのより大きな枠組みへ収める試みとして，
-          $\mathfrak{so}(4,2)$ あるいは $SO(4,2)$ が現れます．
-          ボソン演算子を用いる Jordan–Schwinger 型の構成を通して，
-          水素原子の束縛状態全体を一つの既約表現として捉える視点が得られます．
+          これら三つの対称性を別々に扱うだけでなく，
+          一つの非コンパクト群の中で統一的に見る試みとして，$SO(4,1)$ が現れます．
+          この群は，固定エネルギー面の対称性そのものというより，
+          エネルギーや結合定数を動かす非不変群，あるいはスペクトル生成群として理解されます．
+          $SO(4,1)$ の中では，$SO(4)$，$SO(3,1)$，$ISO(3)$ が異なる型の部分群・リトル群として現れるため，
+          束縛状態，散乱状態，ゼロエネルギー状態を同じ幾何学的枠組みの中で見通せます．
+        </p>
+
+        <h3>$SO(4,2)$：$\mathfrak{sl}(2,\mathbf{R})$ と $SO(4,1)$ を含む大きな枠組み</h3>
+        <p>
+          さらに大きな力学的群として，水素原子には $SO(4,2)$ が現れます．
+          これは四次元 Minkowski 空間の共形群とも同型な非コンパクト群であり，
+          Lie 代数としては
+          $$
+            \mathfrak{so}(4,2)\simeq \mathfrak{su}(2,2)
+          $$
+          と書くことができます．
+          水素原子における $SO(4,2)$ は，すべての生成子がハミルトニアンと可換な対称性群ではありません．
+          そのため，しばしば <strong>dynamical (noninvariance) group</strong>，
+          あるいは <strong>spectrum generating group</strong> と呼ばれます．
+        </p>
+
+        <p>
+          $SO(4,2)$ の重要性は，束縛状態だけでなく，散乱状態やゼロエネルギー状態を含む Coulomb 問題の状態空間を，
+          一つの表現論的枠組みで整理できる点にあります．
+          歴史的には，Malkin–Man'ko が $SO(6,\mathbf{C})$ の形でこの構造に到達し，
+          Barut–Kleinert らが非コンパクト力学群として水素原子へ応用しました．
+          Bander–Itzykson の総説は，Pauli，Fock，Bargmann の方法を群論的に整理し，
+          $SO(4)$，$SO(3,1)$，$SO(4,2)$ の関係を見通すうえで重要です．
+        </p>
+
+        <h3>Schwinger boson と振動子表示</h3>
+        <p>
+          $SO(4,2)$ を具体的に構成するうえで有効なのが，Schwinger boson，すなわち
+          ボソン生成消滅演算子の双一次式による Lie 代数の実現です．
+          まず
+          $SO(4)\simeq SU(2)\times SU(2)/\mathbb{Z}_2$
+          であることを用い，二組の二次元調和振動子から二つの $SU(2)$ を作ります．
+          さらに四組のボソン演算子 $a_i,a_i^\dagger\ (i=1,\dots,4)$ の双一次式を考えると，
+          四次元等方調和振動子側の大きな代数 $\mathfrak{sp}(8,\mathbf{R})$ が現れます．
+        </p>
+
+        <p>
+          このうち適切な十五個の双一次式が
+          $\mathfrak{su}(2,2)\simeq\mathfrak{so}(4,2)$ を生成します．
+          第5節で述べる KS 変換の立場から見ると，
+          四次元調和振動子の $\mathfrak{sp}(8,\mathbf{R})$ の中で余分な $SO(2)$ 制約を課し，
+          その制約と両立する部分を取り出すことで，
+          水素原子側の $\mathfrak{so}(4,2)$ が得られると理解できます．
+          つまり Schwinger boson 表示は，
+          <strong>水素原子の $SO(4,2)$ と四次元調和振動子・KS 変換を結ぶ代数的な橋</strong>
+          になっています．
         </p>
 
         <div class="link-grid">
           <div class="link-card">
             <div class="kind">関連ノート</div>
             <a class="title" href="/pdf/〖考察／解釈〗su(1,1)代数解法.pdf">〖考察／解釈〗su(1,1)代数解法</a>
-            <p>\(\mathfrak{su}(1,1)\) を用いた水素様原子の解法とその意味を整理します．</p>
+            <p>\(\mathfrak{su}(1,1)\) を用いた水素様原子の動径方程式の解法と，スペクトル生成代数としての意味を整理します．</p>
           </div>
 
           <div class="link-card">
@@ -564,8 +654,13 @@
         </div>
 
         <div class="note-box">
-          力学的対称性 $SO(4)$ は「同じエネルギー準位の中の構造」を説明し，
-          スペクトル生成代数や力学的群 $SO(4,2)$ は「異なる準位どうしの関係」まで視野に入れます．
+          第4節の要点は，
+          <strong>\(\mathfrak{sl}(2,\mathbf{R})\) は動径方向の可解性を支える代数，
+          \(SO(4)\), \(ISO(3)\), \(SO(3,1)\) はエネルギー符号ごとの力学的対称性，
+          \(SO(4,1)\) はそれらを見通すスペクトル生成的枠組み，
+          \(SO(4,2)\) はさらにそれらを含む最大級の dynamical noninvariance group</strong>
+          として位置づけることです．
+          次節の KS 変換では，この \(SO(4,2)\) が四次元調和振動子のボソン表示と制約から再び現れます．
         </div>
       </div>
     </section>
@@ -732,8 +827,6 @@
         </div>
 
         <p class="small">
-          元ページの参考文献群を，読みやすさのために主要なまとまりごとに再配置した版です．
-          厳密な完全版は必要に応じてさらに拡張してください．
         </p>
 
         <div class="ref-grid">
@@ -777,22 +870,38 @@
               <li>Casado (2008)</li>
               <li>de Gosson (2014)</li>
               <li>Aspect &amp; Villain (2017)</li>
+              <li>Schrödinger, E., “A Method of Determining Quantum-Mechanical Eigenvalues and Eigenfunctions,” <em>Proc. R. Irish Acad. Sect. A</em> <strong>46</strong>, 9–16 (1940).</li>
             </ul>
           </div>
 
           <div class="ref-card">
-            <h3>正則化と KS 変換</h3>
+            <h3>スペクトル生成代数・SO(4,1)・SO(4,2)</h3>
+            <ul>
+              <li>Bergmann, D. and Frishman, Y., “A Relation between the Hydrogen Atom and Multidimensional Harmonic Oscillators,” <em>J. Math. Phys.</em> <strong>6</strong>, 1855–1856 (1965).</li>
+              <li>Malkin, I. A. and Man'ko, V. I., “Symmetry of the Hydrogen Atom,” <em>Sov. Phys. JETP Lett.</em> <strong>2</strong>, 146 (1965).</li>
+              <li>Perelomov, A. M., and Popov, V. S., "The Lorentz group as a dynamic symmetry group of the hydrogen atom," <em>Sov. Phys. JETP</em> <strong>23</strong>, 118 (1966).</li>
+              <li>Musto, R., “Generators of \(O(4,1)\) for the Quantum-Mechanical Hydrogen Atom,” <em>Phys. Rev.</em> <strong>148</strong>, 1274 (1966).</li>
+              <li>Pratt, R. H., and Jordan, T. F., "Generators of the de Sitter group for the hydrogen atom," <em>Phys. Rev.</em> <strong>148</strong>, 1276 (1966).</li>
+              <li>Bander, M. and Itzykson, C., “Group Theory and the Hydrogen Atom (I),” <em>Rev. Mod. Phys.</em> <strong>38</strong>, 330 (1966).</li>
+              <li>Bander, M. and Itzykson, C., “Group Theory and the Hydrogen Atom (II),” <em>Rev. Mod. Phys.</em> <strong>38</strong>, 346 (1966).</li>
+              <li>Barut, A. O. and Kleinert, H., “Transition Probabilities of the Hydrogen Atom from Noncompact Dynamical Groups,” <em>Phys. Rev.</em> <strong>156</strong>, 1541 (1967).</li>
+              <li>Barut, A. O. and Kleinert, H., “Current Operators and Majorana Equation for the Hydrogen Atom from Dynamical Groups,” <em>Phys. Rev.</em> <strong>157</strong>, 1180 (1967).</li>
+              <li>Barut, A. O. and Kleinert, H., “Transition Form Factors in the H Atom,” <em>Phys. Rev.</em> <strong>160</strong>, 1149 (1967).</li>
+              <li>Fronsdal, C., “Infinite Multiplets and the Hydrogen Atom,” <em>Phys. Rev.</em> <strong>156</strong>, 1665 (1967).</li>
+              <li>Böhm, A., Ne'eman, Y. and Barut, A. O. (eds.), <em>Dynamical Groups and Spectrum Generating Algebras</em>, World Scientific, Singapore (1988).</li>
+              <li>Martínez-y-Romero, R. P., Núñez-Yépez, H. N. and Salas-Brito, A. L., “An \(\mathfrak{su}(1,1)\) algebraic method for the hydrogen atom,” <em>J. Phys. A: Math. Gen.</em> <strong>38</strong>, 8579–8588 (2005).</li>
+              <li>Kibler, M. R., “On the use of the group \(SO(4,2)\) in atomic and molecular physics,” <em>Molecular Physics</em> <strong>102</strong>, 1221–1229 (2004).</li>
+              <li>Wulfman, C. E., <em>Dynamical Symmetry</em>, World Scientific, (2010).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>正則化/KS 変換/Hopf fibration</h3>
             <ul>
               <li>Bohlin, K., “Note sur le problème des deux corps et sur une intégration nouvelle dans le problème des trois corps,” <em>Bull. Astr.</em> <strong>28</strong>, 113–119 (1911).</li>
               <li>Levi-Civita, T., “Sur la régularisation du problème des trois corps,” <em>Acta Math.</em> <strong>42</strong>, 99–144 (1920).</li>
               <li>Kustaanheimo, P. E. and Stiefel, E. L., “Perturbation theory of Kepler motion based on spinor regularization,” <em>J. Reine Angew. Math.</em> <strong>218</strong>, 204–219 (1965).</li>
               <li>Stiefel, E. L. and Scheifele, G., <em>Linear and Regular Celestial Mechanics</em>, Springer, Berlin (1971).</li>
-            </ul>
-          </div>
-
-          <div class="ref-card">
-            <h3>四元数・Hopf fibration・量子版 KS 変換</h3>
-            <ul>
               <li>Hopf, H., “Über die Abbildungen der dreidimensionalen Sphäre auf die Kugelfläche,” <em>Mathematische Annalen</em> <strong>104</strong>, 637–665 (1931).</li>
               <li>Hestenes, D. and Lounesto, P., “Geometry of Spinor Regularization,” <em>Celestial Mechanics</em> <strong>30</strong>, 171–179 (1983).</li>
               <li>Boiteux, M., “The three-dimensional hydrogen atom as a restricted four-dimensional harmonic oscillator,” <em>Physica</em> <strong>65</strong>, 381–395 (1973).</li>
@@ -804,17 +913,11 @@
           </div>
 
           <div class="ref-card">
-            <h3>Coulomb Green function</h3>
+            <h3>Coulomb Green function/水素原子における経路積分</h3>
             <ul>
               <li>Schwinger, J., “Coulomb Green's Function,” <em>J. Math. Phys.</em> <strong>5</strong>, 1606–1608 (1964).</li>
               <li>Hostler, L. and Pratt, R. H., “Coulomb Green's Function in Closed Form,” <em>Phys. Rev. Lett.</em> <strong>10</strong>, 469–470 (1963).</li>
               <li>Hostler, L., “Coulomb Green's Functions and the Furry Approximation,” <em>J. Math. Phys.</em> <strong>5</strong>, 591–611 (1964).</li>
-            </ul>
-          </div>
-
-          <div class="ref-card">
-            <h3>経路積分と水素原子</h3>
-            <ul>
               <li>Duru, I. H. and Kleinert, H., “Solution of the Path Integral for the H-Atom,” <em>Phys. Lett. B</em> <strong>84</strong>, 185–188 (1979).</li>
               <li>Duru, I. H. and Kleinert, H., “Quantum Mechanics of H-Atom from Path Integrals,” <em>Fortschr. Phys.</em> <strong>30</strong>, 401–435 (1982).</li>
               <li>Ho, R. and Inomata, A., “Exact-Path-Integral Treatment of the Hydrogen Atom,” <em>Phys. Rev. Lett.</em> <strong>48</strong>, 231–234 (1982).</li>
