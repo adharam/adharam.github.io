@@ -578,85 +578,19 @@
 
         <p>
           四組のボソン生成消滅演算子による表示は，水素原子と四次元調和振動子のあいだに
-          深い類似構造があることを示唆します．この類似は単なる計算上の偶然ではなく，
-          Kepler 問題の衝突特異点を取り除く <strong>正則化</strong> の歴史，
-          二次元・三次元の Kepler 問題を調和振動子へ移す変換，
-          さらに Hopf fibration による幾何学的理解へとつながっています．
-        </p>
-
-        <h3>正則化の系譜：Euler から Levi-Civita へ</h3>
-        <p>
-          Kepler 問題では，粒子が中心力の中心へ落ち込むと $r=0$ で方程式が特異になります．
-          この特異性を，時間変数と座標変数を取り替えることで取り除く発想は，
-          一次元的・直線的な衝突問題を扱った Euler の研究にまで遡るものとして位置づけられます．
-          その後，平面 Kepler 問題に対しては Bohlin の変換や Levi-Civita の正則化が現れます．
-          複素座標で書けば，その核心はおおよそ
-          $$
-            z = w^2, \qquad dt = |w|^2\,d	au
-          $$
-          という二重被覆と時間の再パラメータ化にあります．
-          これにより，二次元 Kepler 問題は二次元等方調和振動子と深く結びつきます．
-        </p>
-
-        <h3>三次元 Kepler 問題と Kustaanheimo–Stiefel 変換</h3>
-        <p>
-          三次元では，複素数による $z=w^2$ の単純な一般化は存在しません．
-          そこで Kustaanheimo と Stiefel は，四次元の変数
-          $(u_1,u_2,u_3,u_4)$ から三次元の変数 $(x_1,x_2,x_3)$ へ写す
-          非一対一の変換を用いました．代表的な形の一つは
-          $$
-          egin{aligned}
-            x_1 &= 2(u_1u_3-u_2u_4),\
-            x_2 &= 2(u_1u_4+u_2u_3),\
-            x_3 &= u_1^2+u_2^2-u_3^2-u_4^2,
-          \end{aligned}
-          \qquad
-          r = u_1^2+u_2^2+u_3^2+u_4^2
-          $$
-          で与えられます．この変換に適切な時間変換を組み合わせると，
-          三次元 Kepler 問題は四次元等方調和振動子の形へ移されます．
-          ただし自由度は一つ余分に増えているので，
-          その余分な自由度を消す制約条件を同時に課す必要があります．
-        </p>
-
-        <h3>四元数と Hopf fibration</h3>
-        <p>
-          KS 変換は，四元数を用いると幾何学的な意味が見えやすくなります．
-          四次元実ベクトルを四元数 $q$ とみなし，$q$ と $q e^{ilpha}$ が同じ三次元点へ写ると考えると，
-          余分な角度 $lpha$ が $S^1$ のファイバーを表していることが分かります．
-          半径を固定すれば，これは
-          $$
-            S^3 \longrightarrow S^2
-          $$
-          という Hopf fibration そのものです．
-          したがって KS 変換は，単に「四次元から三次元への座標変換」ではなく，
-          $S^3$ の各 $S^1$ ファイバーを同一視して $S^2$ を得る写像を，
-          Kepler 問題の正則化に利用していると見ることができます．
-        </p>
-
-        <h3>量子力学への応用：水素原子と四次元調和振動子</h3>
-        <p>
-          量子力学では，KS 変換を Schrödinger 方程式へ適用することで，
-          三次元水素原子の問題を四次元等方調和振動子の問題へ書き換えることができます．
-          このときも，古典論と同じく余分な角度に対応する制約条件が現れます．
-          Kibler と Négadi，Kibler・Ronveaux・Négadi，Chen と Kibler らの仕事では，
-          この水素原子と調和振動子の対応が，固有値・固有関数・特殊関数の対応として詳しく調べられました．
-          とくに，三次元球面調和関数や Laguerre 多項式を含む水素原子波動関数が，
-          四次元調和振動子の調和解析とどのように対応するかが明確になります．
+          深い類似構造があることを示唆します．古典力学では，Kepler 問題を
+          四次元調和振動子へと写す不可逆変換として Kustaanheimo–Stiefel 変換が導入されました．
         </p>
 
         <p>
-          この観点は，前節で扱った $SO(4,2)$ の話とも接続します．
-          四次元調和振動子の力学的代数は大きな対称性を持ちますが，KS 変換に伴う制約を課すと，
-          水素原子側に残る対称性として $\mathfrak{su}(2,2)\simeq\mathfrak{so}(4,2)$ が現れます．
-          したがって KS 変換は，水素原子を「四次元振動子から制約によって得られる系」と見る道を開き，
-          古典正則化，Hopf fibration，量子力学的スペクトル，スペクトル生成代数をつなぐ結節点になります．
+          この KS 変換は量子力学にも持ち込まれ，水素原子の解析を別の座標系・別の自由度のもとで
+          見通しよくする道具となります．さらに，その背後には
+          $\mathfrak{so}(4,2)$の構造や Hopf fibration 的な幾何学が潜んでいます．
         </p>
 
         <div class="note-box">
-          この節では，KS 変換を「Kepler 問題を四次元調和振動子へ写す技巧」としてだけでなく，
-          <strong>Euler–Bohlin–Levi-Civita から続く正則化の系譜，四元数・Hopf fibration，量子力学的水素原子の代数構造</strong>
-          をつなぐものとして位置づけています．次の経路積分の節では，この KS 変換が Duru–Kleinert や Ho–Inomata の exact path integral treatment の基礎として再び現れます．
+          この節は，今後 <strong>KS変換・Hopf fibration・共形的見方</strong> の入口としてさらに拡充できます．
+          特設企画や別ページとつなぐ節としても機能しやすい箇所です．
         </div>
       </div>
     </section>
@@ -684,7 +618,7 @@
 
         <h3>Duru–Kleinert 変換</h3>
         <p>
-          Coulomb ポテンシャル $-lpha/r$ は原点で特異であり，通常の時間分割のままでは経路積分を直接評価しにくい模型です．
+          Coulomb ポテンシャルは原点で特異であり，通常の時間分割のままでは経路積分を直接評価しにくい模型です．
           Duru–Kleinert の方法の核心は，時間変数を新しい媒介変数へ再パラメータ化する
           space-time transformation と，KS 型の座標変換を組み合わせることで，
           Coulomb 問題を調和振動子的な Gaussian path integral へ還元する点にあります．
@@ -776,31 +710,6 @@
               <li>Casado (2008)</li>
               <li>de Gosson (2014)</li>
               <li>Aspect &amp; Villain (2017)</li>
-            </ul>
-          </div>
-
-          <div class="ref-card">
-            <h3>正則化と KS 変換</h3>
-            <ul>
-              <li>Euler, L., “De motu rectilineo trium corporum se mutuo attrahentium,” <em>Novi Commentarii academiae scientiarum Petropolitanae</em> <strong>11</strong>, 144–151 (1767).</li>
-              <li>Bohlin, K., “Note sur le problème des deux corps et sur une intégration nouvelle dans le problème des trois corps,” <em>Bulletin astronomique</em> <strong>28</strong>, 113–119 (1911).</li>
-              <li>Levi-Civita, T., “Sur la régularisation du problème des trois corps,” <em>Acta Mathematica</em> <strong>42</strong>, 99–144 (1920).</li>
-              <li>Kustaanheimo, P. E., “Spinor Regularization of the Kepler Motion,” <em>Annales Universitatis Turkuensis</em>, Ser. A.I. <strong>73</strong>, 1–7 (1964).</li>
-              <li>Kustaanheimo, P. E. and Stiefel, E. L., “Perturbation theory of Kepler motion based on spinor regularization,” <em>J. Reine Angew. Math.</em> <strong>218</strong>, 204–219 (1965).</li>
-              <li>Stiefel, E. L. and Scheifele, G., <em>Linear and Regular Celestial Mechanics</em>, Springer, Berlin (1971).</li>
-            </ul>
-          </div>
-
-          <div class="ref-card">
-            <h3>四元数・Hopf fibration・量子版 KS 変換</h3>
-            <ul>
-              <li>Hopf, H., “Über die Abbildungen der dreidimensionalen Sphäre auf die Kugelfläche,” <em>Mathematische Annalen</em> <strong>104</strong>, 637–665 (1931).</li>
-              <li>Hestenes, D., “Geometry of Spinor Regularization,” <em>Celestial Mechanics</em> <strong>30</strong>, 171–186 (1983).</li>
-              <li>Kibler, M. and Négadi, T., “On the connection between the hydrogen atom and the harmonic oscillator: the continuum case,” <em>J. Phys. A: Math. Gen.</em> <strong>16</strong>, 4265–4278 (1983).</li>
-              <li>Kibler, M. and Négadi, T., “Connection between the hydrogen atom and the harmonic oscillator: The zero-energy case,” <em>Phys. Rev. A</em> <strong>29</strong>, 2891–2894 (1984).</li>
-              <li>Kibler, M., Ronveaux, A. and Négadi, T., “The Kustaanheimo-Stiefel transformation and certain special functions,” <em>J. Math. Phys.</em> <strong>27</strong>, 1541–1548 (1986).</li>
-              <li>Chen, A. C. and Kibler, M., “Connection between the hydrogen atom and the four-dimensional oscillator,” <em>Phys. Rev. A</em> <strong>31</strong>, 3960–3963 (1985).</li>
-              <li>Waldvogel, J., “Quaternions for regularizing celestial mechanics: the right way,” <em>Celestial Mechanics and Dynamical Astronomy</em> <strong>102</strong>, 149–162 (2008).</li>
             </ul>
           </div>
 
