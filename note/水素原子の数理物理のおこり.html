@@ -1,502 +1,687 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>adhara_mathphysのページ</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1894.6">
-  <link rel="icon" type="image/png" href="../image/icon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../image/icon.png">
-  <link rel="stylesheet" href="../stylesheet.css">
-<script type="text/x-mathjax-config">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>水素原子の数理物理のおこり | adhara_mathphys</title>
+  <meta name="description" content="水素原子を軸に，量子力学の成立，偶然縮退と力学的対称性，因数分解解法，スペクトル生成代数，SO(4,2)，KS変換までを概観する記事．" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #4b5563;
+      --line: #d1d5db;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --accent-deep: #1e3a8a;
+      --max: 980px;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      line-height: 1.9;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, #eff6ff 0%, #f8fafc 28%, #f8fafc 100%);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding: 16px 0 8px;
+    }
+
+    .topbar a { color: var(--muted); }
+
+    header.hero {
+      padding: 18px 0 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+      border: 1px solid rgba(209,213,219,0.9);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.28;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    nav.quicknav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(248,250,252,0.82);
+      border-bottom: 1px solid rgba(209,213,219,0.85);
+    }
+
+    nav.quicknav .inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 12px 0;
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding: 26px 0 64px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid rgba(209,213,219,0.92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px 22px;
+    }
+
+    .section-head {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .section-no {
+      display: inline-block;
+      min-width: 2.2em;
+      margin-right: 10px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.55rem;
+      line-height: 1.45;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .summary-grid,
+    .link-grid,
+    .ref-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      margin-top: 18px;
+    }
+
+    .summary-card,
+    .link-card,
+    .ref-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      background: #fff;
+      padding: 18px 16px;
+    }
+
+    .summary-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .summary-card p,
+    .link-card p,
+    .ref-card p,
+    .small {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .toc-list {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .toc-list li + li { margin-top: 8px; }
+
+    .link-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 18px;
+    }
+
+    .link-card .kind {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .link-card a.title {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.55;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .link-card a.title:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .note-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px dashed #cbd5e1;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .ref-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 14px;
+    }
+
+    .ref-card ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .ref-card li + li { margin-top: 8px; }
+
+    footer {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 0 0 60px;
+    }
+
+    .footer-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(209,213,219,0.85);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 0.12em 0.36em;
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .panel {
+        padding: 22px 18px;
+      }
+
+      nav.quicknav .inner {
+        gap: 10px 12px;
+      }
+    }
+  </style>
+  <script type="text/x-mathjax-config">
   MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]] } });
-</script>
-<script type="text/javascript"
+  </script>
+  <script type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
-</script>
+  </script>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 36.0px 'Hiragino Mincho ProN'; color: #0000e9; -webkit-text-stroke: #000000"><span class="s1"><a href="../index.html"><b>adhara_mathphysのページ</b></a></span></h1>
-<p class="p2"><span class="s2"><b>水素原子の数理物理のおこり</b></span></p>
-<p class="p11"><b>
-目次
-</b></p>
-<ol>
-  <li class="li5"><span class="s2"><b>
-  <a href="#anchor1">水素原子のエネルギー準位の発見と量子力学の創設</a>
-  </b></span></li>
-  <li class="li5"><span class="s2"><b>
-  <a href="#anchor2">エネルギーの偶然縮退と力学的対称性の発見</a>
-  </b></span></li>
-  <li class="li5"><span class="s2"><b>
-  <a href="#anchor3">因数分解解法と超対称性代数構造の発見</a>
-  </b></span></li>
-  <li class="li5"><span class="s2"><b>
-  <a href="#anchor4">スペクトル生成代数と力学的群の発見</a>
-  </b></span></li>
-  <li class="li5"><span class="s2"><b>
-  <a href="#anchor5">Kustaanheimo-Stiefel変換による正則化とHopf fibration</a>
-  </b></span></li>
-  <li class="li5"><span class="s2"><b>
-  <a href="#anchor6">経路積分</a>
-  </b></span></li>
-  <li class="li5"><span class="s2"><b>
-  <a href="#anchor7">参考文献</a>
-  </b></span></li>
-</ol>
-<!-- 空行 --> <br></br>
-<a id="anchor1"></a>
-<p class="p11"><b>
-1. 水素原子のエネルギー準位の発見と量子力学の創設
-</b></p>
-<p class="p10"><b>
-　水素原子と量子論の関わりはBalmer<a href="#Balmer1885">[Balmer1885]</a>の発見した水素原子の発光スペクトル線の間隔に関する法則に端を発する．その数年後にはBalmerの発見を受けてRydbergの公式が提唱され<a href="#Rydberg1889">[Rydberg1889]</a>，新たな発光スペクトルの存在が予想された．Rydbergの公式の妥当性は20世紀中のBalmer系列以外のスペクトル系列の発見<a href="#Lyman1906">[Lyman,Paschen,Brackett,Pfund,Humphreys]</a>により確かめられた．
-</b></p>
-<p class="p10"><b>
-　Rydbergの公式の意味は，20世紀の初頭に現れたBohr–Sommerfeldの量子化<a href="#Bohr1913a">[Bohr1913a,b,c,Sommerfeld1916]</a>に代表される前期量子論によって説明されるようになった．すなわち，水素原子において取り得るエネルギーが離散化され，
-$$
-E_n = - \frac{1}{2n^2}\frac{m_e}{\hbar^2}\left(\frac{Ze^2}{4\pi\epsilon_0} \right)^2
-$$
-となることが理解されたのである．離散化されたエネルギーをエネルギー準位といい，スペクトル輝線に相当する発光エネルギーはエネルギー準位差で与えられる．
-</b></p>
-<p class="p10"><b>
-　一方で，Rydbergの公式と前期量子論の出現により法則は見えてきたのだが，背後にある力学はまだわかっていなかった．
-また，電子の個数が複数となるHe原子のエネルギースペクトルや，水素原子におけるStark効果やZeeman効果によるスペクトル分裂（前者は電場，後者は磁場の印加）の理解において，前期量子論では不都合であることがわかってきていた<a href="#Bucher2008">[Bucher2008]</a>．
-力学を創設する仕事は量子力学を創設することになる物理学史上の巨人たちにより完成されることになる．
-</b></p>
-<p class="p10"><b>
-　前期量子論を発展させ，エネルギーを求める問題を固有値問題として定式化したのがSchrödinger<a href="#Schrödinger1926a">[Schrödinger1926a,b,d,e,f]</a>及びHeisenbergら<a href="#Heisenberg1925">[Heisenberg1925,Dirac1925,BJ1925,BHJ1926]</a>である．彼らの基礎方程式に従って量子論的粒子の振る舞いを記述する枠組みが量子力学であり，Schrödingerについては波動力学形式の量子力学，Heisenbergについては行列力学形式の量子力学，と呼ばれることがある．（Schrödingerによって両形式の量子力学が等価であることが示され<a href="#Schrödinger1926c">[Schrödinger1926c]</a><a href="#Casado2008">[Casado2008,Gosson2014]</a>，現在では敢えて区別することは少ない．）1926年のSchrödingerによる波動力学形式の量子力学の創設と同時にSchrödinger方程式の解としての水素原子の波動関数が初めて求められた<a href="#Schrödinger1926a">[Schrödinger1926a]</a>．行列力学形式の量子力学を用いた水素原子のスペクトルの解法についてはPauliが行っている<a href="#Pauli1926">[Pauli1926]</a>．
-</b></p>
-<!-- 空行 --> <br></br>
-<a id="anchor2"></a>
-<p class="p11"><b>
-2. エネルギーの偶然縮退と力学的対称性の発見
-</b></p>
-<p class="p10"><b>
-　非相対論的水素原子のSchrödinger方程式は
-$$
-\mathcal{H} \Psi =E \Psi
-$$
-で与えられる．ただし，
-$$
-\mathcal{H} = -\frac{\hbar^2 \nabla^2}{2m_e} +\frac{Ze^2}{4\pi \epsilon_0 r} 
-$$
-は非相対論的水素原子のHamiltonianである．
-</b></p>
-<p class="p10"><b>
-　Schrödinger方程式はHamiltonianのもつ対称性に伴ってエネルギーの縮退が起きる場合がある．縮退は対称性を表す群（Hamiltonianと可換な対称操作がなす群）の表現論によって理解可能である．例えば，球対称性を持つポテンシャル下ではSchrödinger方程式を球極座標（spherical polar coordinates）によって変数分離を行い，固有波動関数を球面調和関数(立体角 $\Omega=(\theta,\phi)$ を変数とする)と動径方向関数(動径変数 $r$ を変数とする)の積の形で表示できる．球面調和関数は角運動量量子数 $l$，磁気量子数 $m$，でラベリングすることが可能である，すなわち，$l$ は角運動量の二乗演算子（Lie代数 $\mathfrak{so}(3)$ のカシミール</a>元）の固有値で定まり，$m$ は角運動量の量子化軸方向成分（適当に定めて良いが $z$ 方向に定めることが多い．）の固有値で定まる．
-\begin{align}
- L^2 Y_{l,m} & = \hbar^2 l(l+1) Y_{l,m} \\\\[10pt]
- l_z Y_{l,m} &  = \hbar m Y_{l,m} 
-\end{align}
-</b></p>
-<p class="p10"><b>
-　一方，動径方向関数については $l$ ともう一つ必要な量子数（主量子数 $n$ と書かれる）でラベリング可能である．固有値であるエネルギーは動径方向波動関数で定まる，すなわち量子数の組 $(n,l)$ で定まる．
-</b></p>
-<p class="p10"><b>
-　合わせるとSchrödinger方程式は
-$$
-\mathcal{H}R_{n,l}Y_{l,m}=E_{n,l}R_{n,l}Y_{l,m} 
-$$
-のように解かれる．
-各量子数には取り得る値に制限があり(いずれも整数値)，
-$$
-l\ge 0, \ -l \le m \le l, \ n \ge l+1
-$$
-のようになっている．
-従ってエネルギーが $E_{n,l}$ となる状態の数(縮重度)は $2l+1$ である．（ $l$ が同じならば $E_{n,l}$ は $n$ が大きいほど大きい）
-</b></p>
-<p class="p10"><b>
-　水素原子も球対称性を持つので，上で述べた縮退が存在する．しかしながら水素原子では，エネルギーが主量子数 $n$ だけで定まってしまうという現象が生じていて，$l$ が異なっていても $n$ が同じであれば同じエネルギーとなる．このときSchrödinger方程式は，
-$$
-\mathcal{H}R_{n,l}Y_{l,m}=E_{n}R_{n,l}Y_{l,m} 
-$$ 
-のように解かれ，縮重度 $D_n$ は
-$$
-D_n =n^2
-$$
-となっている．これは球対称性に伴うエネルギー縮退を超えた縮退が起きていることを表す．Hamiltonianの持つ空間対称性からは予測できない縮退が生じているので，このような縮退は「偶然縮退」と呼ばれる．この「偶然縮退」を特徴づける対称性を明らかにする研究が行われることになる．
-</b></p>
-<p class="p10"><b>
-　実のところ，「偶然縮退」を特徴付ける対称性を明らかにするための数理物理的道具立ては，量子力学の創設以前より存在していた．すなわち，水素原子の問題の古典力学バージョンであるKepler問題における保存量(運動の第一積分)を求める問題に遡る．球対称ポテンシャル下では角運動量保存則に伴って軌道が平面内に束縛されることが知られているが，Kepler問題では引力ポテンシャルがCoulomb型となることにより，特別な状況が生じることがわかっている．すなわちKepler問題ではエネルギーが負となる束縛状態においては軌道が保存される．(Bertrandの定理)このような軌道が保存される系においては独立な運動の第一積分が運動の自由度-1(この場合は運動の自由度が6なので5)となっている．(1960年代になって(極大)超可積分系という概念でまとめられることになる)Kepler問題はエネルギーと角運動量三成分の他に独立な運動の第一積分（保存量）が一つあるということである．Kepler問題におけるこの独立した第一積分を含んでいるものがLaplace-Runge-Lenz(LRL)ベクトルである．LRLベクトルは角運動量ベクトルと直交し，近日点とポテンシャル中心を結ぶ方向を指している．
-</b></p>
-<p class="p10"><b>
-　LRLベクトルの発見史を簡単に記述する．LRLベクトルの最初の発見者はHermannであり，次にJohann Bernoulliによって良い形にまとめられたとされている．本ベクトルの筆頭に名前を残しているLaplaceは解析力学的な定式化を行ったとのことで，最初の発見者ではないとされる．その後HamiltonやGibbsやRungeが別の導出を行ったとのことである．Rungeの名前が残っているのは教科書として広く出版下からの陽である．Lenzについては量子論的取り扱いを行った（Hermite性を持つように再定義した）という貢献がある．これを後に述べるようにPauliが有効活用したので，量子力学版LRLベクトルをLenz-Pauliベクトルと呼ぶことがある．LRLベクトルのようなHamiltonianの空間的対称性から予測できない保存量に関連した対称性は力学的対称性と呼ばれる．LRLベクトルの存在，すなわち力学的対称性の存在が「偶然縮退」を説明することになる．
-</b></p>
-<p class="p10"><b>
-　LRLベクトルの役割については，下の記事を参照のこと．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/ケプラー問題と力学的対称性（その１）.pdf" target="_blank" rel="noopener">ケプラー問題と力学的対称性（その１）.pdf</a></p></span>
-      <p class="p12"><span class="s8"><b>
-      本記事では，Kepler問題における第一運動の積分，すなわち保存量について論じる．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/ケプラー問題と力学的対称性（その１）.pdf" target="_blank" rel="noopener"><img src="../pdf/ケプラー問題と力学的対称性（その１）.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
+  <div class="wrap topbar">
+    <a href="/">HOME</a> / <a href="/note.html">ノート一覧</a> / 水素原子の数理物理のおこり
   </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-</b></p>
-<p class="p10"><b>
-　まず，Pauliが角運動量ベクトルとLRLベクトル各成分，計六つのHermite演算子が成すLie代数を用いてHeisenberg形式で定式化された水素原子の量子力学の問題を解いた．適当な線形結合をすることにより上記Lie代数が独立な $\mathfrak{su} (2)$ 代数の和で表される(直和)ことを利用している．束縛状態全体からなるヒルベルト空間を考えた時に，上記Lie代数のユニタリ既約部分空間が，縮退した束縛状態からなる空間であることがわかったのである．因みにこの研究の発表は1926年でありSchrödingerによる水素原子の波動関数の発表と同年である．
-</b></p>
-<p class="p10"><b>
-　詳しくは下の記事を参照のこと．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/【図解】so(4)代数解法.pdf" target="_blank" rel="noopener">【図解】so(4)代数解法.pdf</a></p></span>
-      <p class="p12"><span class="s8"><b>
-      本記事では，$\mathfrak{so}(4)$ 代数を用いた水素様原子に対するエネルギースペクトル解法(Pauliの方法)の図解を行う．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/【図解】so(4)代数解法.pdf" target="_blank" rel="noopener"><img src="../pdf/【図解】so(4)代数解法.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-</b></p>
-<p class="p10"><b>
-　Pauliとは異なり，水素原子のSchrödingerを幾何学的に考察し，四次元空間の回転対称性 $SO(4)$ の存在を明らかにしたのがFockである．Fockは適当な変数変換により水素原子の波動関数を四次元空間中の超球面調和関数として表示できることが明らかにした．適当な変換とは，フーリエ変換による運動量表示の導入と立体射影(一点コンパクト化)による運動量空間中の変数変換である．
-</b></p>
-<p class="p10"><b>
-　詳しくは下の記事を参照のこと．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/【考察／解釈】Fockの解法.pdf" target="_blank" rel="noopener">【考察／解釈】Fockの解法.pdf</a></p></span>
-      <p class="p12"><span class="s8"><b>
-      本記事では，Fockの水素様原子に対するエネルギースペクトル解法(Pauliの方法)の図解を行う．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/【考察／解釈】Fockの解法.pdf" target="_blank" rel="noopener"><img src="../pdf/【考察／解釈】Fockの解法.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-<br></br>
-</b></p>
-<p class="p10"><b>
-　PauliとFockに続き，両者の解法の関係を明らかにしたのが，Bargmannである．Pauliの発見したLie代数が$\mathfrak{so}(4)$ Lie代数であり，四次元回転対称性の生成するを明らかにしたのである．Bargmannにより，LRLベクトルの幾何学的役割が明らかになったのである．Bargmannは放物座標による変数分離についても考察し，四次元の回転対称性が見えやすくなっていることを指摘した．
-</b></p>
-<p class="p10"><b>
-　詳しくは二つの記事を参照のこと．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/%e6%b0%b4%e7%b4%a0%e6%a7%98%e5%8e%9f%e5%ad%90%e3%82%b9%e3%83%9a%e3%82%af%e3%83%88%e3%83%ab%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8bBargmann%e3%81%ae%e8%ad%b0%e8%ab%96.pdf" target="_blank" rel="noopener">水素様原子スペクトルに関するBargmannの議論.pdf</a></span></p>
-      <p class="p12"><span class="s8"><b>
-      Pauliの解法ではLaplace-Runge-LenzベクトルというCoulombポテンシャル特有の保存量が角運動量ベクトルとともにso(4)代数を構成することを利用していた．
-      一方で，Fockの解法では方程式の変換により超球面上のラプラシアン（Laplace-Beltrami演算子）の固有値問題に帰着することを利用していた．
-      本記事では両者の解法の関係についてのBargmannの議論を紹介する．
-      すなわち，Fockの解法からLRLベクトルが導出できることを示す．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/%e6%b0%b4%e7%b4%a0%e6%a7%98%e5%8e%9f%e5%ad%90%e3%82%b9%e3%83%9a%e3%82%af%e3%83%88%e3%83%ab%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8bBargmann%e3%81%ae%e8%ad%b0%e8%ab%96.pdf" target="_blank" rel="noopener"><img src="../pdf/%e6%b0%b4%e7%b4%a0%e6%a7%98%e5%8e%9f%e5%ad%90%e3%82%b9%e3%83%9a%e3%82%af%e3%83%88%e3%83%ab%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8bBargmann%e3%81%ae%e8%ad%b0%e8%ab%96.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/%e6%b0%b4%e7%b4%a0%e6%a7%98%e5%8e%9f%e5%ad%90%e3%82%b9%e3%83%9a%e3%82%af%e3%83%88%e3%83%ab%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8bBargmann%e3%81%ae%e8%ad%b0%e8%ab%962.pdf" target="_blank" rel="noopener">水素様原子スペクトルに関するBargmannの議論2.pdf</a></span></p>
-      <p class="p12"><span class="s8"><b>
-      本記事では，Pauliの解法とFockの解法で出てくる解が一対一対応していることを示す．
-      この発想自体はBargmannによるものであるから，記事の題名として「Bargmannの議論」という言葉を用いている．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/%e6%b0%b4%e7%b4%a0%e6%a7%98%e5%8e%9f%e5%ad%90%e3%82%b9%e3%83%9a%e3%82%af%e3%83%88%e3%83%ab%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8bBargmann%e3%81%ae%e8%ad%b0%e8%ab%962.pdf" target="_blank" rel="noopener"><img src="../pdf/%e6%b0%b4%e7%b4%a0%e6%a7%98%e5%8e%9f%e5%ad%90%e3%82%b9%e3%83%9a%e3%82%af%e3%83%88%e3%83%ab%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8bBargmann%e3%81%ae%e8%ad%b0%e8%ab%962.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-<br></br>
-</b></p>
-<!-- 空行 --> <br></br>
-<a id="anchor3"></a>
-<p class="p11"><b>
-3. 因数分解解法と超対称性代数構造の発見
-</b></p>
-<p class="p10"><b>
-　調和振動子のSchrödinger方程式は因数分解(factorization)で解くことができることが知られている．(Dirac，Schrödinger)これにより，微分方程式をまともに取り扱う(特殊関数を導入するという意味)ことなく，代数的にエネルギーを求めることが可能になる．1951年にInfeld&amp;Hullによって二階の常微分方程式の因数分解解法が整理された．水素原子についても球極座標による変数分離の後に出てくる動径方向の二階微分方程式について因数分解解法が適用できる．この方法により異なる角運動量をもつ状態が縮退する理由が垣間みられる．
-</b></p>
-<p class="p10"><b>
-　詳しくは下の記事を参照のこと．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/【図解】因数分解解法.pdf" target="_blank" rel="noopener">【図解】因数分解解法.pdf</a></p></span>
-      <p class="p12"><span class="s8"><b>
-      本記事では，因数分解を用いた水素様原子に対するエネルギースペクトル解法の図解を行う．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/【図解】因数分解解法.pdf" target="_blank" rel="noopener"><img src="../pdf/【図解】因数分解解法.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-<br></br>
-</b></p>
-<p class="p10"><b>
-　因数分解</a>解法で出てくる代数構造は水素原子における何らかの数理構造を予感させることになる．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/水素原子における因数分解解法と超対称性量子力学.pdf" target="_blank" rel="noopener">水素原子における因数分解解法と超対称性量子力学.pdf</a></p></span>
-      <p class="p12"><span class="s8"><b>
-      本記事では，水素原子における因数分解解法の適用例に対して超対称性量子力学の観点を持ち込むことで，水素原子に潜む超対称性量子力学的側面を論じる．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/水素原子における因数分解解法と超対称性量子力学.pdf" target="_blank" rel="noopener"><img src="../pdf/水素原子における因数分解解法と超対称性量子力学.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-<br></br>
-</b></p>
-<!-- 空行 --> <br></br>
-<a id="anchor4"></a>
-<p class="p11"><b>
-4. スペクトル生成代数と力学的群の発見
-</b></p>
-<p class="p10"><b>
-　1940年代後半から1950年代前半にかけてノンコンパクトLie群の表現論の研究が進められていた．(Gelfand&amp;Naimark(1946)，Bargmann(1947)，Harish-Chandra(1952))特に数理物理学者であるBargmannが名前を連ねているが，主に相対論で出てくるローレンツ群を理解しようとする試みであったと考えられる．ノンコンパクトLie群の著しい特徴はそのユニタリ既約表現が無限次元となることである．ノンコンパクトLie群の表現論が水素原子に潜む数理構造を解析する上で役立つことになる．
-</b></p>
-<p class="p10"><b>
-　球極座標で変数分離したときに動径方向の二階の微分方程式が因数分解により解けることについては前節で触れたが，変数変換を行った後で別の代数を用いた解法があることが発見された．このとき表れる代数はLie代数であり，$\mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,R)\simeq \mathfrak{so}(2,1)\simeq \mathfrak{sp}(2,R)$ 代数であることが知られている．（同型関係が多数あり，いろいろなLie群の生成元となり得ることが知られている．ここでは $\mathfrak{su}(1,1)$ 代数と呼ぶことにする．）この解法によれば動径方向の解（束縛状態）は $\mathfrak{su}(1,1)$ 代数既約部分空間を成すことが分かる．因みに $\mathfrak{su}(1,1)$ 代数のユニタリ既約表現を特徴付ける指標は，BargmannにあやかりBargmann indexと呼ばれている．Bargmannは水素原子の対称性代数である $\mathfrak{so}(4)$ 代数とスペクトル生成代数である $\mathfrak{su}(1,1)$ 代数の両方について貢献がある，と言っても良いと思われる．
-</b></p>
-<p class="p10"><b>
-　スペクトル生成代数 $\mathfrak{su}(1,1)$ と力学的対称性 $\mathfrak{so}(4)$  代数は水素原子に備わっている全く別の代数構造である．例えば，力学的対称性を構成する演算子はHamiltonianと可換であるが，スペクトル生成代数を構成する演算子はそのような性質を持たない．それらが非可換であることは動径方向の解が同じエネルギーを持たないことから容易に分かる．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/【考察／解釈】su(1,1)代数解法.pdf" target="_blank" rel="noopener">【考察／解釈】su(1,1)代数解法.pdf</a></p></span>
-      <p class="p12"><span class="s8"><b>
-      本記事では，$\mathfrak{su}(1,1)$ 代数を用いた水素様原子に対するエネルギースペクトル解法の図解を行う．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/【考察／解釈】su(1,1)代数解法.pdf" target="_blank" rel="noopener"><img src="../pdf/【考察／解釈】su(1,1)代数解法.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-<br></br>
-</b></p>
-<p class="p10"><b>
-　スペクトル生成代数 $\mathfrak{su}(1,1)$ と力学的対称性 $\mathfrak{so}(4)$ 代数を含む代数構造を形成する方法は色々試みられた．その中で一番すっきりしていると考えられているのが $\mathfrak{so}(4,2)$ 代数構造あるいは ${SO}(4,2)$ 群構造である．（正確にはスペクトル代数自体は $\mathfrak{so}(4,2)$ を複素数化したものの部分代数として得られる．）$\mathfrak{so}(4,2)$ 代数を得る上で重要な概念はJordan-Schwingerのボソン化である．これはハイゼンベルグ代数を用いて $\mathfrak{su}(2)$ 代数の有限次元ユニタリ既約表現を記述する試みである．数学的には，$\mathfrak{su}(2)$ 代数 加群からハイゼンベルグ代数(二組のボソン生成消滅演算子を用いる)加群への加群準同型を構成することに相当する．このボソン演算子を用いると自然に $\mathfrak{so}(4,2)$ 代数を構成することが可能である．(四組のボソン生成消滅演算子を用いる)$\mathfrak{so}(4,2)$ 代数は部分代数として水素原子のエネルギー縮退を説明する $\mathfrak{so}(4)$ 代数と，Hermite化したスペクトル生成演算子を含んでいる．（ボソン生成演算子はスペクトル生成演算子に他ならない．四つの生成演算子を上手く組み合わせると先に導入した $\mathfrak{su}(1,1)$ 代数を構成することが可能である．）
-</b></p>
-<p class="p10"><b>
-　詳しくは下の記事を参照のこと．
-<br></br>
-<div class="blogCard">
-  <div class="blogCardCont">
-    <div class="blogCardTxt">
-      <p class="blogCardTitle"><span class="s3"><a href="../pdf/水素原子の波動関数とSO(4,2)群の代数構造.pdf" target="_blank" rel="noopener">水素原子の波動関数とSO(4,2)群の代数構造.pdf</a></p></span>
-      <p class="p12"><span class="s8"><b>
-      本記事ではボソン演算子を用いて $\mathfrak{so}(4,2)$ 代数の構築ができることを示す．水素原子の全束縛状態からなるヒルベルト空間全体が既約部分空間となるような表現をもつLie代数を構成することを意味する．
-      </b></span></p>
-    </div>
-    <div class="blogCardImg">
-      <div class="blogCardImg__wrap">
-        <a href="../pdf/水素原子の波動関数とSO(4,2)群の代数構造.pdf" target="_blank" rel="noopener"><img src="../pdf/水素原子の波動関数とSO(4,2)群の代数構造.pdf" alt="" width="100" height="100"></a>
-      </div>
-    </div>
-  </div>
-  <div class="blogCardFooter">
-    <a href="../index.html"><img src="../image/icon.png" alt="" width="20" height="22">https://adharam.github.io</a>
-  </div>
-</div>
-<br></br>
-</b></p>
-<p class="p10"><b>
-　上記の操作などで得られた代数に対応したLie群は力学的群（dynamical group）と呼ばれる．このような代数構造は対称性に伴う縮重度を説明できるだけではなく，異なるエネルギーをもつ波動関数同士を結びつける演算子を含んでいる点で有用である．数学的には全ての束縛状態が力学的群 $SO(4,2)$ の同一の既約ユニタリ表現に属することに相当している．例えば，Stark効果のような縮退の破れを伴う外場の影響を代数的に考えることができて便利である．
-</b></p>
-<!-- 空行 --> <br></br>
-<a id="anchor5"></a>
-<p class="p11"><b>
-5. Kustaanheimo-Stiefel変換による正則化とHopf fibration
-</b></p>
-<p class="p10"><b>
-　四組のボソン生成消滅演算子を用いて波動関数を表示できることから，水素原子と四次元調和振動子の波動関数は似た構造になっていることが示唆される．古典力学の文脈で，Kepler問題を四次元調和振動子の問題に(不可逆な)変換する方法がKustaanheimo&amp;Stiefelによって明らかにされた．このような変換はKustaanheimo-Stiefel (KS)変換と呼ばれるが量子力学の方でも導入された．別々の文脈で導入された四組のボソン生成消滅演算子の存在とKS変換に関係のあることがわかっている．すなわち，KS変換の裏には $\mathfrak{so}(4,2)$ 代数構造があるということである．このKS変換を用いて水素原子に潜むより興味深い量子力学的な概念（経路積分やコヒーレント状態）を研究することが可能になった．
-<!-- 空行 --> <br></br>
-<a id="anchor6"></a>
-<p class="p11"><b>
-6. 経路積分
-</b></p>
-<!-- 空行 --> <br></br>
-<a id="anchor7"></a>
-<p class="p11"><b>
-7. 参考文献
-</b></p>
-<p class="p4"><b>
-■Balmer系列，Rydbergの公式，Balmer系列以外の水素原子スペクトル系列の発見
-</b></p>
-<ul>
-<li class="li5"><b>
-<a id="Balmer1885"></a>[Balmer1885] Balmer, J. J. (1885) Notiz über die Spectrallinien des Wasserstoffs. Verhandlungen der Naturforschenden Gesellschaft in Basel, 7, 548-560.
-</b></li>
-<li class="li5"><b>
-<a id="Rydberg1889"></a>[Rydberg1889] <a href="https://babel.hathitrust.org/cgi/pt?id=mdp.39015039478303&view=1up&seq=253&skin=2021">Rydberg, J.R. (1889). Researches sur la constitution des spectres d'émission des éléments chimiques. Kongliga Svenska Vetenskaps-Akademiens Handlingar, 23(11), 1–177.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Lyman1906"></a>[Lyman1906] Lyman, T. (1906), The Spectrum of Hydrogen in the Region of Extremely Short Wave-Length. Memoirs of the American Academy of Arts and Sciences, New Series 13(3), 125–146.
-</b></li>
-<li class="li5"><b>
-<a id="Lyman1914"></a>[Lyman1914] Lyman, T. (1914), An Extension of the Spectrum in the Extreme Ultra-Violet. Nature, 93, 241.
-</b></li>
-<li class="li5"><b>
-<a id="Paschen1908"></a>[Paschen1908] Paschen, Friedrich (1908). Zur Kenntnis ultraroter Linienspektra. I. (Normalwellenlängen bis 27000 Å.-E.), Annalen der Physik, 332(13), 537–570.
-</b></li>
-<li class="li5"><b>
-<a id="Brackett1922"></a>[Brackett1922] Brackett, F. S. (1922). Visible and infra-red radiation of hydrogen. Astrophysical Journal, 56, 154.
-</b></li>
-<li class="li5"><b>
-<a id="Pfund1924"></a>[Pfund1924] Pfund, A. H. (1924). The emission of nitrogen and hydrogen in infrared. J. Opt. Soc. Am. 9 (3): 193–196.
-</b></li>
-<li class="li5"><b>
-<a id="Humphreys1953"></a>[Humphreys1953] Humphreys, C.J. (1953). Humphreys Series. J. Research Natl. Bur. Standards 50.
-</b></li>
-</ul>
-<p class="p4"><b>
-■前期量子論＝Bohr-Sommereldの量子化
-</b></p>
-<ul>
-<li class="li5"><b>
-<a id="Bohr1913a"></a>[Bohr1913a] Bohr, N. (1913). On the constitution of atoms and molecules: Binding of electrons by positive nuclei. Phil. Mag., 26, 1-25.
-</b></li>
-<li class="li5"><b>
-<a id="Bohr1913b"></a>[Bohr1913b] Bohr, N. (1913). On the constitution of atoms and molecules: Systems containing only a single nucleus. Phil. Mag., 26, 476-502.
-</b></li>
-<li class="li5"><b><a id="Bohr1913c"></a>[Bohr1913c] Bohr, N. (1913). On the constitution of atoms and molecules: Systems containing several nuclei. Phil. Mag., 26, 859-875.
-</b></li>
-<li class="li5"><b>
-<a id="Sommerfeld1916"></a>[Sommerfeld1916] <a href="https://doi.org/10.1002/andp.19163561702">Sommerfeld, A. (1916). Zur Quantentheorie der Spektrallinien. Annalen der Physik, 51, 1-94.</a>
-</b></li>
-</ul>
-<p class="p4"><b>
-■量子力学の創設に関わる論文
-</b></p>
-<ul>
-<li class="li5"><b>
-<a id="Schrödinger1926a"></a>[Schrödinger1926a] <a href="https://doi.org/10.1002/andp.19263840404">Schrödinger, E. (1926). Quantisierung als eigenwertproblem. Annalen der physik, 384(4), 361-376.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Schrödinger1926b"></a>[Schrödinger1926b] <a href="https://doi.org/10.1002/andp.19263840602">Schrödinger, E. (1926). Quantisierung als eigenwertproblem. Annalen der physik, 384(6), 489-527.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Schrödinger1926c"></a>[Schrödinger1926c] <a href="https://doi.org/10.1002/andp.19263840804">Schrödinger, E. (1926). Über das Verhältnis der Heisenberg-Born-Jordanschen Quantenmechanik zu der meinem. Annalen der physik, 384(8), 734-756.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Schrödinger1926d"></a>[Schrödinger1926d] <a href="https://doi.org/10.1002/andp.19263851302">Schrödinger, E. (1926). Quantisierung als eigenwertproblem. Annalen der physik, 385(13), 437-490.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Schrödinger1926e"></a>[Schrödinger1926e] <a href="https://doi.org/10.1002/andp.19263861802">Schrödinger, E. (1926). Quantisierung als eigenwertproblem. Annalen der physik, 386(18), 109-139.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Schrödinger1926f"></a>[Schrödinger1926f] <a href="https://doi.org/10.1103/PhysRev.28.1049">Schrödinger, E. (1926). An undulatory theory of the mechanics of atoms and molecules. Physical review, 28(6), 1049.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Heisenberg1925"></a>[Heisenberg1925] <a href="https://doi.org/10.1007/BF01328377">Heisenberg, W. (1925). Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen.. Zeitschrift für Physik 33, 879–893.</a>
-</b></li>
-<li class="li5"><b>
-<a id="BJ1925"></a>[BJ1925] <a href="https://doi.org/10.1007/BF01328531">Born, M., &amp; Jordan, P. (1925). Zur Quantenmechanik. Z. Physik 34, 858–888.</a>
-</b></li>
-<li class="li5"><b>
-<a id="BHJ1926"></a>[BHJ1926] <a href="https://doi.org/10.1007/BF01379806">Born, M., Heisenberg, W., &amp; Jordan, P. (1926). Zur Quantenmechanik. II. Zeitschrift für Physik, 35(8-9), 557-615.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Dirac1925"></a>[Dirac1925] <a href="http://rspa.royalsocietypublishing.org/content/royprsa/109/752/642.full.pdf">Dirac, P. A. (1925, December). The fundamental equations of quantum mechanics. In Proceedings of the Royal Society of London A: Mathematical, Physical and Engineering Sciences (Vol. 109, No. 752, pp. 642-653). The Royal Society.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Pauli1926"></a>[Pauli1926] <a href="http://link.springer.com/article/10.1007/BF01450175">Pauli Jr, W. (1926). Über das Wasserstoffspektrum vom Standpunkt der neuen Quantenmechanik. Zeitschrift für Physik, 36(5), 336-363.</a>
-</b></li>
-</ul>
 
-<p class="p4"><b>
-■量子力学の歴史について
-</b></p>
-<ul>
-<li class="li5"><b>
-<a id="Bucher2008"></a>[Bucher2008] <a href="https://arxiv.org/abs/0802.1366">Bucher, M. (2008). Rise and fall of the old quantum theory. arXiv preprint arXiv:0802.1366.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Casado2008"></a>[Casado2008] <a href="https://dialnet.unirioja.es/descarga/articulo/2735593.pdf">
-Casado, C. M. M. (2008). A brief history of the mathematical equivalence between the two quantum mechanics. Latin-American Journal of Physics Education, 2(2), 9.</a>
-</b></li>
-<li class="li5"><b>
-<a id="Gosson2014"></a>[Gosson2014] <a href="https://doi.org/10.1007/s10701-014-9831-z">
-de Gosson, M. A. (2014). Born–Jordan quantization and the equivalence of the Schrödinger and Heisenberg pictures. Foundations of physics, 44(10), 1096-1106.</a>
-</b></li>
-<li class="li5"><b>
-<a id="AV2017"></a>[AV2017] <a href="https://doi.org/10.1016/j.crhy.2017.10.007">Aspect, A., &amp; Villain, J. (2017). The birth of wave mechanics (1923–1926). Comptes Rendus Physique, 18(9-10), 583-585.</a>
-</b></li>
-</ul>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="eyebrow">Hydrogen Atom / Mathematical Physics</div>
+        <h1>水素原子の数理物理のおこり</h1>
+        <p class="lead">
+          水素原子は，量子力学の成立を支えた最も重要な模型の一つであると同時に，
+          偶然縮退，力学的対称性，因数分解解法，スペクトル生成代数，SO(4,2)，KS変換など，
+          現代数理物理へつながる多くの視点を引き出す出発点でもあります．
+          本記事では，その大きな流れを歴史と数理の両面から見通します．
+        </p>
 
-<!-- 空行 --> <br></br>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 18.0px 'Hiragino Mincho ProN'; color: #0000d3; -webkit-text-stroke: #000000"><span class="s15"><br>
-<a href="../index.html"><span class="s16"><b>HOME</b></span></a></span></h1>
-<p class="p1"><span class="s2">
-<b>Copyright © 2020 adhara_mathphys All Rights Reserved.</b>
-</span></p>
+        <div class="hero-meta">
+          <span class="chip">概観記事</span>
+          <span class="chip">歴史 + 数理構造</span>
+          <span class="chip">関連ノートへの入口</span>
+        </div>
 
+        <div class="summary-grid">
+          <div class="summary-card">
+            <h3>量子力学の成立</h3>
+            <p>Balmer・Rydberg・Bohr–Sommerfeld から Schrödinger と Heisenberg の量子力学へ．</p>
+          </div>
+          <div class="summary-card">
+            <h3>偶然縮退と SO(4)</h3>
+            <p>Runge–Lenz ベクトル，Pauli の代数解法，Fock の幾何学的解法，Bargmann の統合．</p>
+          </div>
+          <div class="summary-card">
+            <h3>因数分解と su(1,1)</h3>
+            <p>動径方程式の代数的解法から SUSY QM やスペクトル生成代数へ．</p>
+          </div>
+          <div class="summary-card">
+            <h3>SO(4,2) と KS変換</h3>
+            <p>束縛状態全体を一つの表現として捉える視点と，高次元幾何への接続．</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
+  <nav class="quicknav">
+    <div class="inner">
+      <a href="#toc">目次</a>
+      <a href="#sec1">量子力学の創設</a>
+      <a href="#sec2">偶然縮退と力学的対称性</a>
+      <a href="#sec3">因数分解とSUSY QM</a>
+      <a href="#sec4">スペクトル生成代数</a>
+      <a href="#sec5">KS変換とHopf</a>
+      <a href="#sec6">経路積分</a>
+      <a href="#sec7">参考文献</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="toc">
+      <div class="panel">
+        <div class="section-head">
+          <h2>目次</h2>
+        </div>
+        <ol class="toc-list">
+          <li><a href="#sec1">水素原子のエネルギー準位の発見と量子力学の創設</a></li>
+          <li><a href="#sec2">エネルギーの偶然縮退と力学的対称性の発見</a></li>
+          <li><a href="#sec3">因数分解解法と超対称性代数構造の発見</a></li>
+          <li><a href="#sec4">スペクトル生成代数と力学的群の発見</a></li>
+          <li><a href="#sec5">Kustaanheimo–Stiefel 変換による正則化と Hopf fibration</a></li>
+          <li><a href="#sec6">経路積分</a></li>
+          <li><a href="#sec7">参考文献</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="sec1">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">1</span>水素原子のエネルギー準位の発見と量子力学の創設</h2>
+        </div>
+
+        <p>
+          水素原子と量子論の関わりは，Balmer による水素発光スペクトルの法則の発見に始まり，
+          その後の Rydberg の公式，さらに Lyman・Paschen・Brackett・Pfund・Humphreys 系列の発見によって
+          一層明確になっていきました．スペクトル線の規則性は見えていたものの，
+          その背後にある力学はまだ十分には理解されていませんでした．
+        </p>
+
+        <p>
+          Bohr–Sommerfeld の前期量子論は，水素原子で取り得るエネルギーが離散化されることを説明し，
+          スペクトル線が準位差として理解できることを示しました．しかし He 原子や Stark 効果，Zeeman 効果などでは
+          前期量子論の限界も明らかになっていきます．
+        </p>
+
+        <p>
+          この局面を突破したのが，Schrödinger の波動力学と Heisenberg を中心とする行列力学でした．
+          水素原子はここでも中心的な役割を果たし，Schrödinger 方程式の最初期の成功例として，
+          また Pauli による新量子力学の代数的応用の舞台として現れます．
+        </p>
+
+        <div class="note-box">
+          この記事では，量子力学史そのものを網羅するのではなく，
+          <strong>「水素原子がどのように量子力学成立の試金石であり続けたか」</strong>
+          に焦点を絞っています．
+        </div>
+      </div>
+    </section>
+
+    <section id="sec2">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">2</span>エネルギーの偶然縮退と力学的対称性の発見</h2>
+        </div>
+
+        <p>
+          球対称ポテンシャルでは，角運動量に由来する縮退が生じ，
+          波動関数は球面調和関数と動径関数に分離されます．
+          ところが水素原子では，それを超えてエネルギーが主量子数 $n$ のみで決まり，
+          同じ $n$であれば異なる角運動量状態も同じエネルギーを持ちます．
+          これは空間対称性だけからは予測しにくい「偶然縮退」です．
+        </p>
+
+        <p>
+          この縮退の背後にあるのが，Kepler 問題にすでに現れていた Laplace–Runge–Lenz ベクトルです．
+          角運動量と LRL ベクトルは，水素原子の力学的対称性を記述する基本的な保存量となり，
+          Pauli はこれを新量子力学の言葉で用いてスペクトルを代数的に導きました．
+        </p>
+
+        <p>
+          一方で Fock は，運動量表示と立体射影を用いて水素原子を四次元超球面上の問題として捉え，
+          幾何学的に $SO(4)$の対称性を見抜きました．
+          さらに Bargmann は，Pauli の代数的解法と Fock の幾何学的解法の関係を明らかにし，
+          LRL ベクトルの幾何学的役割を鮮明にしました．
+        </p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/ケプラー問題と力学的対称性（その１）.pdf">ケプラー問題と力学的対称性（その１）</a>
+            <p>Kepler 問題における保存量，とくに LRL ベクトルの意味を古典力学から整理します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/【図解】so(4)代数解法.pdf">〖図解〗so(4)代数解法</a>
+            <p>Pauli の方法による水素様原子スペクトルの代数的解法を図解します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/【考察／解釈】Fockの解法.pdf">〖考察／解釈〗Fockの解法</a>
+            <p>Fock の運動量空間での解法と四次元回転対称性の見え方を解説します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素様原子スペクトルに関するBargmannの議論.pdf">水素様原子スペクトルに関する Bargmann の議論</a>
+            <p>Fock の解法から LRL ベクトルが導かれることを中心に，両者の関係を説明します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素様原子スペクトルに関するBargmannの議論2.pdf">水素様原子スペクトルに関する Bargmann の議論2</a>
+            <p>Pauli の解法と Fock の解法で現れる解の対応関係を詳しく見ます．</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec3">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">3</span>因数分解解法と超対称性代数構造の発見</h2>
+        </div>
+
+        <p>
+          調和振動子の Schrödinger 方程式が因数分解によって代数的に解けることはよく知られていますが，
+          水素原子でも，球座標分離後に現れる動径方程式に対して同様の発想が有効です．
+          1951年の Infeld–Hull による整理は，この二階常微分方程式の因数分解解法を見通しよくしました．
+        </p>
+
+        <p>
+          水素原子の場合，この方法は単なる計算技巧にとどまらず，
+          異なる角運動量状態の間にある構造や，後に SUSY QM と呼ばれる見方を予感させます．
+          すなわち，水素原子の動径問題の中に，超対称性量子力学的な側面を見出すことができます．
+        </p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/〖図解〗因数分解解法.pdf">〖図解〗因数分解解法</a>
+            <p>因数分解を用いた水素様原子のエネルギースペクトル解法を図解します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素原子における因数分解解法と超対称性量子力学.pdf">水素原子における因数分解解法と超対称性量子力学</a>
+            <p>因数分解解法と SUSY QM を結び付けて，水素原子に潜む超対称的側面を論じます．</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sec4">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">4</span>スペクトル生成代数と力学的群の発見</h2>
+        </div>
+
+        <p>
+          因数分解解法とは別に，変数変換のあとで
+          $\mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,\mathbf{R})\simeq \mathfrak{so}(2,1)$
+          という Lie 代数を用いる解法が現れます．
+          この観点では，動径方向の束縛状態が $\mathfrak{su}(1,1)$ の既約表現として整理されます．
+        </p>
+
+        <p>
+          ここで重要なのは，$\mathfrak{su}(1,1)$ は
+          $\mathfrak{so}(4)$ とは別種の構造であり，
+          力学的対称性そのものではなく，異なるエネルギー準位を結び付ける
+          「スペクトル生成代数」として働くことです．
+        </p>
+
+        <p>
+          さらにこれらを一つのより大きな枠組みへ収める試みとして，
+          $\mathfrak{so}(4,2)$ あるいは $SO(4,2)$ が現れます．
+          ボソン演算子を用いる Jordan–Schwinger 型の構成を通して，
+          水素原子の束縛状態全体を一つの既約表現として捉える視点が得られます．
+        </p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/〖考察／解釈〗su(1,1)代数解法.pdf">〖考察／解釈〗su(1,1)代数解法</a>
+            <p>\(\mathfrak{su}(1,1)\) を用いた水素様原子の解法とその意味を整理します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素原子の波動関数とSO(4,2)群の代数構造.pdf">水素原子の波動関数と SO(4,2) 群の代数構造</a>
+            <p>ボソン演算子を用いて \(\mathfrak{so}(4,2)\) を構成し，束縛状態全体を統一的に捉えます．</p>
+          </div>
+        </div>
+
+        <div class="note-box">
+          力学的対称性 $SO(4)$ は「同じエネルギー準位の中の構造」を説明し，
+          スペクトル生成代数や力学的群 $SO(4,2)$ は「異なる準位どうしの関係」まで視野に入れます．
+        </div>
+      </div>
+    </section>
+
+    <section id="sec5">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">5</span>Kustaanheimo–Stiefel変換による正則化と Hopf fibration</h2>
+        </div>
+
+        <p>
+          四組のボソン生成消滅演算子による表示は，水素原子と四次元調和振動子のあいだに
+          深い類似構造があることを示唆します．古典力学では，Kepler 問題を
+          四次元調和振動子へと写す不可逆変換として Kustaanheimo–Stiefel 変換が導入されました．
+        </p>
+
+        <p>
+          この KS 変換は量子力学にも持ち込まれ，水素原子の解析を別の座標系・別の自由度のもとで
+          見通しよくする道具となります．さらに，その背後には
+          $\mathfrak{so}(4,2)$の構造や Hopf fibration 的な幾何学が潜んでいます．
+        </p>
+
+        <div class="note-box">
+          この節は，今後 <strong>KS変換・Hopf fibration・共形的見方</strong> の入口としてさらに拡充できます．
+          特設企画や別ページとつなぐ節としても機能しやすい箇所です．
+        </div>
+      </div>
+    </section>
+
+    <section id="sec6">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">6</span>経路積分</h2>
+        </div>
+
+        <p>
+          経路積分は，水素原子と KS 変換の関係をより深く掘り下げるうえで重要な視点です．
+          とくに，正則化変換や高次元調和振動子との対応を通じて，
+          水素原子の解析を別形式で見直すことができます．
+        </p>
+
+        <div class="note-box">
+          この節は準備中です．現段階では見出しを残し，
+          将来的に <strong>KS変換 → 経路積分 → コヒーレント状態</strong> という流れで補強する想定です．
+        </div>
+      </div>
+    </section>
+
+    <section id="sec7">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">7</span>参考文献</h2>
+        </div>
+
+        <p class="small">
+          元ページの参考文献群を，読みやすさのために主要なまとまりごとに再配置した版です．
+          厳密な完全版は必要に応じてさらに拡張してください．
+        </p>
+
+        <div class="ref-grid">
+          <div class="ref-card">
+            <h3>Balmer系列・Rydberg公式・系列の発見</h3>
+            <ul>
+              <li>Balmer (1885)</li>
+              <li>Rydberg (1889)</li>
+              <li>Lyman (1906, 1914)</li>
+              <li>Paschen (1908)</li>
+              <li>Brackett (1922)</li>
+              <li>Pfund (1924)</li>
+              <li>Humphreys (1953)</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>前期量子論</h3>
+            <ul>
+              <li>Bohr (1913a, 1913b, 1913c)</li>
+              <li>Sommerfeld (1916)</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>量子力学の創設</h3>
+            <ul>
+              <li>Schrödinger (1926a–f)</li>
+              <li>Heisenberg (1925)</li>
+              <li>Born–Jordan (1925)</li>
+              <li>Born–Heisenberg–Jordan (1926)</li>
+              <li>Dirac (1925)</li>
+              <li>Pauli (1926)</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>歴史・解説</h3>
+            <ul>
+              <li>Bucher (2008)</li>
+              <li>Casado (2008)</li>
+              <li>de Gosson (2014)</li>
+              <li>Aspect &amp; Villain (2017)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-card">
+      <p>
+        本ページは，水素原子をめぐる数理物理の流れを見通すための案内記事です．
+        詳細な計算や個別テーマについては，各関連ノートを参照してください．
+      </p>
+      <p>
+        <a href="/">HOME</a> /
+        <a href="/note.html">ノート一覧</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
-
-
-
-
-
-
