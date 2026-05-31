@@ -707,12 +707,11 @@
           <h2><span class="section-no">6</span>経路積分</h2>
         </div>
 
-        <p>
-          経路積分は，水素原子と Kustaanheimo–Stiefel 変換の関係をより深く掘り下げるうえで重要な視点です．ただし，水素原子の場合は，時間発展核をそのまま評価するよりも，まずエネルギー表示の Coulomb Green's function を導くことを目標にするのが自然です．グリーン関数の極は束縛状態のエネルギー準位を与え，その留数から波動関数を取り出すことができます．</p>
+        <p>水水素原子を経路積分によって扱うことは，経路積分法の射程を考えるうえで重要な試金石でした．経路積分は，長らく自由粒子や調和振動子など，厳密に実行できる例がごく限られていました．そのため，Coulomb ポテンシャルをもつ水素原子に対して経路積分を実際に計算することは，単なる一つの可解例の追加ではなく，経路積分法がどこまで複雑な可解系を扱えるかを示す問題でもありました．</p>
 
-        <p>
-          この意味で，Schwinger による Coulomb Green's function の表示や，Hostler–Pratt，Hostler による閉じた形のグリーン関数は，経路積分から再導出すべき標準解答として位置づけられます．すなわち，経路積分の節では「水素原子を経路積分で書く」こと自体ではなく，既知の Coulomb Green's function を経路積分からどのように実際に計算するかを主題にします．</p>
+        <p>ただし，水素原子の場合，時間発展核をそのまま評価するよりも，まずエネルギー表示の Coulomb Green's function を導くことを目標にするのが自然です．グリーン関数の極は束縛状態のエネルギー準位を与え，その留数から波動関数を取り出すことができます．この意味で，Schwinger による Coulomb Green's function の表示や，Hostler–Pratt，Hostler による閉じた形のグリーン関数は，経路積分から再導出すべき標準解答として位置づけられます．</p>
 
+        <p>後で見るように，Kustaanheimo–Stiefel 変換はこの問題の解決に重要な役割を果たします．水素原子の Coulomb 問題を，より扱いやすい高次元調和振動子型の問題へ結びつけることで，経路積分を厳密に実行する道筋が開かれます．そしてこの成功は，水素原子そのものにとどまらず，経路積分で扱える可解系の範囲を広げる契機にもなりました．したがって本節では，「水素原子を経路積分で書く」こと自体ではなく，既知の Coulomb Green's function を経路積分からどのように実際に計算するかを主題にします．</p>
         <h3>Duru–Kleinert 変換</h3>
         <p>
           Coulomb ポテンシャルは原点で特異であり，通常の時間分割のままでは経路積分を直接評価しにくい模型です．Duru–Kleinert の方法の核心は，時間変数を新しい媒介変数へ再パラメータ化する
@@ -720,7 +719,7 @@
 
         <h3>Ho–Inomata の exact path integral treatment</h3>
         <p>
-          Ho–Inomata は，経路の rescaling と Kustaanheimo–Stiefel 変換を用いて，水素原子の Lagrangian path integral を exact に扱いました．この定式化では，三次元 Coulomb 問題が四次元調和振動子の経路積分へ結びつくため，前節の KS 変換の幾何学的意味と自然につながります．得られた Green's function からスペクトルと規格化波動関数を導ける点で，Schwinger–Hostler 型の結果を経路積分から再構成する道筋として非常に見通しがよいものです．</p>
+          Duru–Kleinert は Hamilton 形式の path integral に対して上記の変換をしたが，Coulomb Green's functionの計算までは至らなかった．Ho–Inomata はLagrange 形式の path integral に対して Duru–Kleinert と同様の変換を行うことで，Coulomb Green's functionの計算まで実施した．この定式化では，三次元 Coulomb 問題が四次元調和振動子の経路積分へ結びつくため，前節の KS 変換の幾何学的意味と自然につながります．得られた Green's function からスペクトルと規格化波動関数を導ける点で，Schwinger–Hostler 型の結果を経路積分から再構成する道筋として非常に見通しがよいものです．</p>
 
         <h3>Grosche–Steiner 的な位置づけ</h3>
         <p>
@@ -791,6 +790,7 @@
         <p>
           したがって，水素原子の一般化コヒーレント状態は，単一の完成した定義というより，目的に応じて複数の定義が併存する領域と見るのが自然です．調和振動子のような一意的な標準像を期待するよりも，古典軌道への局在，群論的自然性，時間安定性，過完備性，経路積分への応用という複数の条件のどれを優先するかを明示することが重要です．</p>
 
+        <!--
         <h3>経路積分との接続：三つの読み方</h3>
         <p>
           第一に，コヒーレント状態は恒等分解を通じて経路積分を構成する道具です．したがって水素原子に適切な一般化コヒーレント状態が得られれば，座標表示ではなく，群軌道や作用角変数の空間上で Coulomb 問題の経路積分を書くことができます．これは，通常の $x$ 表示の経路積分とは異なる「水素原子に適した位相空間表示」を探す問題です．</p>
@@ -800,7 +800,7 @@
 
         <p>
           第三に，$SU(1,1)\simeq SO(2,1)$ の Barut–Girardello 型や Perelomov 型コヒーレント状態を用いると，Coulomb 問題の動径方向，あるいは Coulomb–Sturmian 基底を，群論的な経路積分として扱う見方が得られます．これは第4節の $\mathfrak{su}(1,1)$ スペクトル生成代数と第6節の経路積分を結ぶ接点です．したがって，水素原子の一般化コヒーレント状態は，経路積分の「補足話題」ではなく，<strong>どの表現空間・どの時間・どの古典極限を使って Coulomb 問題を可視化するか</strong>という問題として理解できます．</p>
-
+        -->
         <div class="note-box">
           この節の要点は，<strong>水素原子の一般化コヒーレント状態は，調和振動子のコヒーレント状態を単純に移植したものではなく，$SO(4,2)$，$SU(1,1)$，KS 変換，作用角変数，恒等分解，古典 Kepler 軌道への局在という複数の要請の交差点にある</strong>ということです．現時点では，目的に応じた複数の構成が併存している状況です．</div>
       </div>
@@ -863,9 +863,11 @@
               <li>[Fock_1935] Fock, V., “Zur Theorie des Wasserstoffatoms,” <em>Z. Phys.</em> <strong>98</strong>, 145–154 (1935).</li>
               <li>[Bargmann_1936] Bargmann, V., “Zur Theorie des Wasserstoffatoms: Bemerkungen zur gleichnamigen Arbeit von V. Fock,” <em>Z. Phys.</em> <strong>99</strong>, 576–582 (1936).</li>
               <li>[Jauch–Hill_1940] Jauch, J. M. and Hill, E. L., “On the Problem of Degeneracy in Quantum Mechanics,” <em>Phys. Rev.</em> <strong>57</strong>, 641 (1940).</li>              
+              <!--
               <li>[Fradkin_1967] Fradkin, D. M., “Existence of the Dynamic Symmetries \(O_4\) and \(SU_3\) for All Classical Central Potential Problems,” <em>Prog. Theor. Phys.</em> <strong>37</strong>, 798–812 (1967).</li>
               <li>[Bacry–Ruegg–Souriau_1966] H. Bacry, H. Ruegg, and J.-M. Souriau, “Dynamical groups and spherical potentials in classical mechanics,” <i>Communications in Mathematical Physics</i> <b>3</b>, 323–333 (1966).</li>
               <li>[Mukunda_1967] N. Mukunda, “Dynamical Symmetries and Classical Mechanics,” <i>Physical Review</i> <b>155</b>, 1383–1386 (1967).</li>
+              -->
               <li>[池田_1970] 池田峰夫，『力学系の対称性』，日本物理学会誌 第25巻 第1号 p.9-13 (1970).</li>
             </ul>
           </div>
