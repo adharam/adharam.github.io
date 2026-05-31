@@ -408,17 +408,27 @@
           <h2><span class="section-no">1</span>水素原子のエネルギー準位の発見と量子力学の創設</h2>
         </div>
 
-        <p>
-          水素原子と量子論の関わりは，Balmer による水素発光スペクトルの法則の発見に始まり，その後の Rydberg の公式，さらに Lyman・Paschen・Brackett・Pfund・Humphreys 系列の発見によって一層明確になっていきました．スペクトル線の規則性は見えていたものの，その背後にある力学はまだ十分には理解されていませんでした．</p>
+        <p>水素原子が量子論の中心問題になった出発点は，理論ではなく分光学でした．Balmer は可視光領域の水素発光線に簡潔な数式的規則性があることを見いだし <a href="#ref-Balmer_1885">[Balmer_1885]</a>，Rydberg はそれをより一般的なスペクトル公式へ拡張しました <a href="#ref-Rydberg_1889">[Rydberg_1889]</a>．この公式は，水素原子のスペクトル線が単なる経験的な線の集まりではなく，整数で番号づけられる「項」の差として整理できることを示していました．現在の記法では，水素スペクトル系列はおおよそ</p>
 
-        <p>
-          Bohr–Sommerfeld の前期量子論は，水素原子で取り得るエネルギーが離散化されることを説明し，スペクトル線が準位差として理解できることを示しました．しかし He 原子や Stark 効果，Zeeman 効果などでは前期量子論の限界も明らかになっていきます．</p>
+        <p>$$\frac{1}{\lambda}=R_{\mathrm H}\left(\frac{1}{m^2}-\frac{1}{n^2}\right),\qquad n>m$$</p>
 
-        <p>
-          この局面を突破したのが，Schrödinger の波動力学と Heisenberg を中心とする行列力学でした．水素原子はここでも中心的な役割を果たし，Schrödinger 方程式の最初期の成功例として，また Pauli による新量子力学の代数的応用の舞台として現れます．</p>
+        <p>と書かれます．Balmer 系列は $m=2$ に対応しますが，その後，紫外領域の Lyman 系列，赤外領域の Paschen・Brackett・Pfund・Humphreys 系列が発見され，Rydberg 型の規則性が水素原子全体のスペクトル構造を貫くことが明らかになりました <a href="#ref-Lyman_1906">[Lyman_1906]</a> <a href="#ref-Lyman_1914">[Lyman_1914]</a> <a href="#ref-Paschen_1908">[Paschen_1908]</a> <a href="#ref-Brackett_1922">[Brackett_1922]</a> <a href="#ref-Pfund_1924">[Pfund_1924]</a> <a href="#ref-Humphreys_1953">[Humphreys_1953]</a>．</p>
 
-        <div class="note-box">
-          この記事では，量子力学史そのものを網羅するのではなく，<strong>「水素原子がどのように量子力学成立の試金石であり続けたか」</strong>に焦点を絞っています．</div>
+        <p>この経験則に最初の力学的解釈を与えたのが Bohr の原子模型でした．Bohr は，電子の軌道運動に量子条件を課すことで，水素原子のエネルギーが離散的な値だけを取り，発光・吸収スペクトルが準位差として生じることを示しました <a href="#ref-Bohr_1913a">[Bohr_1913a]</a> <a href="#ref-Bohr_1913b">[Bohr_1913b]</a> <a href="#ref-Bohr_1913c">[Bohr_1913c]</a>．Sommerfeld は作用変数の量子化を用いて楕円軌道や相対論的補正を取り入れ，前期量子論を精密化しました <a href="#ref-Sommerfeld_1916">[Sommerfeld_1916]</a>．この枠組みでは，水素様原子の束縛状態エネルギーは</p>
+
+        <p>$$E_n=-\frac{\mu}{2\hbar^2}\left(\frac{Z e^2}{4\pi\varepsilon_0}\right)^2\frac{1}{n^2}$$</p>
+
+        <p>という形で表されます．ここで $\mu$ は換算質量であり，核を無限に重いとみなす近似では $\mu\simeq m_e$ です．スペクトル線の振動数は $h\nu=E_n-E_m$ によって与えられるため，Rydberg 公式の整数構造は，エネルギー準位の離散化として理解されるようになりました．</p>
+
+        <p>しかし，Bohr–Sommerfeld 理論は水素原子のエネルギー準位を驚くほどうまく説明した一方で，それはまだ完全な量子力学ではありませんでした．スペクトル線の強度や選択則，多電子原子，異常 Zeeman 効果，摂動を受けた原子の一般的な扱いなどでは，軌道という古典的描像に量子条件を重ねる方法の限界が現れました．つまり，Rydberg 公式と前期量子論によって「準位」は見えてきたものの，その準位を生む Hilbert 空間，演算子，波動関数，確率解釈の枠組みはまだ成立していなかったのです．</p>
+
+        <p>1925 年から 1926 年にかけて，この状況は急速に変わります．Heisenberg は，電子軌道そのものではなく観測可能な遷移量を基本に置く行列力学を提案し <a href="#ref-Heisenberg_1925">[Heisenberg_1925]</a>，Born と Jordan，さらに Born–Heisenberg–Jordan は，非可換な行列演算として新しい力学を整備しました <a href="#ref-BornJordan_1925">[BornJordan_1925]</a> <a href="#ref-BornHeisenbergJordan_1926">[BornHeisenbergJordan_1926]</a>．Dirac も Poisson 括弧と交換子の対応を明確化し，量子力学の基本方程式を定式化しました <a href="#ref-Dirac_1925">[Dirac_1925]</a>．</p>
+
+        <p>水素原子は，この新しい力学の試金石でもありました．Pauli は Schrödinger 方程式の解を待たずに，角運動量と Laplace–Runge–Lenz ベクトルに対応する保存量の代数を用いて，行列力学の立場から水素スペクトルを導きました <a href="#ref-Pauli_1926">[Pauli_1926]</a>．Dirac も 1926 年に “Quantum Mechanics and a Preliminary Investigation of the Hydrogen Atom” を発表し，q-number 力学による水素原子の予備的解析を行いました <a href="#ref-Dirac_1926">[Dirac_1926]</a>．この Dirac の仕事は，通常の三次元水素原子の完全解というより，軌道面内の二次元的模型を足場にした初期の試みとして位置づけると見通しがよいと思われます．</p>
+
+        <p>一方，Schrödinger は波動力学を提案し，固有値問題として水素原子のスペクトルを導きました <a href="#ref-Schrodinger_1926a">[Schrödinger_1926a]</a>．その後の一連の論文で波動力学の構造，摂動論，時間依存形式を整え <a href="#ref-Schrodinger_1926b">[Schrödinger_1926b]</a> <a href="#ref-Schrodinger_1926d">[Schrödinger_1926d]</a> <a href="#ref-Schrodinger_1926e">[Schrödinger_1926e]</a>，さらに Heisenberg–Born–Jordan の行列力学と自らの波動力学が等価であることを示しました <a href="#ref-Schrodinger_1926c">[Schrödinger_1926c]</a>．英語圏へは Physical Review の論文によって波動力学が広く紹介されます <a href="#ref-Schrodinger_1926f">[Schrödinger_1926f]</a>．こうして水素原子は，経験的スペクトル公式，前期量子論，新量子力学の三つを結びつける中心的な舞台となりました．</p>
+
+        <div class="note-box">第1節の要点は，<strong>水素原子スペクトルの経験法則が，Bohr–Sommerfeld の準位概念を経て，Schrödinger の固有値問題と Heisenberg–Born–Jordan–Dirac の演算子力学へ移行した</strong>という流れにあります．ただし，エネルギー準位の導出だけでは水素原子の数理は終わりません．なぜ同じ主量子数 $n$ に大きな縮退が生じるのか，その背後にどのような隠れた対称性があるのか，という問題が次節の主題になります．</div>
       </div>
     </section>
 
@@ -813,7 +823,40 @@
         </div>
         <div class="ref-grid">
           <div class="ref-card">
-          
+            <h3>スペクトル系列と前期量子論</h3>
+            <ul>
+              <li id="ref-Balmer_1885">[Balmer_1885] Balmer, J. J., “Notiz über die Spectrallinien des Wasserstoffs,” <em>Verhandlungen der Naturforschenden Gesellschaft in Basel</em> <strong>7</strong>, 548–560 (1885).</li>
+              <li id="ref-Rydberg_1889">[Rydberg_1889] Rydberg, J. R., “Recherches sur la constitution des spectres d'émission des éléments chimiques,” <em>Kongliga Svenska Vetenskaps-Akademiens Handlingar</em> <strong>23</strong>(11), 1–177 (1889).</li>
+              <li id="ref-Lyman_1906">[Lyman_1906] Lyman, T., “The Spectrum of Hydrogen in the Region of Extremely Short Wave-Length,” <em>Memoirs of the American Academy of Arts and Sciences</em>, New Series <strong>13</strong>(3), 125–146 (1906).</li>
+              <li id="ref-Lyman_1914">[Lyman_1914] Lyman, T., “An Extension of the Spectrum in the Extreme Ultra-Violet,” <em>Nature</em> <strong>93</strong>, 241 (1914).</li>
+              <li id="ref-Paschen_1908">[Paschen_1908] Paschen, F., “Zur Kenntnis ultraroter Linienspektra. I. Normalwellenlängen bis 27000 Å.-E.,” <em>Annalen der Physik</em> <strong>332</strong>(13), 537–570 (1908).</li>
+              <li id="ref-Brackett_1922">[Brackett_1922] Brackett, F. S., “Visible and Infra-Red Radiation of Hydrogen,” <em>Astrophysical Journal</em> <strong>56</strong>, 154 (1922).</li>
+              <li id="ref-Pfund_1924">[Pfund_1924] Pfund, A. H., “The Emission of Nitrogen and Hydrogen in Infrared,” <em>Journal of the Optical Society of America</em> <strong>9</strong>(3), 193–196 (1924).</li>
+              <li id="ref-Humphreys_1953">[Humphreys_1953] Humphreys, C. J., “The Sixth Series in the Spectrum of Atomic Hydrogen,” <em>Journal of Research of the National Bureau of Standards</em> <strong>50</strong>, 1–4 (1953).</li>
+              <li id="ref-Bohr_1913a">[Bohr_1913a] Bohr, N., “On the Constitution of Atoms and Molecules. Part I. Binding of Electrons by Positive Nuclei,” <em>Philosophical Magazine</em> <strong>26</strong>, 1–25 (1913).</li>
+              <li id="ref-Bohr_1913b">[Bohr_1913b] Bohr, N., “On the Constitution of Atoms and Molecules. Part II. Systems Containing Only a Single Nucleus,” <em>Philosophical Magazine</em> <strong>26</strong>, 476–502 (1913).</li>
+              <li id="ref-Bohr_1913c">[Bohr_1913c] Bohr, N., “On the Constitution of Atoms and Molecules. Part III. Systems Containing Several Nuclei,” <em>Philosophical Magazine</em> <strong>26</strong>, 857–875 (1913).</li>
+              <li id="ref-Sommerfeld_1916">[Sommerfeld_1916] Sommerfeld, A., “Zur Quantentheorie der Spektrallinien,” <em>Annalen der Physik</em> <strong>356</strong>(17), 1–94 (1916).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>量子力学の創設と水素原子</h3>
+            <ul>
+              <li id="ref-Heisenberg_1925">[Heisenberg_1925] Heisenberg, W., “Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen,” <em>Zeitschrift für Physik</em> <strong>33</strong>, 879–893 (1925).</li>
+              <li id="ref-BornJordan_1925">[BornJordan_1925] Born, M. and Jordan, P., “Zur Quantenmechanik,” <em>Zeitschrift für Physik</em> <strong>34</strong>, 858–888 (1925).</li>
+              <li id="ref-BornHeisenbergJordan_1926">[BornHeisenbergJordan_1926] Born, M., Heisenberg, W. and Jordan, P., “Zur Quantenmechanik. II,” <em>Zeitschrift für Physik</em> <strong>35</strong>, 557–615 (1926).</li>
+              <li id="ref-Dirac_1925">[Dirac_1925] Dirac, P. A. M., “The Fundamental Equations of Quantum Mechanics,” <em>Proceedings of the Royal Society of London A</em> <strong>109</strong>(752), 642–653 (1925).</li>
+              <li id="ref-Dirac_1926">[Dirac_1926] Dirac, P. A. M., “Quantum Mechanics and a Preliminary Investigation of the Hydrogen Atom,” <em>Proceedings of the Royal Society of London A</em> <strong>110</strong>(755), 561–579 (1926).</li>
+              <li id="ref-Pauli_1926">[Pauli_1926] Pauli, W., “Über das Wasserstoffspektrum vom Standpunkt der neuen Quantenmechanik,” <em>Zeitschrift für Physik</em> <strong>36</strong>, 336–363 (1926).</li>
+              <li id="ref-Schrodinger_1926a">[Schrödinger_1926a] Schrödinger, E., “Quantisierung als Eigenwertproblem,” <em>Annalen der Physik</em> <strong>384</strong>(4), 361–376 (1926).</li>
+              <li id="ref-Schrodinger_1926b">[Schrödinger_1926b] Schrödinger, E., “Quantisierung als Eigenwertproblem. Zweite Mitteilung,” <em>Annalen der Physik</em> <strong>384</strong>(6), 489–527 (1926).</li>
+              <li id="ref-Schrodinger_1926c">[Schrödinger_1926c] Schrödinger, E., “Über das Verhältnis der Heisenberg-Born-Jordanschen Quantenmechanik zu der meinen,” <em>Annalen der Physik</em> <strong>384</strong>(8), 734–756 (1926).</li>
+              <li id="ref-Schrodinger_1926d">[Schrödinger_1926d] Schrödinger, E., “Quantisierung als Eigenwertproblem. Dritte Mitteilung: Störungstheorie, mit Anwendung auf den Starkeffekt der Balmerlinien,” <em>Annalen der Physik</em> <strong>385</strong>(13), 437–490 (1926).</li>
+              <li id="ref-Schrodinger_1926e">[Schrödinger_1926e] Schrödinger, E., “Quantisierung als Eigenwertproblem. Vierte Mitteilung,” <em>Annalen der Physik</em> <strong>386</strong>(18), 109–139 (1926).</li>
+              <li id="ref-Schrodinger_1926f">[Schrödinger_1926f] Schrödinger, E., “An Undulatory Theory of the Mechanics of Atoms and Molecules,” <em>Physical Review</em> <strong>28</strong>(6), 1049–1070 (1926).</li>
+            </ul>
+          </div>
 
           <div class="ref-card">
             <h3>偶然縮退・LRLベクトル・SO(4)力学的対称性</h3>
@@ -835,7 +878,7 @@
           <div class="ref-card">
             <h3>超可積分系・多重分離性</h3>
             <ul>
-              <li>[Schrödinger_1926a] E. Schrödinger, “Quantisierung als Eigenwertproblem. Dritte Mitteilung: Störungstheorie, mit Anwendung auf den Starkeffekt der Balmerlinien,” <i>Annalen der Physik</i> <b>80</b>, 437–490 (1926).</li>
+              <li>[Schrödinger_1926d] Schrödinger, E., “Quantisierung als Eigenwertproblem. Dritte Mitteilung: Störungstheorie, mit Anwendung auf den Starkeffekt der Balmerlinien,” <em>Annalen der Physik</em> <strong>385</strong>(13), 437–490 (1926).</li>
               <li>[Epstein_1926] P. S. Epstein, “The Stark Effect from the Point of View of Schroedinger’s Quantum Theory,” <i>Physical Review</i> <b>28</b>, 695–710 (1926).</li>
               <li>[Waller_1926] I. Waller, “Der Starkeffekt zweiter Ordnung bei Wasserstoff und die Rydbergkorrektion der Spektra von He und Li<sup>+</sup>,” <i>Zeitschrift für Physik</i> <b>38</b>, 635–646 (1926).</li>
               <li>[Friš–Mandrosov–Smorodinsky–Uhlíř–Winternitz_1965] Friš, J., Mandrosov, V., Smorodinsky, Ya. A., Uhlíř, M. and Winternitz, P., “On higher symmetries in quantum mechanics,” <em>Phys. Lett.</em> <strong>16</strong>, 354–356 (1965).</li>
@@ -927,7 +970,7 @@
           <div class="ref-card">
             <h3>水素原子の一般化コヒーレント状態</h3>
             <ul>
-              <li>[Schrödinger_1926b] Schrödinger, E., “Der stetige Übergang von der Mikro- zur Makromechanik,” <em>Naturwiss.</em> <strong>14</strong>, 664 (1926).</li>
+              <li>[Schrödinger_1926g] Schrödinger, E., “Der stetige Übergang von der Mikro- zur Makromechanik,” <em>Naturwissenschaften</em> <strong>14</strong>, 664 (1926).</li>
               <li>[Barut–Girardello_1971] Barut, A. O. and Girardello, L., “New ‘Coherent’ States Associated with Non-Compact Groups,” <em>Commun. Math. Phys.</em> <strong>21</strong>, 41 (1971).</li>
               <li>[Perelomov_1972] Perelomov, A. M., “Coherent States for Arbitrary Lie Group,” <em>Commun. Math. Phys.</em> <strong>26</strong>, 222 (1972).</li>
               <li>[Nieto–Simmons_1978] Nieto, M. M. and Simmons, L. M. Jr., “Coherent States for General Potentials,” <em>Phys. Rev. Lett.</em> <strong>41</strong>, 207 (1978).</li>
