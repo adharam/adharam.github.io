@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>【執筆中】水素原子の数理物理のおこり | adhara_mathphys</title>
+  <meta name="description" content="水素原子を軸に，量子力学の成立，関数解析的基礎，物質の安定性，偶然縮退と力学的対称性，因数分解解法，スペクトル生成代数，SO(4,2)，KS変換，経路積分，一般化コヒーレント状態までを概観する記事．" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #4b5563;
+      --line: #d1d5db;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --accent-deep: #1e3a8a;
+      --max: 980px;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      line-height: 1.9;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, #eff6ff 0%, #f8fafc 28%, #f8fafc 100%);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      font-size: 0.95rem;
+      color: var(--muted);
+      padding: 16px 0 8px;
+    }
+
+    .topbar a { color: var(--muted); }
+
+    header.hero {
+      padding: 18px 0 28px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+      border: 1px solid rgba(209,213,219,0.9);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.28;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    nav.quicknav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(248,250,252,0.82);
+      border-bottom: 1px solid rgba(209,213,219,0.85);
+    }
+
+    nav.quicknav .inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding: 12px 0;
+      font-size: 0.95rem;
+    }
+
+    main {
+      padding: 26px 0 64px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid rgba(209,213,219,0.92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px 22px;
+    }
+
+    .section-head {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .section-no {
+      display: inline-block;
+      min-width: 2.2em;
+      margin-right: 10px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.55rem;
+      line-height: 1.45;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .summary-grid,
+    .link-grid,
+    .ref-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      margin-top: 18px;
+    }
+
+    .summary-card,
+    .link-card,
+    .ref-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      background: #fff;
+      padding: 18px 16px;
+    }
+
+    .summary-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .summary-card p,
+    .link-card p,
+    .ref-card p,
+    .small {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .toc-list {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .toc-list li + li { margin-top: 8px; }
+
+    .link-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top: 18px;
+    }
+
+    .link-card .kind {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .link-card a.title {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.55;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .link-card a.title:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .note-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px dashed #cbd5e1;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .ref-grid {
+      display: block;
+      margin-top: 14px;
+    }
+
+    .ref-card {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .ref-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .ref-card ul {
+      margin: 0;
+      padding-left: 1.2em;
+    }
+
+    .ref-card li + li { margin-top: 8px; }
+
+    footer {
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 0 0 60px;
+    }
+
+    .footer-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(209,213,219,0.85);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 0.12em 0.36em;
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .panel {
+        padding: 22px 18px;
+      }
+
+      nav.quicknav .inner {
+        gap: 10px 12px;
+      }
+    }
+  </style>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]] } });
+  </script>
+  <script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+  </script>
+</head>
+<body>
+  <div class="wrap topbar">
+    <a href="/">HOME</a> / <a href="/note.html">ノート一覧</a> / 水素原子の数理物理のおこり
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="eyebrow">Hydrogen Atom / Mathematical Physics</div>
+        <h1>【執筆中】水素原子の数理物理のおこり</h1>
+        <p class="lead">
+          水素原子は，量子力学の成立を支えた最も重要な模型の一つであると同時に，関数解析的基礎，物質の安定性，偶然縮退，力学的対称性，因数分解解法，スペクトル生成代数，SO(4,2)，KS変換，経路積分，一般化コヒーレント状態など，現代数理物理へつながる多くの視点を引き出す出発点でもあります．本記事では，その大きな流れを歴史と数理の両面から見通します．</p>
+
+        <div class="hero-meta">
+          <span class="chip">概観記事</span>
+          <span class="chip">歴史 + 数理構造</span>
+          <span class="chip">関連ノートへの入口</span>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary-card">
+            <h3>量子力学の成立</h3>
+            <p>Balmer・Rydberg・Bohr–Sommerfeld から Schrödinger と Heisenberg の量子力学へ．</p>
+          </div>
+
+          <div class="summary-card">
+            <h3>関数解析と安定性</h3>
+            <p>特異な Coulomb Hamiltonian の自己共役性から，多粒子系の物質の安定性へ．</p>
+          </div>
+          <div class="summary-card">
+            <h3>偶然縮退と SO(4)</h3>
+            <p>Runge–Lenz ベクトル，Pauli の代数解法，Fock の幾何学的解法，Bargmann の統合．</p>
+          </div>
+          <div class="summary-card">
+            <h3>因数分解と su(1,1)</h3>
+            <p>動径方程式の代数的解法から SUSY QM やスペクトル生成代数へ．</p>
+          </div>
+          <div class="summary-card">
+            <h3>SO(4,2) と KS変換</h3>
+            <p>束縛状態全体を一つの表現として捉える視点と，高次元幾何への接続．</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="quicknav">
+    <div class="inner">
+      <a href="#toc">目次</a>
+      <a href="#sec1">量子力学の創設</a>
+      <a href="#sec2">関数解析と物質の安定性</a>
+      <a href="#sec3">偶然縮退と力学的対称性</a>
+      <a href="#sec4">因数分解とSUSY QM</a>
+      <a href="#sec5">スペクトル生成代数</a>
+      <a href="#sec6">KS変換とHopf</a>
+      <a href="#sec7">経路積分</a>
+      <a href="#sec8">一般化コヒーレント状態</a>
+      <a href="#sec9">参考文献</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="toc">
+      <div class="panel">
+        <div class="section-head">
+          <h2>目次</h2>
+        </div>
+        <ol class="toc-list">
+          <li><a href="#sec1">水素原子のエネルギー準位の発見と量子力学の創設</a></li>
+          <li><a href="#sec2">Coulomb Hamiltonian の関数解析的基礎と物質の安定性</a></li>
+          <li><a href="#sec3">エネルギーの偶然縮退と力学的対称性の発見</a></li>
+          <li><a href="#sec4">因数分解解法と超対称性代数構造の発見</a></li>
+          <li><a href="#sec5">スペクトル生成代数と力学的群の発見</a></li>
+          <li><a href="#sec6">Kustaanheimo–Stiefel 変換による正則化と Hopf fibration</a></li>
+          <li><a href="#sec7">経路積分</a></li>
+          <li><a href="#sec8">水素原子の一般化コヒーレント状態</a></li>
+          <li><a href="#sec9">参考文献</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="sec1">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">1</span>水素原子のエネルギー準位の発見と量子力学の創設</h2>
+        </div>
+
+        <p>水素原子が量子論の中心問題になった出発点は，理論ではなく分光学でした．Balmer は可視光領域の水素発光線に簡潔な数式的規則性があることを見いだし <a href="#ref-Balmer_1885">[Balmer_1885]</a>，Rydberg はそれをより一般的なスペクトル公式へ拡張しました <a href="#ref-Rydberg_1889">[Rydberg_1889]</a>．この公式は，水素原子のスペクトル線が単なる経験的な線の集まりではなく，整数で番号づけられる「項」の差として整理できることを示していました．現在の記法では，水素スペクトル系列はおおよそ</p>
+
+        <p>$$\frac{1}{\lambda}=R_{\mathrm H}\left(\frac{1}{m^2}-\frac{1}{n^2}\right),\qquad n>m$$</p>
+
+        <p>と書かれます．Balmer 系列は $m=2$ に対応しますが，その後，紫外領域の Lyman 系列，赤外領域の Paschen・Brackett・Pfund・Humphreys 系列が発見され，Rydberg 型の規則性が水素原子全体のスペクトル構造を貫くことが明らかになりました <a href="#ref-Lyman_1906">[Lyman_1906]</a> <a href="#ref-Lyman_1914">[Lyman_1914]</a> <a href="#ref-Paschen_1908">[Paschen_1908]</a> <a href="#ref-Brackett_1922">[Brackett_1922]</a> <a href="#ref-Pfund_1924">[Pfund_1924]</a> <a href="#ref-Humphreys_1953">[Humphreys_1953]</a>．</p>
+
+        <p>この経験則に最初の力学的解釈を与えたのが Bohr の原子模型でした．Bohr は，電子の軌道運動に量子条件を課すことで，水素原子のエネルギーが離散的な値だけを取り，発光・吸収スペクトルが準位差として生じることを示しました <a href="#ref-Bohr_1913a">[Bohr_1913a]</a> <a href="#ref-Bohr_1913b">[Bohr_1913b]</a> <a href="#ref-Bohr_1913c">[Bohr_1913c]</a>．Sommerfeld は作用変数の量子化を用いて楕円軌道や相対論的補正を取り入れ，前期量子論を精密化しました <a href="#ref-Sommerfeld_1916">[Sommerfeld_1916]</a>．この枠組みでは，非相対論的な水素様原子の束縛状態エネルギーは</p>
+
+        <p>$$E_n=-\frac{\mu}{2\hbar^2}\left(\frac{Z e^2}{4\pi\varepsilon_0}\right)^2\frac{1}{n^2}$$</p>
+
+        <p>という形で表されます．ここで $\mu$ は換算質量であり，核を無限に重いとみなす近似では $\mu\simeq m_e$ です．スペクトル線の振動数は $h\nu=E_n-E_m$ によって与えられるため，Rydberg 公式の整数構造は，エネルギー準位の離散化として理解されるようになりました．</p>
+
+        <p>しかし，Bohr–Sommerfeld 理論は水素原子のエネルギー準位を驚くほどうまく説明した一方で，それはまだ完全な量子力学ではありませんでした．スペクトル線の強度や選択則，多電子原子，異常 Zeeman 効果，摂動を受けた原子の一般的な扱いなどでは，軌道という古典的描像に量子条件を重ねる方法の限界が現れました．つまり，Rydberg 公式と前期量子論によって「準位」は見えてきたものの，その準位を生む Hilbert 空間，演算子，波動関数，確率解釈の枠組みはまだ成立していなかったのです．</p>
+
+        <p>1925 年から 1926 年にかけて，この状況は急速に変わります．Heisenberg は，電子軌道そのものではなく観測可能な遷移量を基本に置く行列力学を提案し <a href="#ref-Heisenberg_1925">[Heisenberg_1925]</a>，Born と Jordan，さらに Born–Heisenberg–Jordan は，非可換な行列演算として新しい力学を整備しました <a href="#ref-BornJordan_1925">[BornJordan_1925]</a> <a href="#ref-BornHeisenbergJordan_1926">[BornHeisenbergJordan_1926]</a>．Dirac も Poisson 括弧と交換子の対応を明確化し，量子力学の基本方程式を定式化しました <a href="#ref-Dirac_1925">[Dirac_1925]</a>．</p>
+
+        <p>水素原子は，この新しい力学の試金石でもありました．Pauli は Schrödinger 方程式の解を待たずに，角運動量と Laplace–Runge–Lenz ベクトルに対応する保存量の代数を用いて，行列力学の立場から水素スペクトルを導きました <a href="#ref-Pauli_1926">[Pauli_1926]</a>．Dirac も 1926 年に “Quantum Mechanics and a Preliminary Investigation of the Hydrogen Atom” を発表し，q-number 力学による水素原子の予備的解析を行いました <a href="#ref-Dirac_1926">[Dirac_1926]</a>．この Dirac の仕事は，通常の三次元水素原子の完全解というより，軌道面内の二次元的模型を足場にした初期の試みとして位置づけると見通しがよいと思われます．</p>
+
+        <p>一方，Schrödinger は波動力学を提案し，固有値問題として水素原子のスペクトルを導きました <a href="#ref-Schrodinger_1926a">[Schrödinger_1926a]</a>．その後の一連の論文で波動力学の構造，摂動論，時間依存形式を整え <a href="#ref-Schrodinger_1926b">[Schrödinger_1926b]</a> <a href="#ref-Schrodinger_1926d">[Schrödinger_1926d]</a> <a href="#ref-Schrodinger_1926e">[Schrödinger_1926e]</a>，さらに Heisenberg–Born–Jordan の行列力学と自らの波動力学が等価であることを示しました <a href="#ref-Schrodinger_1926c">[Schrödinger_1926c]</a>．英語圏へは Physical Review の論文によって波動力学が広く紹介されます <a href="#ref-Schrodinger_1926f">[Schrödinger_1926f]</a>．こうして水素原子は，経験的スペクトル公式，前期量子論，新量子力学の三つを結びつける中心的な舞台となりました．</p>
+
+        <div class="note-box">第1節の要点は，<strong>水素原子スペクトルの経験法則が，Bohr–Sommerfeld の準位概念を経て，Schrödinger の固有値問題と Heisenberg–Born–Jordan–Dirac の演算子力学へ移行した</strong>という流れにあります．ただし，エネルギー準位を形式的に導くだけでは水素原子の数理は終わりません．次節では，Coulomb ポテンシャルを含む Hamiltonian を自己共役作用素として正当化し，さらに多粒子 Coulomb 系がなぜ崩壊しないのかという関数解析的・数理物理的問題へ進みます．そのうえで第3節では，偶然縮退と隠れた対称性を扱います．</div>
+      </div>
+    </section>
+
+
+    <section id="sec2">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">2</span>Coulomb Hamiltonian の関数解析的基礎と物質の安定性</h2>
+        </div>
+
+        <p>
+          前節までの流れでは，水素原子は分光学の経験則を説明するための可解模型として登場しました．しかし，Schrödinger 方程式を書いた瞬間に，数学的な問題がすべて解決しているわけではありません．Coulomb ポテンシャルは原点で特異であり，Hamiltonian は非有界作用素です．したがって，まず問うべきことは，</p>
+
+        <p>$$
+          H=-{\hbar^2\over 2m}\Delta
+          -{Z e^2\over 4\pi\varepsilon_0 r}
+        $$</p>
+
+        <p>
+          が Hilbert 空間 \(L^2(\mathbf{R}^3)\) 上でどのような自己共役作用素を定めるのか，そのスペクトルをどの意味で論じられるのか，という点です．水素原子の厳密解は重要ですが，その前提として，この形式的な微分演算子が物理量として正しい Hamiltonian を定めていることを確かめる必要があります．</p>
+
+         <p>なお，本節の前半は，重心分離後の水素様原子に直接関わる一電子 Coulomb Hamiltonian の関数解析的基礎である．ただし，この作用素論的枠組みは水素原子に限られず，多粒子 Coulomb Hamiltonian にも適用される．これに対して，後半の物質の安定性は，多数の電子と原子核からなる多粒子 Coulomb 系に特有の問題である．</p>
+
+        <h3>加藤敏夫による Schrödinger 作用素の基礎づけ</h3>
+        <p>
+          この問題に対して決定的な役割を果たしたのが，加藤敏夫による Schrödinger 型 Hamiltonian の研究です．加藤は，特異ポテンシャルをもつ Schrödinger 作用素の基本性質を調べ，Coulomb 型ポテンシャルを含む広いクラスの Hamiltonian が自然に自己共役作用素として定義できることを示しました <a href="#ref-Kato_1951">[Kato_1951]</a>．現代的には，Coulomb ポテンシャルは運動エネルギー \(-\Delta\) に対して相対有界であり，しかも相対 bound を 0 にできるため，Kato–Rellich 型の摂動定理によって自己共役性と下からの有界性が保証される，と説明できます．</p>
+
+        <p>
+          この見方では，水素原子の Hamiltonian は単に「微分方程式」ではなく，定義域を持つ自己共役作用素です．スペクトル定理により，負の固有値は束縛状態を，連続スペクトルは散乱状態を表します．また，原点での Coulomb 特異性は，任意の境界条件を人為的に足して処理するものではなく，作用素の定義域と二次形式によって自然に制御されます．加藤の 1957 年の多粒子系固有関数に関する仕事では，Coulomb 特異点近傍での波動関数の振る舞い，いわゆる cusp condition も明確化されました <a href="#ref-Kato_1957">[Kato_1957]</a>．</p>
+
+        <p>
+          さらに，加藤の『Perturbation Theory for Linear Operators』は，孤立固有値，連続スペクトル，二次形式，解析的摂動論などを統一的に扱う標準的文献となりました <a href="#ref-Kato_1966">[Kato_1966]</a>．水素原子に外場を加える Stark 効果や Zeeman 効果，原子・分子 Hamiltonian のスペクトル摂動を考えるとき，この関数解析的な枠組みは，単なる厳密化ではなく，物理的近似や摂動論の正当化そのものに関わります．</p>
+
+        <h3>一電子原子から多粒子 Coulomb 系へ</h3>
+        <p>
+          水素原子は一電子 Coulomb 系ですが，現実の物質は多数の電子と原子核からなる多粒子 Coulomb 系です．固定された原子核 \(R_k\) と電子座標 \(x_i\) を考えると，非相対論的 Born–Oppenheimer 近似のもとで，形式的には</p>
+
+        <p>$$
+          H_{N,K}
+          =\sum_{i=1}^N (-\Delta_i)
+          -\sum_{i,k}{Z_k\over |x_i-R_k|}
+          +\sum_{1\le i\lt j\le N}{1\over |x_i-x_j|}
+          +\sum_{1\le k\lt l\le K}{Z_k Z_l\over |R_k-R_l|}$$
+        </p>
+
+        <p>
+          のような Hamiltonian が現れます．ここでも Coulomb 特異性が多数存在するため，自己共役性，下からの有界性，固有関数の正則性は非自明な問題です．ただし，多粒子系ではさらに根本的な問いが現れます．すなわち，電子と原子核が Coulomb 引力で無限に落ち込まず，物質のエネルギーが粒子数に対して適切に下から抑えられるのはなぜか，という問題です．</p>
+
+        <h3>物質の安定性：第一種と第二種</h3>
+        <p>
+          物質の安定性には，大きく分けて二つの段階があります．第一種の安定性は，各固定された粒子数に対して Hamiltonian が下から有界であり，基底エネルギーが \(-\infty\) へ落ちないことです．これは一個の水素原子でいえば，Coulomb 引力が特異でも運動エネルギーがそれを抑え，有限の基底エネルギーを持つ，という事実に対応します．</p>
+
+        <p>
+          しかし物質を熱力学的に考えるには，それだけでは不十分です．第二種の安定性は，電子数と核数を増やしても，基底エネルギーが粒子数に比例する程度にしか下がらないこと，すなわちある定数 \(C\) に対して
+          $$
+            E(N,K)\ge -C(N+K)
+          $$
+          のような評価が成り立つことを要求します．これは，物質の体積やエネルギーが粒子数に対して通常の熱力学的スケールで振る舞うための数学的表現です．</p>
+
+        <p>
+          Dyson と Lenard は，荷電粒子系に対する物質の安定性を厳密に証明しました <a href="#ref-DysonLenard_1967">[Dyson–Lenard_1967]</a> <a href="#ref-LenardDyson_1968">[Lenard–Dyson_1968]</a>．その後，Lieb と Thirring は，フェルミ粒子の運動エネルギーを密度 \(\rho(x)\) によって下から評価する不等式を用い，物質の安定性に対する非常に見通しのよい証明を与えました <a href="#ref-LiebThirring_1975">[Lieb–Thirring_1975]</a>．ここで重要なのは，Pauli の排他原理，すなわち電子がフェルミ粒子であることです．排他原理によって多数電子を同じ低エネルギー状態に詰め込むことができず，運動エネルギーが密度の \(5/3\) 乗の形で増大します．これが Coulomb 引力による崩壊を防ぎます．</p>
+
+        <h3>水素原子から数理物理へ</h3>
+        <p>
+          この観点から見ると，水素原子の数理物理には二つの顔があります．一つは，前後の節で扱うような，可解性，特殊関数，隠れた対称性，力学的群の顔です．もう一つは，Coulomb Hamiltonian を自己共役作用素として定め，そのスペクトル・摂動・多粒子拡張を解析する関数解析的な顔です．</p>
+
+        <p>
+          Lieb と Seiringer の著書は，物質の安定性を，量子力学，関数解析，スペクトル不等式，静電エネルギー評価，熱力学極限まで含めて体系的に整理しています <a href="#ref-LiebSeiringer_2010">[Lieb–Seiringer_2010]</a>．したがってこの節は，水素原子を「一個だけの可解模型」として閉じるのではなく，原子・分子・固体の安定性へ向かう入口として位置づけられます．水素原子の \(1/r\) ポテンシャルは，分光学と群論だけでなく，現代的な作用素論と不等式の数理物理を生み出す中心的な例でもあるのです．</p>
+
+        <div class="note-box">
+          第2節の要点は，<strong>水素原子の Coulomb Hamiltonian は，特異ポテンシャルを含む形式的な微分演算子にとどまらず，自己共役性・下半有界性・スペクトル定理によって支えられた作用素である</strong>という点にあります．さらに，この一電子問題は，多粒子 Coulomb 系の安定性，Lieb–Thirring 不等式，Pauli 原理による物質の安定性へとつながります．次節では，水素原子の可解性と縮退構造を支える隠れた対称性へ戻ります．</div>
+      </div>
+    </section>
+
+    <section id="sec3">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">3</span>エネルギーの偶然縮退と力学的対称性の発見</h2>
+        </div>
+
+        <p>球対称ポテンシャルでは，空間回転対称性 \(SO(3)\) によって角運動量が保存し，波動関数は球面調和関数と動径関数に分離されます．このため，同じ角運動量量子数 \(l\) に対して磁気量子数 \(m=-l,\dots,l\) による \(2l+1\) 重縮退が現れます．しかし水素原子では，束縛状態のエネルギーが主量子数 \(n\) のみで決まり，同じ \(n\) に属する異なる \(l\) の状態も同じエネルギーを持ちます．この縮退は単なる \(SO(3)\) 回転対称性からは説明できず，「偶然縮退」と呼ばれることがあります．</p>
+        <p>この偶然縮退の背後にあるのが，古典 Kepler 問題ですでに知られていた Laplace–Runge–Lenz ベクトルです．角運動量 \(\boldsymbol{L}\) が軌道面の向きを保存する量であるのに対し，LRL ベクトル \(\boldsymbol{A}\) は楕円軌道の長軸方向を指定する保存量と見ることができます．したがって Kepler 問題では，単に中心力であることによる回転対称性だけでなく，軌道の形と向きをさらに固定する追加の保存量が存在しています．</p>
+        <p>量子力学においてこの隠れた保存量を最初期に活用したのが Pauli です．Pauli は Schrödinger 方程式の通常の微分方程式解法に頼らず，角運動量と量子化された LRL ベクトルの交換関係を用いて水素原子のエネルギースペクトルを代数的に導きました．束縛状態では，適切に規格化した LRL ベクトルと角運動量が合わさって \(\mathfrak{so}(4)\) 代数を作ります．この \(\mathfrak{so}(4)\simeq \mathfrak{su}(2)\oplus\mathfrak{su}(2)\) 構造により，エネルギー準位ごとの縮退度 \(n^2\) が表現論的に説明されます．</p>
+        <p>Fock はこの構造を別の角度から見抜きました．運動量表示の Schrödinger 方程式を立体射影によって四次元超球面 \(S^3\) 上の積分方程式へ移すことで，束縛状態の問題に \(SO(4)\) 回転対称性が現れることを明らかにしました．この見方では，水素原子の偶然縮退は三次元空間の回転対称性ではなく，運動量空間を \(S^3\) に持ち上げたときの四次元回転対称性として理解されます．</p>
+        <p>Bargmann は，Pauli の代数的解法と Fock の幾何学的解法の関係を整理し，両者が同じ隠れた \(SO(4)\) 構造を異なる言葉で捉えていることを明確にしました．Pauli の方法では LRL ベクトルが交換関係の中に現れ，Fock の方法では \(S^3\) の回転として現れます．Bargmann の議論は，この二つの見方をつなぐことで，水素原子の偶然縮退が偶然ではなく，隠れた対称性の反映であることを鮮明にしました．</p>
+        
+        <h3>運動学的対称性と力学的対称性</h3>
+        <p>このような対称性は，通常の時空の対称性から直ちに読み取れるものではありません．空間回転や並進のように，配置空間や時空の幾何から直接従う対称性を運動学的対称性と呼ぶならば，LRL ベクトルに対応する対称性は，特定の Hamiltonian，すなわち Coulomb ポテンシャルの形に深く依存しています．束縛状態の水素原子に現れる \(SO(4)\) は，単なる運動学的対称性ではなく，力学的対称性の典型例と見ることができます．</p>
+        <p>力学的対称性という言葉で重要なのは，対称性が「空間そのもの」からではなく，「運動方程式または Hamiltonian の特殊な形」から生じるという点です．Coulomb ポテンシャル \(-1/r\) では LRL ベクトルが保存し，等方調和振動子 \(r^2\) では Fradkin テンソル，あるいは Jauch–Hill–Fradkin 型の保存量が現れます．この二つの系は，どちらも通常の回転対称性を超えた追加の保存量を持ち，古典的には閉じた軌道を持ち，量子論では大きな縮退を示します．</p>
+        
+        <h3>Bertrand の定理と二つの特別な中心力</h3>
+        <p>この事実は Bertrand の定理と関連づけることができます．Bertrand の定理は，すべての有界軌道が閉じる中心力ポテンシャルは，Newton 型の \(-1/r\) ポテンシャルと等方調和振動子型の \(r^2\) ポテンシャルに限られる，という古典力学の定理です．</p>
+        <p>等方調和振動子でも，Jauch–Hill，Fradkin，Demkov らによって，通常の回転対称性を超える保存量と力学的対称性が詳しく研究されました．水素原子における LRL ベクトルが Kepler 楕円の向きを保存するのに対し，等方調和振動子では対称テンソル型の保存量が軌道の形を特徴づけます．この対応は，「水素原子だけが特別」なのではなく，「Coulomb 系と等方振動子系が，中心力系の中で特別な二大可解模型である」ことを示しています．</p>
+
+        <h3>超可積分系への発展</h3>
+        <p>その後，Smorodinsky–Winternitz らは，球対称性を仮定しないより広い Hamiltonian 系の中で，水素原子や等方調和振動子と同様に追加保存量を持つ系を系統的に探索しました．この流れは，のちに超可積分系の研究へと発展します．超可積分系とは，大まかに言えば，自由度の数より多くの独立な保存量を持つ系であり，古典論では軌道の強い制約や周期性，量子論では代数的なスペクトル計算や特殊関数との結びつきとして現れます．</p>
+        <p>この観点から見ると，水素原子の \(SO(4)\) 対称性は，単に水素原子スペクトルをうまく説明する技巧ではありません．それは，のちの超可積分系，二次代数，直交多項式，変数分離理論へつながる典型例です．Kepler–Coulomb 系と等方調和振動子は，現代的な言葉では最大超可積分系の代表例であり，その研究は Smorodinsky–Winternitz 系，Higgs 代数，Racah 代数などの話題にも接続していきます．</p>
+        
+        <h3>多重分離性：球座標だけではない水素原子</h3>
+        <p>水素原子の高い対称性は，変数分離の多様性にも現れます．通常の教科書では球座標による解法がまず説明されますが，Coulomb ポテンシャルでは放物線座標でも Schrödinger 方程式を変数分離できます．球座標分離では角運動量 \(\boldsymbol{L}^2,L_z\) が前面に出るのに対し，放物線座標分離では LRL ベクトルの一成分と関係する量が前面に現れます．</p>
+        <p>放物線座標は，水素原子の束縛状態を別の量子数で分類するためだけの道具ではありません．一様電場を加えた Stark 効果では，電場の方向が一つの特別な軸を選ぶため，球対称性は壊れますが，放物線座標を用いると問題の構造を自然に捉えることができます．実際，Schrödinger は 1926 年の固有値問題に関する論文の第三報で Stark 効果を扱い，同じ時期に Epstein や Waller も水素原子の Stark 効果を波動力学の立場から研究しました．</p>
+        <p>また，放物線座標は散乱問題を考える際にも有用です．Coulomb ポテンシャルは長距離力であるため，平面波に対する単純な散乱理論だけでは扱いにくい面がありますが，入射方向を特別な軸として選ぶ放物線座標は，Coulomb 散乱の構造と相性がよい座標系です．このように，放物線座標は Stark 効果，散乱問題，そして束縛状態の縮退構造をつなぐ役割を果たしています．</p>
+        <p>複数の変数分離法が存在することは，単なる計算上の便利さではなく，隠れた対称性の反映です．水素原子で球座標分離と放物線座標分離が共存することは，超可積分系でしばしば見られる multiseparability の原型と見ることができます．同じ Hamiltonian に対して，球座標では角運動量が，放物線座標では LRL ベクトルの一成分が自然に現れるという事実は，水素原子の高い対称性を変数分離の側から見たものだと言えます．Kalnins，Miller，Winternitz らによる超可積分系の研究では，追加の対称性と複数の変数分離座標系の関係が重要な主題となりました．水素原子は，その最も古典的で重要な例の一つです．</p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/ケプラー問題と力学的対称性（その１）.pdf">ケプラー問題と力学的対称性（その１）</a>
+            <p>Kepler 問題における保存量，とくに LRL ベクトルの意味を古典力学から整理します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/【図解】so(4)代数解法.pdf">〖図解〗so(4)代数解法</a>
+            <p>Pauli の方法による水素様原子スペクトルの代数的解法を図解します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/【考察／解釈】Fockの解法.pdf">〖考察／解釈〗Fockの解法</a>
+            <p>Fock の運動量空間での解法と四次元回転対称性の見え方を解説します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素様原子スペクトルに関するBargmannの議論.pdf">水素様原子スペクトルに関する Bargmann の議論</a>
+            <p>Fock の解法から LRL ベクトルが導かれることを中心に，両者の関係を説明します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素様原子スペクトルに関するBargmannの議論2.pdf">水素様原子スペクトルに関する Bargmann の議論2</a>
+            <p>Pauli の解法と Fock の解法で現れる解の対応関係を詳しく見ます．</p>
+          </div>
+        </div>
+        <div class="note-box">第3節の要点は，<strong>水素原子の偶然縮退は \(SO(3)\) 回転対称性では説明できず，LRL ベクトルに由来する隠れた \(SO(4)\) 力学的対称性によって説明される</strong>という点にあります．さらにこの構造は，Pauli の代数解法，Fock の \(S^3\) 幾何，Bargmann の統合的理解を経て，等方調和振動子，Bertrand の定理，超可積分系，多重分離性へと広がっていきます．</div>
+      </div>
+    </section>
+
+    <section id="sec4">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">4</span>因数分解解法と超対称性代数構造の発見</h2>
+        </div>
+
+        <p>
+          水素原子の解法としては，級数解法や群論的解法がよく知られていますが，もう一つの重要な流れに<strong>因数分解解法</strong>があります．これは二階の Schrödinger 方程式を，一階微分演算子の積として分解し，隣り合う量子数をもつ固有関数を互いに結び付ける方法です．調和振動子の生成消滅演算子がその最も単純な例ですが，水素原子の動径方程式に対しても同様の発想が有効に働きます．</p>
+
+        <h3>Schrödinger から Infeld–Hull へ</h3>
+        <p>
+          この流れの出発点として重要なのが，1940年頃の Schrödinger 自身による因数分解解法の論文です．Schrödinger は，固有値問題を一階演算子の積へ分解することで，固有値と固有関数を直接求める方法を示しました．その後，Infeld は類似の方法をさらに発展させ，Infeld–Hull の 1951年の総説 “The Factorization Method” によって，因数分解解法は多くの可解ポテンシャルを統一的に扱う体系として整理されました．</p>
+
+        <p>
+          水素原子の場合，球座標分離後の動径 Hamiltonian を，角運動量量子数 $l$ に依存する一階演算子
+          $A_l,A_l^\dagger$ の積として表すことができます．すると，$l$ と $l+1$ の動径問題が互いに組になり，異なる角運動量をもつ動径波動関数の間に演算子的な対応が生まれます．この見方では，Laguerre 多項式の漸化式や微分公式も，単なる特殊関数の恒等式ではなく，Hamiltonian の因数分解から生じる関係として理解できます．</p>
+
+        <h3>特殊関数論としての因数分解</h3>
+        <p>
+          犬井鉄郎『特殊函数』のような日本語の古典的文献でも，特殊関数の微分方程式，漸化式，昇降演算子の関係が重視されています．犬井は因数分解解法の発見者ではありませんが，直交多項式や特殊関数を，量子力学の固有値問題を解くための単なる「関数表」ではなく，演算子的・構造的に扱うことの重要性を早い段階で認識していた文献として位置づけられます．水素原子で現れる Laguerre 多項式や，調和振動子で現れる Hermite 多項式は，いずれもこの観点から見ると，因数分解解法・昇降演算子・直交多項式論が交差する典型例です．</p>
+
+        <h3>超対称性量子力学としての再解釈</h3>
+        <p>
+          1980年代以降，因数分解解法は<strong>超対称性量子力学</strong>の言葉で再解釈されました．一次元の超対称性量子力学では，互いに組になる二つの Hamiltonian
+          $$
+            H_- = A^\dagger A,\qquad H_+ = A A^\dagger
+          $$
+          を一つの行列 Hamiltonian にまとめ，supercharge $Q,Q^\dagger$ によって
+          $$
+            Q^2=(Q^\dagger)^2=0,\qquad
+            \{Q,Q^\dagger\}=H_{\mathrm{SUSY}}
+          $$
+          という代数を満たすようにします．この意味で，通常の因数分解解法から得られる構造は，標準的には<strong>$N=2$ 超対称性量子力学</strong>と呼んでよいものです．</p>
+
+        <p>
+          水素原子の動径問題でも，角運動量 $l$ と $l+1$ に対応する有効ポテンシャルが
+          partner Hamiltonian をなし，さらに定数のずれを除けば同じ形を保つ<strong>shape invariance</strong>を持ちます．そのため，水素原子の束縛スペクトルは，べき級数解法だけでなく，SUSY QM の一般論からも導けます．Cooper–Khare–Sukhatme のレビューや，佐々木隆『可解な量子力学系の数理物理』は，可解ポテンシャル，形状不変性，直交多項式の関係を理解するうえで有用です．</p>
+
+        <h3>相対論的水素原子と Johnson–Lippmann 演算子</h3>
+        <p>
+          超対称性代数構造との関係は，非相対論的な動径方程式だけに限られません．Dirac 方程式で記述される相対論的水素原子にも，非相対論的 Runge–Lenz ベクトルの類似物として<strong>Johnson–Lippmann 演算子</strong>が現れます．Johnson–Lippmann 演算子は Dirac–Coulomb Hamiltonian と可換な隠れた保存量であり，スピンを含む相対論的な Coulomb 問題の余分な縮退を説明します．</p>
+
+        <p>
+          Dahl–Jørgensen は Dirac–Kepler 問題において Johnson–Lippmann 演算子と超対称性の関係を詳しく論じました．また Katsura–Aoki は，任意次元の相対論的水素原子に対して Johnson–Lippmann 演算子を一般化し，それを用いて<strong>exact $N=2$ supersymmetry</strong>を構成しました．この意味で，水素原子における SUSY QM は，単なる非相対論的動径方程式の因数分解にとどまらず，Laplace–Runge–Lenz 型の隠れた対称性，Dirac 方程式，相対論的縮退構造とも結び付いています．</p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/【図解】因数分解解法.pdf">〖図解〗因数分解解法</a>
+            <p>因数分解を用いた水素様原子のエネルギースペクトル解法を図解します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素原子における因数分解解法と超対称性量子力学.pdf">水素原子における因数分解解法と超対称性量子力学</a>
+            <p>因数分解解法と \(N=2\) SUSY QM を結び付けて，水素原子に潜む超対称的側面を論じます．</p>
+          </div>
+        </div>
+
+        <div class="note-box">
+          第4節の要点は，<strong>Schrödinger–Infeld–Hull の因数分解解法が，特殊関数の昇降演算子，SUSY QM の \(N=2\) 超対称性代数，さらに Johnson–Lippmann 演算子を通じた相対論的水素原子の隠れた対称性へ接続する</strong>という点にあります．次節の \(\mathfrak{sl}(2,\mathbf{R})\) や \(SO(4,2)\) は，この演算子的解法をさらに大きな Lie 代数的枠組みへ拡張するものとして読むことができます．</div>
+      </div>
+    </section>
+
+    <section id="sec5">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">5</span>スペクトル生成代数と力学的群の発見</h2>
+        </div>
+
+        <p>
+          水素原子に現れる Lie 代数的構造は，力学的対称性に関わるものだけではありません．まず，固定したエネルギー準位の中の縮退を説明する力学的対称性として，束縛状態では $\mathfrak{so}(4)$ が現れます．一方，異なる主量子数をもつ束縛状態を結び付けるには，ハミルトニアンと可換な保存量だけでは足りず，エネルギーを変える演算子を含む<strong>スペクトル生成代数</strong>が必要になります．</p>
+
+        <h3>動径問題と $\mathfrak{sl}(2,\mathbf{R})$</h3>
+        <p>
+          因数分解解法の背後には，より構造的には
+          $$
+            \mathfrak{su}(1,1)\simeq \mathfrak{sl}(2,\mathbf{R})\simeq \mathfrak{so}(2,1)
+          $$
+          が現れます．標準的な生成子を $K_0,K_\pm$ と書けば，$$
+            [K_0,K_\pm]=\pm K_\pm,\qquad [K_+,K_-]=-2K_0
+          $$
+          を満たします．この代数は，水素原子の動径方程式，あるいは Coulomb–Sturmian 型の基底を整理する自然な代数として働きます．$\mathfrak{so}(4)$ が同一エネルギー準位内の角運動量縮退を説明するのに対し，$\mathfrak{sl}(2,\mathbf{R})$ は動径方向の量子数を上下させる代数として現れます．</p>
+
+        <p>
+          したがって，ここでの $\mathfrak{sl}(2,\mathbf{R})$ は，「水素原子の空間回転対称性」ではなく，動径方程式を可解にするスペクトル生成的な代数です．この見方は，Schrödinger の因数分解法や，Bergmann–Frishman による水素原子と多次元調和振動子の関係，さらに現代的な $\mathfrak{su}(1,1)$ 代数解法へとつながります．</p>
+
+        <h3>エネルギー符号ごとの力学的対称性とそれを統一する代数構造</h3>
+        <p>
+          Pauli–Fock–Bargmann の流れで現れる $\mathfrak{so}(4)$ は，主として束縛状態 $E&lt;0$ の対称性です．しかし Coulomb 問題全体には，エネルギーの符号に応じて三つの標準的な力学的対称性が現れます：$$
+            E&lt;0:\ SO(4),\qquad
+            E=0:\ ISO(3),\qquad
+            E&gt;0:\ SO(3,1).
+          $$
+          ここで $ISO(3)$ は三次元 Euclid 群です．これは，束縛楕円軌道，放物線軌道，双曲線散乱軌道に対応する Kepler 問題の幾何学的三分法ともよく対応します．</p>
+
+        <p>
+          これら三つの対称性を別々に扱うだけでなく，一つの非コンパクト群の中で統一的に見る試みとして，$SO(4,1)$ が現れます．この群は，固定エネルギー面の対称性そのものというより，エネルギーや結合定数を動かす非不変群，あるいはスペクトル生成群として理解されます．$SO(4,1)$ の中では，$SO(4)$，$SO(3,1)$，$ISO(3)$ が異なる型の部分群・リトル群として現れるため，束縛状態，散乱状態，ゼロエネルギー状態を同じ幾何学的枠組みの中で見通せます．</p>
+
+        <h3>$SO(4,2)$：$\mathfrak{sl}(2,\mathbf{R})$ と $SO(4,1)$ を含む大きな枠組み</h3>
+        <p>
+          さらに大きな力学的群として，水素原子には $SO(4,2)$ が現れます．これは四次元 Minkowski 空間の共形群とも同型な非コンパクト群であり，Lie 代数としては
+          $$
+            \mathfrak{so}(4,2)\simeq \mathfrak{su}(2,2)
+          $$
+          と書くことができます．水素原子における $SO(4,2)$ は，すべての生成子がハミルトニアンと可換な対称性群ではありません．そのため，しばしば<strong>dynamical noninvariance group</strong>，あるいは<strong>spectrum generating group</strong>と呼ばれます．</p>
+
+        <p>
+          $SO(4,2)$ の重要性は，束縛状態だけでなく，散乱状態やゼロエネルギー状態を含む Coulomb 問題の状態空間を，一つの表現論的枠組みで整理できる点にあります．歴史的には，Malkin–Man'ko が $SO(6,\mathbf{C})$ の形でこの構造に到達し，Barut–Kleinert らが非コンパクト力学群として水素原子へ応用しました．Bander–Itzykson の総説は，Pauli，Fock，Bargmann の方法を群論的に整理し，$SO(4)$，$SO(3,1)$，$SO(4,2)$ の関係を見通すうえで重要です．</p>
+
+        <h3>Schwinger boson と振動子表示</h3>
+        <p>
+          $SO(4,2)$ を具体的に構成するうえで有効なのが，Schwinger boson，すなわちボソン生成消滅演算子の双一次式による Lie 代数の実現です．まず
+          $SO(4)\simeq SU(2)\times SU(2)/\mathbb{Z}_2$
+          であることを用い，二組の二次元調和振動子から二つの $SU(2)$ を作ります．さらに四組のボソン演算子 $a_i,a_i^\dagger\ (i=1,\dots,4)$ の双一次式を考えると，四次元等方調和振動子側の大きな代数 $\mathfrak{sp}(8,\mathbf{R})$ が現れます．</p>
+
+        <p>
+          このうち適切な十五個の双一次式が
+          $\mathfrak{su}(2,2)\simeq\mathfrak{so}(4,2)$ を生成します．第6節で述べる KS 変換の立場から見ると，四次元調和振動子の $\mathfrak{sp}(8,\mathbf{R})$ の中で余分な $SO(2)$ 制約を課し，その制約と両立する部分を取り出すことで，水素原子側の $\mathfrak{so}(4,2)$ が得られると理解できます．つまり Schwinger boson 表示は，<strong>水素原子の $SO(4,2)$ と四次元調和振動子・KS 変換を結ぶ代数的な橋</strong>になっています．</p>
+
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/〖考察／解釈〗su(1,1)代数解法.pdf">〖考察／解釈〗su(1,1)代数解法</a>
+            <p>\(\mathfrak{su}(1,1)\) を用いた水素様原子の動径方程式の解法と，スペクトル生成代数としての意味を整理します．</p>
+          </div>
+
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素原子の波動関数とSO(4,2)群の代数構造.pdf">水素原子の波動関数と SO(4,2) 群の代数構造</a>
+            <p>ボソン演算子を用いて \(\mathfrak{so}(4,2)\) を構成し，束縛状態全体を統一的に捉えます．</p>
+          </div>
+        </div>
+
+        <div class="note-box">
+          第5節の要点は，<strong>\(\mathfrak{sl}(2,\mathbf{R})\) は動径方向の可解性を支える代数，\(SO(4)\), \(ISO(3)\), \(SO(3,1)\) はエネルギー符号ごとの力学的対称性，\(SO(4,1)\) はそれらを見通すスペクトル生成的枠組み，\(SO(4,2)\) はさらにそれらを含む最大級の dynamical noninvariance group</strong>として位置づけることです．次節の KS 変換では，この \(SO(4,2)\) が四次元調和振動子のボソン表示と制約から再び現れます．</div>
+      </div>
+    </section>
+
+    <section id="sec6">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">6</span>Kustaanheimo–Stiefel変換による正則化と Hopf fibration</h2>
+        </div>
+
+        <p>
+          四組のボソン生成消滅演算子による表示は，水素原子と四次元調和振動子のあいだに深い類似構造があることを示唆します．この類似は単なる計算上の偶然ではなく，Kepler 問題の衝突特異点を取り除く<strong>正則化</strong>の歴史，二次元・三次元の Kepler 問題を調和振動子へ移す変換，さらに Hopf fibration による幾何学的理解へとつながっています．</p>
+
+        <h3>正則化の系譜：Euler から Levi-Civita へ</h3>
+        <p>
+          Kepler 問題では，粒子が中心力の中心へ落ち込むと $r=0$ で方程式が特異になります．この特異性を，時間変数と座標変数を取り替えることで取り除く発想は，一次元的・直線的な衝突問題を扱った Euler の研究にまで遡るものとして位置づけられます．その後，平面 Kepler 問題に対しては Bohlin の変換や Levi-Civita の正則化が現れます．複素座標で書けば，その核心はおおよそ
+          $$
+            z = w^2, \qquad dt = |w|^2\,d\tau
+          $$
+          という二重被覆と時間の再パラメータ化にあります．これにより，二次元 Kepler 問題は二次元等方調和振動子と深く結びつきます．</p>
+
+        <h3>三次元 Kepler 問題と Kustaanheimo–Stiefel 変換</h3>
+        <p>
+          三次元では，複素数による $z=w^2$ の単純な一般化は存在しません．そこで Kustaanheimo と Stiefel は，四次元の変数
+          $(u_1,u_2,u_3,u_4)$ から三次元の変数 $(x_1,x_2,x_3)$ へ写す非一対一の変換を用いました．代表的な形の一つは
+
+          $$
+          \begin{aligned}
+            x_1 &= 2(u_1u_3-u_2u_4),\\
+            x_2 &= 2(u_1u_4+u_2u_3),\\
+            x_3 &= u_1^2+u_2^2-u_3^2-u_4^2,
+          \end{aligned}
+          \qquad
+          r = u_1^2+u_2^2+u_3^2+u_4^2
+          $$
+          で与えられます．この変換に適切な時間変換を組み合わせると，三次元 Kepler 問題は四次元等方調和振動子の形へ移されます．ただし自由度は一つ余分に増えているので，その余分な自由度を消す制約条件を同時に課す必要があります．</p>
+
+        <h3>四元数と Hopf fibration</h3>
+        <p>
+          KS 変換は，四元数を用いると幾何学的な意味が見えやすくなります．四次元実ベクトルを四元数 $q$ とみなし，$q$ と $q e^{i\alpha}$ が同じ三次元点へ写ると考えると，余分な角度 $\alpha$ が $S^1$ のファイバーを表していることが分かります．半径を固定すれば，これは
+          $$
+            S^3 \longrightarrow S^2
+          $$
+          という Hopf fibration そのものです．したがって KS 変換は，単に「四次元から三次元への座標変換」ではなく，$S^3$ の各 $S^1$ ファイバーを同一視して $S^2$ を得る写像を，Kepler 問題の正則化に利用していると見ることができます．</p>
+
+        <h3>量子力学への応用：水素原子と四次元調和振動子</h3>
+        <p>
+          量子力学では，KS 変換を Schrödinger 方程式へ適用することで，三次元水素原子の問題を四次元等方調和振動子の問題へ書き換えることができます．このときも，古典論と同じく余分な角度に対応する制約条件が現れます．Kibler と Négadi，Kibler・Ronveaux・Négadi，Chen と Kibler らの仕事では，この水素原子と調和振動子の対応が，固有値・固有関数・特殊関数の対応として詳しく調べられました．とくに，三次元球面調和関数や Laguerre 多項式を含む水素原子波動関数が，四次元調和振動子の調和解析とどのように対応するかが明確になります．</p>
+
+        <p>
+          この観点は，前節で扱った $SO(4,2)$ の話とも接続します．四次元調和振動子の力学的代数は大きな対称性を持ちますが，KS 変換に伴う制約を課すと，水素原子側に残る対称性として $\mathfrak{su}(2,2)\simeq\mathfrak{so}(4,2)$ が現れます．したがって KS 変換は，水素原子を「四次元振動子から制約によって得られる系」と見る道を開き，古典正則化，Hopf fibration，量子力学的スペクトル，スペクトル生成代数をつなぐ結節点になります．</p>
+　　　　　
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/KS変換（その２）.pdf">Kustaanheimo-Stiefel 変換（その２）</a>
+            <p></p>
+          </div>
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/KS変換（その３）.pdf">Kustaanheimo-Stiefel 変換（その３）</a>
+            <p></p>
+          </div>
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/KS変換（その４）.pdf">Kustaanheimo-Stiefel 変換（その４）</a>
+            <p></p>
+          </div>
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/KS変換（その５）.pdf">Kustaanheimo-Stiefel 変換（その５）</a>
+            <p></p>
+          </div>
+        </div>
+        <div class="note-box">
+          この節では，KS 変換を「Kepler 問題を四次元調和振動子へ写す技巧」としてだけでなく，<strong>Euler–Bohlin–Levi-Civita から続く正則化の系譜，四元数・Hopf fibration，量子力学的水素原子の代数構造</strong>をつなぐものとして位置づけています．次の経路積分の節では，この KS 変換が Duru–Kleinert や Ho–Inomata の exact path integral treatment の基礎として再び現れます．</div>
+      </div>
+    </section>
+
+    <section id="sec7">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">7</span>経路積分</h2>
+        </div>
+
+        <p>水素原子を経路積分によって扱うことは，経路積分法の射程を考えるうえで重要な試金石でした．経路積分は，長らく自由粒子や調和振動子など，厳密に実行できる例がごく限られていました．そのため，Coulomb ポテンシャルをもつ水素原子に対して経路積分を実際に計算することは，単なる一つの可解例の追加ではなく，経路積分法がどこまで複雑な可解系を扱えるかを示す問題でもありました．</p>
+
+        <p>ただし，水素原子の場合，時間発展核をそのまま評価するよりも，まずエネルギー表示の Coulomb Green's function を導くことを目標にするのが自然です．グリーン関数の極は束縛状態のエネルギー準位を与え，その留数から波動関数を取り出すことができます．この意味で，Schwinger による Coulomb Green's function の表示や，Hostler–Pratt，Hostler による閉じた形のグリーン関数は，経路積分から再導出すべき標準解答として位置づけられます．</p>
+
+        <p>後で見るように，Kustaanheimo–Stiefel 変換はこの問題の解決に重要な役割を果たします．水素原子の Coulomb 問題を，より扱いやすい高次元調和振動子型の問題へ結びつけることで，経路積分を厳密に実行する道筋が開かれます．そしてこの成功は，水素原子そのものにとどまらず，経路積分で扱える可解系の範囲を広げる契機にもなりました．したがって本節では，「水素原子を経路積分で書く」こと自体ではなく，既知の Coulomb Green's function を経路積分からどのように実際に計算するかを主題にします．</p>
+        <h3>Duru–Kleinert 変換</h3>
+        <p>
+          Coulomb ポテンシャルは原点で特異であり，通常の時間分割のままでは経路積分を直接評価しにくい模型です．Duru–Kleinert の方法の核心は，時間変数を新しい媒介変数へ再パラメータ化する
+          space-time transformation と，KS 型の座標変換を組み合わせることで，Coulomb 問題を調和振動子的な Gaussian path integral へ還元する点にあります．したがって，Duru–Kleinert の意義は，単に水素原子の経路積分を形式的に書いたことではなく，Coulomb Green's function を実際に計算可能な形へ変換したことにあります．</p>
+
+        <h3>Ho–Inomata の exact path integral treatment</h3>
+        <p>
+          Duru–Kleinert は Hamilton 形式の path integral に対して上記の変換をしたが，Coulomb Green's functionの計算までは至らなかった．Ho–Inomata はLagrange 形式の path integral に対して Duru–Kleinert と同様の変換を行うことで，Coulomb Green's functionの計算まで実施した．この定式化では，三次元 Coulomb 問題が四次元調和振動子の経路積分へ結びつくため，前節の KS 変換の幾何学的意味と自然につながります．得られた Green's function からスペクトルと規格化波動関数を導ける点で，Schwinger–Hostler 型の結果を経路積分から再構成する道筋として非常に見通しがよいものです．</p>
+
+        <h3>Grosche–Steiner 的な位置づけ</h3>
+        <p>
+          Grosche と Steiner の経路積分の教科書では，厳密に評価可能な経路積分の一覧と文献が体系的に整理されています．その観点から見ると，Duru–Kleinert と Ho–Inomata の仕事は，「Schrödinger 方程式で解ける模型を，適切な変換によって経路積分でも実際に解ける模型へ移す」という流れの代表例です．水素原子は，調和振動子と並ぶ基本模型でありながら，Coulomb 特異性のために経路積分では非自明な模型です．その非自明性を，時間変換・KS 変換・調和振動子への還元によって克服したところに，経路積分における水素原子の歴史的な意味があります．</p>
+
+
+        <h3>一般化コヒーレント状態への橋渡し</h3>
+        <p>
+          なお，経路積分とコヒーレント状態は本来近い関係にあります．調和振動子では，コヒーレント状態の過完備性と恒等分解を用いることで，通常の座標表示とは異なる位相空間表示の経路積分を構成できます．水素原子でも，KS 変換によって現れる四次元調和振動子，Schwinger boson 表示，さらに $SU(1,1)$ や $SO(4,2)$ の群論的表現を用いると，コヒーレント状態的な基底を通じて Coulomb 問題を捉え直す道が開けます．ただし，水素原子ではエネルギー準位が等間隔でなく，縮退や連続スペクトルも絡むため，調和振動子のコヒーレント状態をそのまま移植することはできません．この問題は独立した話題として重要なので，次節で改めて扱います．</p>
+        <div class="link-grid">
+          <div class="link-card">
+            <div class="kind">関連ノート</div>
+            <a class="title" href="/pdf/水素原子の経路積分.pdf">水素原子の経路積分</a>
+            <p></p>
+          </div>
+        </div>
+        <div class="note-box">
+          この節の狙いは，<strong>Schwinger–Hostler の Coulomb Green's function を標準解答として置き，それを Duru–Kleinert / Ho–Inomata の経路積分から再導出する</strong>という流れを明確にすることです．また，コヒーレント状態経路積分との関係は，次節の一般化コヒーレント状態の問題への入口になります．</div>
+      </div>
+    </section>
+
+    <section id="sec8">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">8</span>水素原子の一般化コヒーレント状態</h2>
+        </div>
+
+        <p>
+          コヒーレント状態は，Schrödinger が調和振動子に対して導入した，古典運動に最も近い量子状態の代表例です．標準的な調和振動子では，コヒーレント状態は消滅演算子の固有状態として定義され，位置と運動量の不確定性積 $
+          \Delta x\,\Delta p$ を最小に保ったまま時間発展します．また，過完備性と恒等分解を通じて
+          $$
+            1=\int |z\rangle\langle z|\,d\mu(z)
+          $$
+          のような表示を与えるため，位相空間上の経路積分を構成する自然な基底にもなります．</p>
+
+        <p>
+          Schrödinger は 1926 年の調和振動子に関する論文の末尾で，水素原子でも Kepler 楕円に沿って動く同様の波束を構成できるかもしれない，という問題意識を示しました．この意味で，水素原子のコヒーレント状態問題は，量子力学の創設期にまで遡る古い問題です．しかし，調和振動子の場合と異なり，水素原子ではエネルギー準位が
+          $$
+            E_n=-{\mathrm{const.}\over n^2}
+          $$
+          であり，準位間隔が一定ではありません．さらに各準位には $n^2$ 個の縮退があり，束縛状態だけでなく連続スペクトルも存在します．このため，「消滅演算子の固有状態」「最小不確定性波束」「古典 Kepler 楕円を追う波束」「恒等分解を持つ過完備系」「時間発展で同じ族に保たれる状態」という条件を，すべて同時に満たす標準的な定義は自明ではありません．</p>
+
+        <h3>調和振動子から一般化コヒーレント状態へ</h3>
+        <p>
+          調和振動子のコヒーレント状態は，Hamiltonian が実質的に数演算子 $a^\dagger a$ で書けることに強く支えられています．消滅演算子の固有状態として定義した波束は，時間発展によって同じコヒーレント状態族の中を回転するだけで済みます．この事情は，エネルギーが等間隔であることと密接に結び付いています．</p>
+
+        <p>
+          これに対して，一般のポテンシャルや非コンパクト対称性を持つ系では，コヒーレント状態を別の観点から定義し直す必要があります．代表的な流儀には，Barut–Girardello 型の「下降演算子の固有状態」として定義する方法，Perelomov 型の「群の作用で基準ベクトルの軌道を作る」方法，Klauder 型の「時間安定性・恒等分解・連続ラベル」を重視する方法などがあります．水素原子の一般化コヒーレント状態は，これらの定義が交差する典型的な難問と見なせます．</p>
+
+        <h3>水素原子で何が難しいのか</h3>
+        <p>
+          水素原子で難しい点は，単に準位間隔が非等間隔であることだけではありません．まず，主量子数 $n$ ごとに大きな縮退があり，どの縮退空間の中でどの方向を「古典的な楕円軌道」と対応させるかを決める必要があります．次に，束縛状態の Hilbert 空間だけを扱うのか，散乱状態を含む Coulomb 問題全体を扱うのかで，適切な表現空間が変わります．さらに，短時間は古典軌道に沿う Rydberg wave packet を作れても，長時間では分散や revival が生じるため，「非拡散的な Kepler 波束」をどの意味で要求するかが問題になります．</p>
+
+        <p>
+          したがって，水素原子の一般化コヒーレント状態では，何を最も重視するかによって構成が分かれます．古典 Kepler 楕円との対応を重視する立場，$SO(4)$ や $SO(4,2)$ の群論的表現を重視する立場，動径方向の $SU(1,1)$ 構造を重視する立場，あるいは恒等分解を用いた経路積分への応用を重視する立場は，互いに重なり合いながらも完全には同じではありません．</p>
+
+        <h3>$SO(4,2)$，$SU(1,1)$，KS 変換との関係</h3>
+        <p>
+          第5節で見たように，水素原子には $SO(4)$，$SO(3,1)$，$SO(4,1)$，$SO(4,2)$，さらに動径方向の $SU(1,1)$ など，複数の Lie 代数的構造が現れます．このため，一般化コヒーレント状態を作る際にも，どの代数・どの群を基礎にするかで状態の意味が変わります．束縛状態全体を一つの大きな表現として扱うなら $SO(4,2)$ が自然に見えますし，動径量子数の昇降に注目するなら $SU(1,1)$ が自然です．また，KS 変換を通じて四次元調和振動子へ移せば，振動子側の通常のコヒーレント状態や Schwinger boson 表示から水素原子側の構造を読み替えることもできます．</p>
+
+        <p>
+          ただし，$SO(4,2)$ を用いれば直ちに Schrödinger が望んだような波束が得られる，というわけではありません．Zlatev–Zhang–Feng は，調和振動子の Schrödinger コヒーレント状態に対応するような $SO(4,2)$ 型の水素原子コヒーレント状態を最も一般的に構成しても，十分に局在して古典 Kepler 軌道を追うという意味では期待通りにならない，と論じました．この結果は，水素原子における「コヒーレント」の意味を慎重に分けて考える必要があることを示しています．</p>
+
+        <h3>肯定的構成と残る問題</h3>
+        <p>
+          一方で，Klauder は束縛状態部分に限れば，連続パラメータ表示，正の測度による恒等分解，時間安定性を満たすコヒーレント状態を構成できることを示しました．これは水素原子のコヒーレント状態問題に対する重要な肯定的解答です．ただし，対象は束縛状態部分空間であり，重みの選び方や縮退空間の扱いには自由度が残ります．Majumdar–Sharatchandra は古典的な作用角変数をラベルとする波束を構成し，Crawford はエネルギー縮退を持つ系での時間安定性を整理しました．Bellomo–Stroud は Klauder 型状態の分散を検討し，水素原子で「時間安定」と「非拡散的局在」が必ずしも同じ要請ではないことを明確にしました．</p>
+
+        <p>
+          したがって，水素原子の一般化コヒーレント状態は，単一の完成した定義というより，目的に応じて複数の定義が併存する領域と見るのが自然です．調和振動子のような一意的な標準像を期待するよりも，古典軌道への局在，群論的自然性，時間安定性，過完備性，経路積分への応用という複数の条件のどれを優先するかを明示することが重要です．</p>
+
+        <!--
+        <h3>経路積分との接続：三つの読み方</h3>
+        <p>
+          第一に，コヒーレント状態は恒等分解を通じて経路積分を構成する道具です．したがって水素原子に適切な一般化コヒーレント状態が得られれば，座標表示ではなく，群軌道や作用角変数の空間上で Coulomb 問題の経路積分を書くことができます．これは，通常の $x$ 表示の経路積分とは異なる「水素原子に適した位相空間表示」を探す問題です．</p>
+
+        <p>
+          第二に，Duru–Kleinert / Ho–Inomata の流れでは，水素原子を直接コヒーレント状態で解くのではなく，KS 変換によって四次元調和振動子へ移してから，調和振動子の可解性を利用します．このときコヒーレント状態は，四次元振動子側の自然な状態であると同時に，Schwinger boson 表示を通じて $SU(1,1)$ や $SO(4,2)$ の生成子を作るための言葉にもなります．</p>
+
+        <p>
+          第三に，$SU(1,1)\simeq SO(2,1)$ の Barut–Girardello 型や Perelomov 型コヒーレント状態を用いると，Coulomb 問題の動径方向，あるいは Coulomb–Sturmian 基底を，群論的な経路積分として扱う見方が得られます．これは第5節の $\mathfrak{su}(1,1)$ スペクトル生成代数と第7節の経路積分を結ぶ接点です．したがって，水素原子の一般化コヒーレント状態は，経路積分の「補足話題」ではなく，<strong>どの表現空間・どの時間・どの古典極限を使って Coulomb 問題を可視化するか</strong>という問題として理解できます．</p>
+        -->
+        <div class="note-box">
+          この節の要点は，<strong>水素原子の一般化コヒーレント状態は，調和振動子のコヒーレント状態を単純に移植したものではなく，$SO(4,2)$，$SU(1,1)$，KS 変換，作用角変数，恒等分解，古典 Kepler 軌道への局在という複数の要請の交差点にある</strong>ということです．現時点では，目的に応じた複数の構成が併存している状況です．</div>
+      </div>
+    </section>
+
+    <section id="sec9">
+      <div class="panel">
+        <div class="section-head">
+          <h2><span class="section-no">9</span>参考文献</h2>
+        </div>
+        <div class="ref-grid">
+          <div class="ref-card">
+            <h3>スペクトル系列と前期量子論</h3>
+            <ul>
+              <li id="ref-Balmer_1885">[Balmer_1885] Balmer, J. J., “Notiz über die Spectrallinien des Wasserstoffs,” <em>Verhandlungen der Naturforschenden Gesellschaft in Basel</em> <strong>7</strong>, 548–560 (1885).</li>
+              <li id="ref-Rydberg_1889">[Rydberg_1889] Rydberg, J. R., “Recherches sur la constitution des spectres d'émission des éléments chimiques,” <em>Kongliga Svenska Vetenskaps-Akademiens Handlingar</em> <strong>23</strong>(11), 1–177 (1889).</li>
+              <li id="ref-Lyman_1906">[Lyman_1906] Lyman, T., “The Spectrum of Hydrogen in the Region of Extremely Short Wave-Length,” <em>Memoirs of the American Academy of Arts and Sciences</em>, New Series <strong>13</strong>(3), 125–146 (1906).</li>
+              <li id="ref-Lyman_1914">[Lyman_1914] Lyman, T., “An Extension of the Spectrum in the Extreme Ultra-Violet,” <em>Nature</em> <strong>93</strong>, 241 (1914).</li>
+              <li id="ref-Paschen_1908">[Paschen_1908] Paschen, F., “Zur Kenntnis ultraroter Linienspektra. I. Normalwellenlängen bis 27000 Å.-E.,” <em>Annalen der Physik</em> <strong>332</strong>(13), 537–570 (1908).</li>
+              <li id="ref-Brackett_1922">[Brackett_1922] Brackett, F. S., “Visible and Infra-Red Radiation of Hydrogen,” <em>Astrophysical Journal</em> <strong>56</strong>, 154 (1922).</li>
+              <li id="ref-Pfund_1924">[Pfund_1924] Pfund, A. H., “The Emission of Nitrogen and Hydrogen in Infrared,” <em>Journal of the Optical Society of America</em> <strong>9</strong>(3), 193–196 (1924).</li>
+              <li id="ref-Humphreys_1953">[Humphreys_1953] Humphreys, C. J., “The Sixth Series in the Spectrum of Atomic Hydrogen,” <em>Journal of Research of the National Bureau of Standards</em> <strong>50</strong>, 1–4 (1953).</li>
+              <li id="ref-Bohr_1913a">[Bohr_1913a] Bohr, N., “On the Constitution of Atoms and Molecules. Part I. Binding of Electrons by Positive Nuclei,” <em>Philosophical Magazine</em> <strong>26</strong>, 1–25 (1913).</li>
+              <li id="ref-Bohr_1913b">[Bohr_1913b] Bohr, N., “On the Constitution of Atoms and Molecules. Part II. Systems Containing Only a Single Nucleus,” <em>Philosophical Magazine</em> <strong>26</strong>, 476–502 (1913).</li>
+              <li id="ref-Bohr_1913c">[Bohr_1913c] Bohr, N., “On the Constitution of Atoms and Molecules. Part III. Systems Containing Several Nuclei,” <em>Philosophical Magazine</em> <strong>26</strong>, 857–875 (1913).</li>
+              <li id="ref-Sommerfeld_1916">[Sommerfeld_1916] Sommerfeld, A., “Zur Quantentheorie der Spektrallinien,” <em>Annalen der Physik</em> <strong>356</strong>(17), 1–94 (1916).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>量子力学の創設と水素原子</h3>
+            <ul>
+              <li id="ref-Heisenberg_1925">[Heisenberg_1925] Heisenberg, W., “Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen,” <em>Zeitschrift für Physik</em> <strong>33</strong>, 879–893 (1925).</li>
+              <li id="ref-BornJordan_1925">[BornJordan_1925] Born, M. and Jordan, P., “Zur Quantenmechanik,” <em>Zeitschrift für Physik</em> <strong>34</strong>, 858–888 (1925).</li>
+              <li id="ref-BornHeisenbergJordan_1926">[BornHeisenbergJordan_1926] Born, M., Heisenberg, W. and Jordan, P., “Zur Quantenmechanik. II,” <em>Zeitschrift für Physik</em> <strong>35</strong>, 557–615 (1926).</li>
+              <li id="ref-Dirac_1925">[Dirac_1925] Dirac, P. A. M., “The Fundamental Equations of Quantum Mechanics,” <em>Proceedings of the Royal Society of London A</em> <strong>109</strong>(752), 642–653 (1925).</li>
+              <li id="ref-Dirac_1926">[Dirac_1926] Dirac, P. A. M., “Quantum Mechanics and a Preliminary Investigation of the Hydrogen Atom,” <em>Proceedings of the Royal Society of London A</em> <strong>110</strong>(755), 561–579 (1926).</li>
+              <li id="ref-Pauli_1926">[Pauli_1926] Pauli, W., “Über das Wasserstoffspektrum vom Standpunkt der neuen Quantenmechanik,” <em>Zeitschrift für Physik</em> <strong>36</strong>, 336–363 (1926).</li>
+              <li id="ref-Schrodinger_1926a">[Schrödinger_1926a] Schrödinger, E., “Quantisierung als Eigenwertproblem,” <em>Annalen der Physik</em> <strong>384</strong>(4), 361–376 (1926).</li>
+              <li id="ref-Schrodinger_1926b">[Schrödinger_1926b] Schrödinger, E., “Quantisierung als Eigenwertproblem. Zweite Mitteilung,” <em>Annalen der Physik</em> <strong>384</strong>(6), 489–527 (1926).</li>
+              <li id="ref-Schrodinger_1926c">[Schrödinger_1926c] Schrödinger, E., “Über das Verhältnis der Heisenberg-Born-Jordanschen Quantenmechanik zu der meinen,” <em>Annalen der Physik</em> <strong>384</strong>(8), 734–756 (1926).</li>
+              <li id="ref-Schrodinger_1926d">[Schrödinger_1926d] Schrödinger, E., “Quantisierung als Eigenwertproblem. Dritte Mitteilung: Störungstheorie, mit Anwendung auf den Starkeffekt der Balmerlinien,” <em>Annalen der Physik</em> <strong>385</strong>(13), 437–490 (1926).</li>
+              <li id="ref-Schrodinger_1926e">[Schrödinger_1926e] Schrödinger, E., “Quantisierung als Eigenwertproblem. Vierte Mitteilung,” <em>Annalen der Physik</em> <strong>386</strong>(18), 109–139 (1926).</li>
+              <li id="ref-Schrodinger_1926f">[Schrödinger_1926f] Schrödinger, E., “An Undulatory Theory of the Mechanics of Atoms and Molecules,” <em>Physical Review</em> <strong>28</strong>(6), 1049–1070 (1926).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>関数解析的基礎と物質の安定性</h3>
+            <ul>
+              <li id="ref-Kato_1951">[Kato_1951] Kato, T., “Fundamental Properties of Hamiltonian Operators of Schrödinger Type,” <em>Transactions of the American Mathematical Society</em> <strong>70</strong>, 195–211 (1951).</li>
+              <li id="ref-Kato_1957">[Kato_1957] Kato, T., “On the Eigenfunctions of Many-Particle Systems in Quantum Mechanics,” <em>Communications on Pure and Applied Mathematics</em> <strong>10</strong>, 151–177 (1957).</li>
+              <li id="ref-Kato_1966">[Kato_1966] Kato, T., <em>Perturbation Theory for Linear Operators</em>, Grundlehren der mathematischen Wissenschaften <strong>132</strong>, Springer, Berlin (1966; 2nd ed. 1976).</li>
+              <li id="ref-DysonLenard_1967">[Dyson–Lenard_1967] Dyson, F. J. and Lenard, A., “Stability of Matter. I,” <em>Journal of Mathematical Physics</em> <strong>8</strong>, 423–434 (1967).</li>
+              <li id="ref-LenardDyson_1968">[Lenard–Dyson_1968] Lenard, A. and Dyson, F. J., “Stability of Matter. II,” <em>Journal of Mathematical Physics</em> <strong>9</strong>, 698–711 (1968).</li>
+              <li id="ref-LiebThirring_1975">[Lieb–Thirring_1975] Lieb, E. H. and Thirring, W. E., “Bound for the Kinetic Energy of Fermions Which Proves the Stability of Matter,” <em>Physical Review Letters</em> <strong>35</strong>, 687–689 (1975); erratum/correction <strong>35</strong>, 1116 (1975).</li>
+              <li id="ref-LiebLoss_2001">[Lieb–Loss_2001] Lieb, E. H. and Loss, M., <em>Analysis</em>, 2nd ed., Graduate Studies in Mathematics <strong>14</strong>, American Mathematical Society (2001).</li>
+              <li id="ref-LiebSeiringer_2010">[Lieb–Seiringer_2010] Lieb, E. H. and Seiringer, R., <em>The Stability of Matter in Quantum Mechanics</em>, Cambridge University Press (2010).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>偶然縮退・LRLベクトル・SO(4)力学的対称性</h3>
+            <ul>
+              <li>[Lenz_1924] Lenz, W., “Über den Bewegungsverlauf und die Quantenzustände der gestörten Keplerbewegung,” <em>Z. Phys.</em> <strong>24</strong>, 197–207 (1924).</li>
+              <li>[Pauli_1926] Pauli, W., “Über das Wasserstoffspektrum vom Standpunkt der neuen Quantenmechanik,” <em>Z. Phys.</em> <strong>36</strong>, 336–363 (1926).</li>
+              <li>[Fock_1935] Fock, V., “Zur Theorie des Wasserstoffatoms,” <em>Z. Phys.</em> <strong>98</strong>, 145–154 (1935).</li>
+              <li>[Bargmann_1936] Bargmann, V., “Zur Theorie des Wasserstoffatoms: Bemerkungen zur gleichnamigen Arbeit von V. Fock,” <em>Z. Phys.</em> <strong>99</strong>, 576–582 (1936).</li>
+              <li>[Jauch–Hill_1940] Jauch, J. M. and Hill, E. L., “On the Problem of Degeneracy in Quantum Mechanics,” <em>Phys. Rev.</em> <strong>57</strong>, 641 (1940).</li>              
+              <!--
+              <li>[Fradkin_1967] Fradkin, D. M., “Existence of the Dynamic Symmetries \(O_4\) and \(SU_3\) for All Classical Central Potential Problems,” <em>Prog. Theor. Phys.</em> <strong>37</strong>, 798–812 (1967).</li>
+              <li>[Bacry–Ruegg–Souriau_1966] H. Bacry, H. Ruegg, and J.-M. Souriau, “Dynamical groups and spherical potentials in classical mechanics,” <i>Communications in Mathematical Physics</i> <b>3</b>, 323–333 (1966).</li>
+              <li>[Mukunda_1967] N. Mukunda, “Dynamical Symmetries and Classical Mechanics,” <i>Physical Review</i> <b>155</b>, 1383–1386 (1967).</li>
+              -->
+              <li>[池田_1970] 池田峰夫，『力学系の対称性』，日本物理学会誌 第25巻 第1号 p.9-13 (1970).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>超可積分系・多重分離性</h3>
+            <ul>
+              <li>[Schrödinger_1926d] Schrödinger, E., “Quantisierung als Eigenwertproblem. Dritte Mitteilung: Störungstheorie, mit Anwendung auf den Starkeffekt der Balmerlinien,” <em>Annalen der Physik</em> <strong>385</strong>(13), 437–490 (1926).</li>
+              <li>[Epstein_1926] P. S. Epstein, “The Stark Effect from the Point of View of Schroedinger’s Quantum Theory,” <i>Physical Review</i> <b>28</b>, 695–710 (1926).</li>
+              <li>[Waller_1926] I. Waller, “Der Starkeffekt zweiter Ordnung bei Wasserstoff und die Rydbergkorrektion der Spektra von He und Li<sup>+</sup>,” <i>Zeitschrift für Physik</i> <b>38</b>, 635–646 (1926).</li>
+              <li>[Friš–Mandrosov–Smorodinsky–Uhlíř–Winternitz_1965] Friš, J., Mandrosov, V., Smorodinsky, Ya. A., Uhlíř, M. and Winternitz, P., “On higher symmetries in quantum mechanics,” <em>Phys. Lett.</em> <strong>16</strong>, 354–356 (1965).</li>
+              <li>[Winternitz–Smorodinsky–Uhlíř–Friš_1967] Winternitz, P., Smorodinsky, Ya. A., Uhlíř, M. and Friš, J., “Symmetry groups in classical and quantum mechanics,” <em>Sov. J. Nucl. Phys.</em> <strong>4</strong>, 444–450 (1967).</li>
+              <li>[Makarov–Smorodinsky–Valiev–Winternitz_1967] Makarov, A. A., Smorodinsky, Ya. A., Valiev, Kh. and Winternitz, P., “A systematic search for nonrelativistic systems with dynamical symmetries,” <em>Nuovo Cimento A</em> <strong>52</strong>, 1061–1084 (1967).</li>
+              <li>[Kalnins–Miller–Pogosyan_2002] Kalnins, E. G., Miller, W. Jr. and Pogosyan, G. S., “Completeness of multiseparable superintegrability in two dimensions,” <em>Phys. At. Nucl.</em> <strong>65</strong>, 1033–1035 (2002).</li>
+              <li>[Miller–Post–Winternitz_2013] Miller, W. Jr., Post, S. and Winternitz, P., “Classical and Quantum Superintegrability with Applications,” <em>J. Phys. A: Math. Theor.</em> <strong>46</strong>, 423001 (2013).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>因数分解解法/超対称性量子力学</h3>
+            <ul>
+              <li>[Schrödinger_1940a] Schrödinger, E., “A Method of Determining Quantum-Mechanical Eigenvalues and Eigenfunctions,” <em>Proc. R. Irish Acad. Sect. A</em> <strong>46</strong>, 9–16 (1940/1941).</li>
+              <li>[Schrödinger_1940b] Schrödinger, E., “Further Studies on Solving Eigenvalue Problems by Factorization,” <em>Proc. R. Irish Acad. Sect. A</em> <strong>46</strong>, 183–206 (1940/1941).</li>
+              <li>[Infeld_1941] Infeld, L., “On a New Treatment of Some Eigenvalue Problems,” <em>Phys. Rev.</em> <strong>59</strong>, 737 (1941).</li>
+              <li>[Infeld–Hull_1951] Infeld, L. and Hull, T. E., “The Factorization Method,” <em>Rev. Mod. Phys.</em> <strong>23</strong>, 21 (1951).</li>
+              <li>[犬井_1962] 犬井鉄郎，『特殊函数』，岩波全書，岩波書店 (1962).</li>
+              <li>[Sukumar_1985] Sukumar, C. V., “Supersymmetric Quantum Mechanics of One-Dimensional Systems,” <em>J. Phys. A: Math. Gen.</em> <strong>18</strong>, 2917–2936 (1985).</li>
+              <li>[Lahiri–Roy–Bagchi_1990] Lahiri, A., Roy, P. K. and Bagchi, B., “Supersymmetry in Quantum Mechanics,” <em>Int. J. Mod. Phys. A</em> <strong>5</strong>, 1383–1456 (1990).</li>
+              <li>[Tangerman–Tjon_1993] Tangerman, R. D. and Tjon, J. A., “Exact Supersymmetry in the Nonrelativistic Hydrogen Atom,” <em>Phys. Rev. A</em> <strong>48</strong>, 1089 (1993).</li>
+              <li>[Cooper–Khare–Sukhatme_1995] Cooper, F., Khare, A. and Sukhatme, U., “Supersymmetry and Quantum Mechanics,” <em>Phys. Rep.</em> <strong>251</strong>, 267–385 (1995).</li>
+              <li>[佐々木_2016] 佐々木隆，『可解な量子力学系の数理物理：直交多項式の生み出す多様な展開』，SGCライブラリ 122，サイエンス社 (2016).</li>
+              <li>[Junker_2019] Junker, G., <em>Supersymmetric Methods in Quantum, Statistical and Solid State Physics: Enlarged and Revised Edition</em>, IOP Publishing (2019).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>Johnson–Lippmann 演算子と相対論的水素原子の超対称性</h3>
+            <ul>
+              <li>[Johnson–Lippmann_1950] Johnson, M. H. and Lippmann, B. A., “Relativistic Kepler Problem,” <em>Phys. Rev.</em> <strong>78</strong>, 329(A) (1950).</li>
+              <li>[Dahl–Jørogensen_1995] Dahl, J. P. and Jørogensen, T., “On the Dirac–Kepler Problem: The Johnson–Lippmann Operator, Supersymmetry, and Normal-Mode Representations,” <em>Int. J. Quantum Chem.</em> <strong>53</strong>, 161–181 (1995).</li>
+              <li>[Katsura–Aoki_2006] Katsura, H. and Aoki, H., “Exact Supersymmetry in the Relativistic Hydrogen Atom in General Dimensions—Supercharge and the Generalized Johnson–Lippmann Operator,” <em>J. Math. Phys.</em> <strong>47</strong>, 032301 (2006).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>spectrum generating algebra/dynamical group</h3>
+            <ul>
+              <li>[Bergmann–Frishman_1965] Bergmann, D. and Frishman, Y., “A Relation between the Hydrogen Atom and Multidimensional Harmonic Oscillators,” <em>J. Math. Phys.</em> <strong>6</strong>, 1855–1856 (1965).</li>
+              <li>[Malkin–Man'ko_1965] Malkin, I. A. and Man'ko, V. I., “Symmetry of the Hydrogen Atom,” <em>Sov. Phys. JETP Lett.</em> <strong>2</strong>, 146 (1965).</li>
+              <li>[Perelomov–Popov_1966] Perelomov, A. M., and Popov, V. S., "The Lorentz group as a dynamic symmetry group of the hydrogen atom," <em>Sov. Phys. JETP</em> <strong>23</strong>, 118 (1966).</li>
+              <li>[Musto_1966] Musto, R., “Generators of \(O(4,1)\) for the Quantum-Mechanical Hydrogen Atom,” <em>Phys. Rev.</em> <strong>148</strong>, 1274 (1966).</li>
+              <li>[Pratt–Jordan_1966] Pratt, R. H., and Jordan, T. F., "Generators of the de Sitter group for the hydrogen atom," <em>Phys. Rev.</em> <strong>148</strong>, 1276 (1966).</li>
+              <li>[Bander–Itzykson_1966a] Bander, M. and Itzykson, C., “Group Theory and the Hydrogen Atom (I),” <em>Rev. Mod. Phys.</em> <strong>38</strong>, 330 (1966).</li>
+              <li>[Bander–Itzykson_1966b] Bander, M. and Itzykson, C., “Group Theory and the Hydrogen Atom (II),” <em>Rev. Mod. Phys.</em> <strong>38</strong>, 346 (1966).</li>
+              <li>[Barut–Kleinert_1967a] Barut, A. O. and Kleinert, H., “Transition Probabilities of the Hydrogen Atom from Noncompact Dynamical Groups,” <em>Phys. Rev.</em> <strong>156</strong>, 1541 (1967).</li>
+              <li>[Barut–Kleinert_1967b] Barut, A. O. and Kleinert, H., “Current Operators and Majorana Equation for the Hydrogen Atom from Dynamical Groups,” <em>Phys. Rev.</em> <strong>157</strong>, 1180 (1967).</li>
+              <li>[Barut–Kleinert_1967c] Barut, A. O. and Kleinert, H., “Transition Form Factors in the H Atom,” <em>Phys. Rev.</em> <strong>160</strong>, 1149 (1967).</li>
+              <li>[Fronsdal_1967] Fronsdal, C., “Infinite Multiplets and the Hydrogen Atom,” <em>Phys. Rev.</em> <strong>156</strong>, 1665 (1967).</li>
+              <li>[Böhm–Ne'eman–Barut_1988] Böhm, A., Ne'eman, Y. and Barut, A. O. (eds.), <em>Dynamical Groups and Spectrum Generating Algebras</em>, World Scientific, Singapore (1988).</li>
+              <li>[Martínez-y-Romero–Núñez-Yépez–Salas-Brito_2005] Martínez-y-Romero, R. P., Núñez-Yépez, H. N. and Salas-Brito, A. L., “An \(\mathfrak{su}(1,1)\) algebraic method for the hydrogen atom,” <em>J. Phys. A: Math. Gen.</em> <strong>38</strong>, 8579–8588 (2005).</li>
+              <li>[Kibler_2004] Kibler, M. R., “On the use of the group \(SO(4,2)\) in atomic and molecular physics,” <em>Molecular Physics</em> <strong>102</strong>, 1221–1229 (2004).</li>
+              <li>[Wulfman_2010] Wulfman, C. E., <em>Dynamical Symmetry</em>, World Scientific, (2010).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>正則化/KS 変換/Hopf fibration</h3>
+            <ul>
+              <li>[Bohlin_1911] Bohlin, K., “Note sur le problème des deux corps et sur une intégration nouvelle dans le problème des trois corps,” <em>Bull. Astr.</em> <strong>28</strong>, 113–119 (1911).</li>
+              <li>[Levi-Civita_1920] Levi-Civita, T., “Sur la régularisation du problème des trois corps,” <em>Acta Math.</em> <strong>42</strong>, 99–144 (1920).</li>
+              <li>[Kustaanheimo–Stiefel_1965] Kustaanheimo, P. E. and Stiefel, E. L., “Perturbation theory of Kepler motion based on spinor regularization,” <em>J. Reine Angew. Math.</em> <strong>218</strong>, 204–219 (1965).</li>
+              <li>[Stiefel–Scheifele_1971] Stiefel, E. L. and Scheifele, G., <em>Linear and Regular Celestial Mechanics</em>, Springer, Berlin (1971).</li>
+              <li>[Hopf_1931] Hopf, H., “Über die Abbildungen der dreidimensionalen Sphäre auf die Kugelfläche,” <em>Mathematische Annalen</em> <strong>104</strong>, 637–665 (1931).</li>
+              <li>[Hestenes–Lounesto_1983] Hestenes, D. and Lounesto, P., “Geometry of Spinor Regularization,” <em>Celestial Mechanics</em> <strong>30</strong>, 171–179 (1983).</li>
+              <li>[Boiteux_1973] Boiteux, M., “The three-dimensional hydrogen atom as a restricted four-dimensional harmonic oscillator,” <em>Physica</em> <strong>65</strong>, 381–395 (1973).</li>
+              <li>[Chen_1980] Chen, A. C., “Hydrogen atom as a four-dimensional oscillator,” <em>Phys. Rev. A</em> <strong>22</strong>, 333 (1980).</li>
+              <li>[Kibler–Négadi–Ronveaux_1985] Kibler, M., Négadi, T. and Ronveaux, A., “The Kustaanheimo–Stiefel transformation and certain special functions,” in C. Brezinski, A. Draux, A. P. Magnus, P. Maroni and A. Ronveaux (eds.), <em>Polynômes Orthogonaux et Applications</em>, Lecture Notes in Mathematics <strong>1171</strong>, Springer, 497–505 (1985).</li>
+              <li>[Kibler–Ronveaux–Négadi_1986] Kibler, M., Ronveaux, A. and Négadi, T., “On the hydrogen-oscillator connection: Passage formulas between wave functions,” <em>J. Math. Phys.</em> <strong>27</strong>, 1541–1548 (1986).</li>
+              <li>[Chen–Kibler_1985] Chen, A. C. and Kibler, M., “Connection between the hydrogen atom and the four-dimensional oscillator,” <em>Phys. Rev. A</em> <strong>31</strong>, 3960 (1985).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>Coulomb Green's function/水素原子における経路積分</h3>
+            <ul>
+              <li>[Schwinger_1964] Schwinger, J., “Coulomb Green's Function,” <em>J. Math. Phys.</em> <strong>5</strong>, 1606–1608 (1964).</li>
+              <li>[Hostler–Pratt_1963] Hostler, L. and Pratt, R. H., “Coulomb Green's Function in Closed Form,” <em>Phys. Rev. Lett.</em> <strong>10</strong>, 469–470 (1963).</li>
+              <li>[Hostler_1964] Hostler, L., “Coulomb Green's Functions and the Furry Approximation,” <em>J. Math. Phys.</em> <strong>5</strong>, 591–611 (1964).</li>
+              <li>[Duru–Kleinert_1979] Duru, I. H. and Kleinert, H., “Solution of the Path Integral for the H-Atom,” <em>Phys. Lett. B</em> <strong>84</strong>, 185–188 (1979).</li>
+              <li>[Duru–Kleinert_1982] Duru, I. H. and Kleinert, H., “Quantum Mechanics of H-Atom from Path Integrals,” <em>Fortschr. Phys.</em> <strong>30</strong>, 401–435 (1982).</li>
+              <li>[Ho–Inomata_1982] Ho, R. and Inomata, A., “Exact-Path-Integral Treatment of the Hydrogen Atom,” <em>Phys. Rev. Lett.</em> <strong>48</strong>, 231–234 (1982).</li>
+              <li>[Inomata_1984] Inomata, A., “Alternative Exact-Path-Integral Treatment of the Hydrogen Atom,” <em>Phys. Lett. A</em> <strong>101</strong>, 253–257 (1984).</li>
+              <li>[Grosche–Steiner_1998] Grosche, C. and Steiner, F., <em>Handbook of Feynman Path Integrals</em>, Springer Tracts in Modern Physics <strong>145</strong>, Springer (1998).</li>
+            </ul>
+          </div>
+
+          <div class="ref-card">
+            <h3>水素原子の一般化コヒーレント状態</h3>
+            <ul>
+              <li>[Schrödinger_1926g] Schrödinger, E., “Der stetige Übergang von der Mikro- zur Makromechanik,” <em>Naturwissenschaften</em> <strong>14</strong>, 664 (1926).</li>
+              <li>[Barut–Girardello_1971] Barut, A. O. and Girardello, L., “New ‘Coherent’ States Associated with Non-Compact Groups,” <em>Commun. Math. Phys.</em> <strong>21</strong>, 41 (1971).</li>
+              <li>[Perelomov_1972] Perelomov, A. M., “Coherent States for Arbitrary Lie Group,” <em>Commun. Math. Phys.</em> <strong>26</strong>, 222 (1972).</li>
+              <li>[Nieto–Simmons_1978] Nieto, M. M. and Simmons, L. M. Jr., “Coherent States for General Potentials,” <em>Phys. Rev. Lett.</em> <strong>41</strong>, 207 (1978).</li>
+              <li>[Klauder–Skagerstam_1985] Klauder, J. R. and Skagerstam, B.-S., <em>Coherent States: Applications in Physics and Mathematical Physics</em>, World Scientific (1985).</li>
+              <li>[Perelomov_1986] Perelomov, A. M., <em>Generalized Coherent States and Their Applications</em>, Springer (1986).</li>
+              <li>[Zlatev–Zhang–Feng_1994] Zlatev, I., Zhang, W.-M. and Feng, D. H., “Possibility That Schrödinger’s Conjecture for the Hydrogen-Atom Coherent States Is Not Attainable,” <em>Phys. Rev. A</em> <strong>50</strong>, R1973–R1976 (1994).</li>
+              <li>[Klauder_1996] Klauder, J. R., “Coherent States for the Hydrogen Atom,” <em>J. Phys. A: Math. Gen.</em> <strong>29</strong>, L293–L298 (1996).</li>
+              <li>[Majumdar–Sharatchandra_1997] Majumdar, P. and Sharatchandra, H. S., “Coherent States for the Hydrogen Atom,” <em>Phys. Rev. A</em> <strong>56</strong>, R3322–R3325 (1997).</li>
+              <li>[Bellomo–Stroud_1998] Bellomo, P. and Stroud, C. R. Jr., “Dispersion of Klauder’s Temporally Stable Coherent States for the Hydrogen Atom,” <em>J. Phys. A: Math. Gen.</em> <strong>31</strong>, L445–L451 (1998).</li>
+              <li>[Gazeau–Klauder_1999] Gazeau, J. P. and Klauder, J. R., “Coherent States for Systems with Discrete and Continuous Spectrum,” <em>J. Phys. A: Math. Gen.</em> <strong>32</strong>, 123–132 (1999).</li>
+              <li>[Crawford_2000] Crawford, M. G. A., “Temporally Stable Coherent States in Energy-Degenerate Systems,” <em>Phys. Rev. A</em> <strong>62</strong>, 012104 (2000).</li>
+              <li>[Ünal_2000] Ünal, N., “Coherent States for the Hydrogen Atom,” <em>Turkish Journal of Physics</em> <strong>24</strong>, 957–965 (2000).</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-card">
+      <p>
+        本ページは，水素原子をめぐる数理物理の流れを見通すための案内記事です．詳細な計算や個別テーマについては，各関連ノートを参照してください．</p>
+      <p>
+        <a href="/">HOME</a> /
+        <a href="/note.html">ノート一覧</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
