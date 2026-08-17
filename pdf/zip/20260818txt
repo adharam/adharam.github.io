@@ -1,0 +1,57 @@
+◽️pymol による解析（5モデル一気読み込み）
+読み込み
+cd /Users/itoyuto/Downloads/biomolecule
+
+python
+from pathlib import Path
+
+folder = Path("/Users/itoyuto/Downloads/biomolecule/8WE6_1_OUTPUT_standard_seed1-10")
+
+for i, filename in enumerate((folder / "pdb_list").read_text().splitlines(), start=1):
+    filename = filename.strip()
+    if filename:
+        cmd.load(str(folder / filename), f"m{i}")
+
+python end
+select core, m* and polymer.protein and chain A and resi 118-182+191-217+232-449+508-783+895-956+966-1303+1352-1464+1469-1505
+select coreCA, core and name CA
+
+python
+for i in range(2, 51):
+    cmd.super(f"m{i} and coreCA", "m1 and coreCA")
+python end
+
+python
+for i in range(1, 51):
+    cmd.select(f"d{i}", f"m{i} and chain A and resi 2094-2148")
+python end
+
+hide everything, all
+deselect
+unpick
+show cartoon, core
+color gray70, core
+set cartoon_transparency, 0.55, core
+
+python
+import colorsys
+
+for i in range(1, 51):
+    selection = f"d{i}"
+    color_name = f"dcolor{i:02d}"
+
+    # 隣り合う番号の色が似すぎないよう、色相をずらす
+    hue = ((i - 1) * 0.61803398875) % 1.0
+    rgb = colorsys.hsv_to_rgb(hue, 0.75, 0.95)
+
+    cmd.set_color(color_name, list(rgb))
+    cmd.show("cartoon", selection)
+    cmd.color(color_name, selection)
+
+python end
+
+orient (core or d1 or d2 or d3 or d4 or d5 or d6 or d7 or d8 or d9 or d10 or d11 or d12 or d13 or d14 or d15 or d16 or d17 or d18 or d19 or d20 or d21 or d22 or d23 or d24 or d25 or d26 or d27 or d28 or d29 or d30 or d31 or d32 or d33 or d34 or d35 or d36 or d37 or d38 or d39 or d40 or d41 or d42 or d43 or d44 or d45 or d46 or d47 or d48 or d49 or d50)
+
+zoom (core or d1 or d2 or d3 or d4 or d5 or d6 or d7 or d8 or d9 or d10 or d11 or d12 or d13 or d14 or d15 or d16 or d17 or d18 or d19 or d20 or d21 or d22 or d23 or d24 or d25 or d26 or d27 or d28 or d29 or d30 or d31 or d32 or d33 or d34 or d35 or d36 or d37 or d38 or d39 or d40 or d41 or d42 or d43 or d44 or d45 or d46 or d47 or d48 or d49 or d50), 8
+
+save 8WE6_m1-m50_aligned.pse
